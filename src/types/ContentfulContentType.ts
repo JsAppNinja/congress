@@ -1,1 +1,1 @@
-export type ContentfulContentType = '';
+export type ContentfulContentType = 'section';

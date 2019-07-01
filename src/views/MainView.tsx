@@ -6,7 +6,7 @@ type Props = {
 
 class MainView extends Component<Props> {
   render() {
-    return <div className="MainView" />;
+    return <div className="MainView"></div>;
   }
 }
 

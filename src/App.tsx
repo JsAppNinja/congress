@@ -6,20 +6,26 @@ import Routes from 'routes';
 
 import isContentfulPreview from 'utils/isContentfulPreview';
 import { initializeApplication } from 'state/actions/applicationActions';
+import { showSignup, hideSignup } from 'state/actions/signupActions';
 
 import { RootReducer } from 'types/RootReducer';
 import { Status } from 'types/Status';
+
+import Signup from 'components/Signup';
 
 import 'what-input';
 import 'styles/App.scss';
 
 interface StoreProps {
   initializeApplicationStatus: Status;
+  signupIsShown: boolean;
 }
 
 interface DispatchProps {
   actions: {
     initializeApplication: (isPreview: boolean) => void;
+    showSignup: () => void;
+    hideSignup: () => void;
   };
 }
 
@@ -48,19 +54,24 @@ class App extends Component<Props> {
 
     if (initializeApplicationStatus === Status.FULFILLED) {
       return (
-        <div className="App">
+        <main className="App" role="main">
+          <Signup
+            hideSignup={this.props.actions.hideSignup}
+            show={this.props.signupIsShown}
+            header="Sign Up For Our Email List"
+          />
           <Routes location={location} />
-        </div>
+        </main>
       );
     }
 
     if (initializeApplicationStatus === Status.REJECTED) {
       return (
-        <div className="App">
+        <main className="App">
           <div className="py2 flex items-center justify-center vh100 bg-color-light-grey">
             <p>error message component goes here</p>
           </div>
-        </div>
+        </main>
       );
     }
 
@@ -69,13 +80,16 @@ class App extends Component<Props> {
 }
 
 const mapStateToProps = (state: RootReducer): StoreProps => ({
-  initializeApplicationStatus: state.status.initializeApplication
+  initializeApplicationStatus: state.status.initializeApplication,
+  signupIsShown: state.signup.signupIsShown
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   actions: bindActionCreators(
     {
-      initializeApplication
+      initializeApplication,
+      showSignup,
+      hideSignup
     },
     dispatch
   )

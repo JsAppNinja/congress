@@ -1,0 +1,15 @@
+.Signup {
+  &__close-icon-container {
+    top: 21px;
+    right: 15px;
+    border: none;
+  }
+
+  &__input-label {
+    flex-grow: 1;
+  }
+
+  &__input-error {
+    color: color('error');
+  }
+}

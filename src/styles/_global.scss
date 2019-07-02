@@ -10,3 +10,9 @@ input {
   border-bottom: 2px solid color('black');
   outline: none;
 }
+
+a {
+  cursor: pointer;
+  color: inherit;
+  text-decoration: inherit;
+}

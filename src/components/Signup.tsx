@@ -257,7 +257,10 @@ class Signup extends Component<Props, State> {
             </div>
           </div>
           <div className="col-12 md:col-4 md:pr2 mt1 md:mt2">
-            <button className="text-sm pointer w100 mt1 pt1 pb1" type="submit">
+            <button
+              className="Signup__submit-button text-sm pointer w100 mt1 pt1 pb1"
+              type="submit"
+            >
               SUBMIT
             </button>
           </div>

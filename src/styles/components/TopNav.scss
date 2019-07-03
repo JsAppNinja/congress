@@ -1,0 +1,47 @@
+.TopNav {
+  height: 90vh;
+
+  &__container {
+    border-top: 2px solid color('black');
+    border-bottom: 2px solid color('black');
+  }
+
+  &__mobile-bar {
+    height: 4rem;
+  }
+
+  @include media('md') {
+    height: auto;
+    width: auto;
+  }
+
+  &__nav-item {
+    @include media('md') {
+      border-right: 2px solid color('black');
+      height: 4rem;
+    }
+  }
+
+  &__social-media {
+    border-top: 2px solid color('black');
+    width: 100%;
+
+    @include media('md') {
+      width: auto;
+      border-top: none;
+    }
+  }
+
+  &__language-button {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  &__language-selected {
+    background-color: color('green');
+  }
+
+  &__hamburger-container {
+    border-left: 2px solid color('black');
+  }
+}

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import DonorCTA from 'components/DonorCTA';
 
 type Props = {
   model: string;
@@ -7,11 +6,7 @@ type Props = {
 
 class MainView extends Component<Props> {
   render() {
-    return (
-      <div className="MainView">
-        <DonorCTA url="" />
-      </div>
-    );
+    return <div className="MainView"></div>;
   }
 }
 

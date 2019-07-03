@@ -1,1 +1,1 @@
-export type ContentfulContentType = 'section';
+export type ContentfulContentType = 'section' | 'global';

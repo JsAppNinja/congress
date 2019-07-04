@@ -35,10 +35,22 @@
   &__language-button {
     width: 3rem;
     height: 3rem;
-  }
 
-  &__language-selected {
-    background-color: color('green');
+    &--selected {
+      position: relative;
+
+      &::after {
+        content: '';
+        border-radius: 50%;
+        z-index: -1;
+        background: color('green');
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        top: calc(50% - 1rem);
+        left: calc(50% - 1rem);
+      }
+    }
   }
 
   &__hamburger-container {

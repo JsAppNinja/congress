@@ -5,18 +5,19 @@ import { Dispatch, bindActionCreators } from 'redux';
 import Routes from 'routes';
 
 import isContentfulPreview from 'utils/isContentfulPreview';
-import get from 'utils/get';
 import { initializeApplication } from 'state/actions/applicationActions';
 import { showSignup, hideSignup } from 'state/actions/signupActions';
 import { setLocale } from 'state/actions/localeActions';
 
 import { RootReducer } from 'types/RootReducer';
 import { Status } from 'types/Status';
+import { ContentfulPhoto } from 'types/ContentfulPhoto';
 import { Locale } from 'types/Locale';
 
 import Signup from 'components/Signup';
 import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
+import Hero from 'components/Hero';
 
 import { getLocale, Polyglot } from 'constants/Locales';
 
@@ -30,6 +31,11 @@ interface StoreProps {
   facebookUrl: string;
   twitterUrl: string;
   instagramUrl: string;
+  mainHeader: string;
+  mainSubheader: string;
+  mainParagraph: string;
+  mainPhoto: ContentfulPhoto | null;
+  mainSlogan: string[] | null;
   currentLocale: Locale;
 }
 
@@ -55,6 +61,7 @@ class App extends Component<Props> {
       actions.initializeApplication(isPreview);
     }
   }
+
   componentDidUpdate(prevProps: Props) {
     const pathname = this.props.location.pathname;
     if (pathname !== prevProps.location.pathname) {
@@ -83,6 +90,13 @@ class App extends Component<Props> {
             instagramUrl={this.props.instagramUrl}
             setLocale={actions.setLocale}
           />
+          <Hero
+            header={this.props.mainHeader}
+            subHeader={this.props.mainSubheader}
+            body={this.props.mainParagraph}
+            slogan={this.props.mainSlogan}
+            photo={this.props.mainPhoto}
+          />
           <Routes location={location} />
         </main>
       );
@@ -105,11 +119,16 @@ class App extends Component<Props> {
 const mapStateToProps = (state: RootReducer): StoreProps => ({
   initializeApplicationStatus: state.status.initializeApplication,
   signupIsShown: state.signup.signupIsShown,
-  donateUrl: get(state, 'content.global.donateUrl', ''),
-  facebookUrl: get(state, 'content.global.facebookUrl', ''),
-  twitterUrl: get(state, 'content.global.twitterUrl', ''),
-  instagramUrl: get(state, 'content.global.instagramUrl', ''),
-  currentLocale: get(state, 'locale.currentLocale')
+  currentLocale: state.locale.currentLocale,
+  donateUrl: state.content.global.donateUrl,
+  facebookUrl: state.content.global.facebookUrl,
+  twitterUrl: state.content.global.twitterUrl,
+  instagramUrl: state.content.global.instagramUrl,
+  mainHeader: state.content.global.mainHeader,
+  mainSubheader: state.content.global.mainSubheader,
+  mainParagraph: state.content.global.mainParagraph,
+  mainPhoto: state.content.global.mainPhoto,
+  mainSlogan: state.content.global.mainSlogan
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

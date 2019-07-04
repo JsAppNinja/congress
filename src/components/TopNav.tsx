@@ -57,7 +57,7 @@ class TopNav extends Component<Props, State> {
             <Button
               className="TopNav__language-button m0 p0 pointer"
               ariaLabel="changes site language to Haitian"
-              onClick={() => setLocale('ht')}
+              onClick={() => setLocale('fr')}
             >
               <span>HAI</span>
             </Button>
@@ -102,7 +102,7 @@ class TopNav extends Component<Props, State> {
           <Button
             className="TopNav__language-button m0 p0 mr_25 pointer"
             ariaLabel="changes site language to Haitian"
-            onClick={() => setLocale('ht')}
+            onClick={() => setLocale('fr')}
           >
             <span className="text-md franklin-gothic">HAI</span>
           </Button>

@@ -4,12 +4,22 @@ import { ContentfulGlobalSettings } from 'types/ContentfulGlobalSettings';
 
 export interface ContentReducer {
   sections: Section[] | null;
-  global: ContentfulGlobalSettings | null;
+  global: ContentfulGlobalSettings;
 }
 
 const initialState: ContentReducer = {
   sections: null,
-  global: null
+  global: {
+    mainHeader: '',
+    mainSubheader: '',
+    mainParagraph: '',
+    mainPhoto: null,
+    mainSlogan: null,
+    donateUrl: '',
+    facebookUrl: '',
+    instagramUrl: '',
+    twitterUrl: ''
+  }
 };
 
 export default (

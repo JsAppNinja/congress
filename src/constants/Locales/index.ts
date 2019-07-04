@@ -1,11 +1,11 @@
 import Polyglot from 'node-polyglot';
 import { Locale } from 'types/Locale';
 import en from 'constants/Locales/en-US';
-import ht from 'constants/Locales/ht';
+import fr from 'constants/Locales/fr';
 
 const locales: { [id: string]: object } = {
   'en-US': en,
-  ht: ht
+  fr: fr
 };
 
 let Language: Polyglot | undefined;

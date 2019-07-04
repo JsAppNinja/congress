@@ -20,6 +20,7 @@ type ContentType = {
 type Query = {
   content_type: ContentfulContentType;
   include: number;
+  locale: string;
 };
 
 const Content: ContentType = {

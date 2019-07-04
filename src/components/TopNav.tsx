@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import cx from 'classnames';
+
 import isMobile from 'utils/isMobile';
 import facebook from 'assets/facebook.svg';
 import twitter from 'assets/twitter.svg';
@@ -45,17 +47,22 @@ class TopNav extends Component<Props, State> {
         <div className="TopNav__container flex TopNav__mobile-bar">
           <div className="flex justify-start items-center col-12 ml1 pt1 pb1">
             <Button
-              className="TopNav__language-button m0 p0 pointer"
+              className={cx('TopNav__language-button m0 p0 pointer', {
+                'TopNav__language-button--selected':
+                  Language.locale() === 'en-US'
+              })}
               ariaLabel="changes site language to English"
               onClick={() => setLocale('en-US')}
             >
-              <span className="TopNav__language-selected flex justify-center items-center circle p_25">
+              <span className="flex justify-center items-center circle p_25">
                 EN
               </span>
             </Button>
             <span className="m_25">/</span>
             <Button
-              className="TopNav__language-button m0 p0 pointer"
+              className={cx('TopNav__language-button m0 p0 pointer', {
+                'TopNav__language-button--selected': Language.locale() === 'fr'
+              })}
               ariaLabel="changes site language to Haitian"
               onClick={() => setLocale('fr')}
             >
@@ -90,17 +97,21 @@ class TopNav extends Component<Props, State> {
         )}
         <div className="TopNav__nav-item flex justify-center items-center h100 col-12 md:col-4">
           <Button
-            className="TopNav__language-button m0 p0 mr_25 pointer"
+            className={cx('TopNav__language-button m0 p0 mr_25 pointer', {
+              'TopNav__language-button--selected': Language.locale() === 'en-US'
+            })}
             ariaLabel="changes site language to English"
             onClick={() => setLocale('en-US')}
           >
-            <span className="TopNav__language-selected text-md franklin-gothic flex justify-center items-center circle p_25">
+            <span className="text-md franklin-gothic flex justify-center items-center p_25">
               EN
             </span>
           </Button>
           <span className="text-md franklin-gothic mr_25">/</span>
           <Button
-            className="TopNav__language-button m0 p0 mr_25 pointer"
+            className={cx('TopNav__language-button m0 p0 mr_25 pointer', {
+              'TopNav__language-button--selected': Language.locale() === 'fr'
+            })}
             ariaLabel="changes site language to Haitian"
             onClick={() => setLocale('fr')}
           >

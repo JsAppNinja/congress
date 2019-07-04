@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getLocale, Polyglot } from 'constants/Locales';
 import closeIcon from 'assets/close.svg';
 import { isValidName, isValidEmail } from 'utils/validations';
 
@@ -8,12 +9,8 @@ interface Props {
   hideSignup: () => void;
 }
 
-interface Errors {
-  firstName: string;
-  lastName: string;
-  email: string;
-  zipCode: string;
-  phoneNumber: string;
+interface FormErrors {
+  [id: string]: string;
 }
 
 interface State {
@@ -22,7 +19,7 @@ interface State {
   email: string;
   zipCode: string;
   phoneNumber: string;
-  errors: any;
+  errors: FormErrors;
 }
 
 class Signup extends Component<Props, State> {
@@ -46,8 +43,10 @@ class Signup extends Component<Props, State> {
   };
 
   validateFirstName = () => {
+    const Language = getLocale() as Polyglot;
+
     if (!isValidName(this.state.firstName)) {
-      return 'Please provide a first name';
+      return Language.t('signupForm.noFirstNameError');
     }
 
     return '';
@@ -58,8 +57,10 @@ class Signup extends Component<Props, State> {
   };
 
   validateLastName = () => {
+    const Language = getLocale() as Polyglot;
+
     if (!isValidName(this.state.lastName)) {
-      return 'Please provide a last name';
+      return Language.t('signupForm.noLastNameError');
     }
 
     return '';
@@ -70,12 +71,14 @@ class Signup extends Component<Props, State> {
   };
 
   validateEmail = () => {
+    const Language = getLocale() as Polyglot;
+
     if (!this.state.email) {
-      return 'Please provide an email address';
+      return Language.t('signupForm.noEmailError');
     }
 
     if (!isValidEmail(this.state.email)) {
-      return 'Please provide a valid email address';
+      return Language.t('signupForm.invalidEmailError');
     }
 
     return '';
@@ -86,8 +89,10 @@ class Signup extends Component<Props, State> {
   };
 
   validateZipCode = () => {
+    const Language = getLocale() as Polyglot;
+
     if (!this.state.zipCode) {
-      return 'Please provide a zip code';
+      return Language.t('signupForm.noZipCodeError');
     }
 
     return '';
@@ -147,6 +152,8 @@ class Signup extends Component<Props, State> {
   render() {
     if (!this.props.show) return null;
 
+    const Language = getLocale() as Polyglot;
+
     return (
       <div
         className="Signup franklin-gothic bg-color-green flex flex-col text-md p1"
@@ -181,7 +188,7 @@ class Signup extends Component<Props, State> {
             />
             <div className="md:mr1 mt1 flex flex-row">
               <label htmlFor="firstName" className="Signup__input-label">
-                First Name
+                {Language.t('signupForm.firstName')}
               </label>
               <p className="Signup__input-error">
                 {this.state.errors.firstName}
@@ -200,7 +207,7 @@ class Signup extends Component<Props, State> {
             />
             <div className="md:mr1 mt1 flex flex-row">
               <label htmlFor="lastName" className="Signup__input-label">
-                Last Name
+                {Language.t('signupForm.lastName')}
               </label>
               <p className="Signup__input-error">
                 {this.state.errors.lastName}
@@ -219,7 +226,7 @@ class Signup extends Component<Props, State> {
             />
             <div className="md:mr1 mt1 flex flex-row">
               <label htmlFor="email" className="Signup__input-label">
-                Email
+                {Language.t('signupForm.email')}
               </label>
               <p className="Signup__input-error">{this.state.errors.email}</p>
             </div>
@@ -236,7 +243,7 @@ class Signup extends Component<Props, State> {
             />
             <div className="md:mr1 mt1 flex flex-row">
               <label htmlFor="zipcode" className="Signup__input-label">
-                Zip Code
+                {Language.t('signupForm.zipCode')}
               </label>
               <p className="Signup__input-error">{this.state.errors.zipCode}</p>
             </div>
@@ -252,7 +259,7 @@ class Signup extends Component<Props, State> {
             />
             <div className="md:mr1 mt1 flex flex-row">
               <label htmlFor="phone" className="Signup__input-label">
-                Phone (optional)
+                {Language.t('signupForm.phoneOptional')}
               </label>
             </div>
           </div>
@@ -261,7 +268,7 @@ class Signup extends Component<Props, State> {
               className="Signup__submit-button text-sm pointer w100 mt1 pt1 pb1"
               type="submit"
             >
-              SUBMIT
+              {Language.t('signupForm.submit')}
             </button>
           </div>
         </form>

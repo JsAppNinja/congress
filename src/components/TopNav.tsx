@@ -6,12 +6,15 @@ import instagram from 'assets/instagram.svg';
 import hamburger from 'assets/hamburger.svg';
 import closeIcon from 'assets/close.svg';
 import { Image, Button } from 'components/base';
+import { Locale } from 'types/Locale';
+import { getLocale, Polyglot } from 'constants/Locales';
 
 interface Props {
   donateUrl: string;
   facebookUrl: string;
   twitterUrl: string;
   instagramUrl: string;
+  setLocale(locale: Locale): void;
 }
 
 interface State {
@@ -32,6 +35,9 @@ class TopNav extends Component<Props, State> {
   };
 
   render() {
+    const { setLocale } = this.props;
+    const Language = getLocale() as Polyglot;
+
     const deviceIsMobile = isMobile();
 
     if (!this.state.menuIsActive && deviceIsMobile) {
@@ -41,6 +47,7 @@ class TopNav extends Component<Props, State> {
             <Button
               className="TopNav__language-button m0 p0 pointer"
               ariaLabel="changes site language to English"
+              onClick={() => setLocale('en-US')}
             >
               <span className="TopNav__language-selected flex justify-center items-center circle p_25">
                 EN
@@ -50,6 +57,7 @@ class TopNav extends Component<Props, State> {
             <Button
               className="TopNav__language-button m0 p0 pointer"
               ariaLabel="changes site language to Haitian"
+              onClick={() => setLocale('ht')}
             >
               <span>HAI</span>
             </Button>
@@ -84,6 +92,7 @@ class TopNav extends Component<Props, State> {
           <Button
             className="TopNav__language-button m0 p0 mr_25 pointer"
             ariaLabel="changes site language to English"
+            onClick={() => setLocale('en-US')}
           >
             <span className="TopNav__language-selected text-md franklin-gothic flex justify-center items-center circle p_25">
               EN
@@ -93,6 +102,7 @@ class TopNav extends Component<Props, State> {
           <Button
             className="TopNav__language-button m0 p0 mr_25 pointer"
             ariaLabel="changes site language to Haitian"
+            onClick={() => setLocale('ht')}
           >
             <span className="text-md franklin-gothic">HAI</span>
           </Button>
@@ -104,7 +114,9 @@ class TopNav extends Component<Props, State> {
             onClick={f => f}
             ariaLabel="shows the sign up form"
           >
-            <span className="text-md franklin-gothic">SIGN UP</span>
+            <span className="text-md franklin-gothic">
+              {Language.t('topNav.signUp')}
+            </span>
           </Button>
         </div>
         <div className="TopNav__nav-item flex justify-center items-center h100 col-12 md:col-4">
@@ -114,7 +126,7 @@ class TopNav extends Component<Props, State> {
             target="_blank"
             rel="noopener noreferrer"
           >
-            DONATE
+            {Language.t('topNav.donate')}
           </a>
         </div>
         <div className="TopNav__social-media flex justify-center items-center h100 md:m1">

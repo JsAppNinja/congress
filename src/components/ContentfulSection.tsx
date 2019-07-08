@@ -10,8 +10,8 @@ interface Props {
 
 const ContentfulSection: React.FC<Props> = ({ section }) => {
   return (
-    <div className="ContentfulSection">
-      <p className="text-lg">{section.title}</p>
+    <div className="ContentfulSection col-6">
+      <p className="text-xl">{section.title}</p>
       {section.subSections.map((subSection: SubSection) => {
         return <ContentfulSubSection subSection={subSection} />;
       })}

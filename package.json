@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@contentful/rich-text-html-renderer": "^13.1.0",
     "@sanctucompu/basement": "^1.0.0",
     "@types/classnames": "^2.2.8",
     "@types/jest": "24.0.15",

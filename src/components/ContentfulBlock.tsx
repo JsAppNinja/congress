@@ -1,31 +1,34 @@
 import React from 'react';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
+import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 import marked from 'marked';
 import { Block } from 'types/Block';
 import get from 'utils/get';
+import { Image } from 'components/base';
 
 interface Props {
   block: Block;
 }
 
-const ContentfulBlock: React.FC<Props> = ({ block }) => {
-  console.log('BLOCK', block);
-  const type = get(block, 'sys.contentType.sys.id');
-  const description = get(block, 'fields.description');
-  console.log(description);
-  return <div dangerouslySetInnerHTML={{ __html: marked(description) }} />;
+const options = {
+  renderNode: {
+    [BLOCKS.EMBEDDED_ASSET]: (node: any) => {
+      return `<Image className="pr2" alt="${node.data.target.fields.title}" src=${node.data.target.fields.file.url} />`;
+    }
+  }
+};
 
-  // switch(type) {
-  //   case 'blockParagraph':
-  //     return contentBlocks.map((contentBlock: any) => {
-  //       return contentBlock.content.map((content: any, i: number) => {
-  //         console.log('CONTENT', content);
-  //         return <div key={i} dangerouslySetInnerHTML={{ __html: marked(content) }} />
-  //       });
-  //     });
-  //     break;
-  //   default:
-  //     return null;
-  // }
+const ContentfulBlock: React.FC<Props> = ({ block }) => {
+  const description = get(block, 'fields.description');
+
+  return (
+    <div
+      className="ContentfulBlock text-md"
+      dangerouslySetInnerHTML={{
+        __html: documentToHtmlString(description, options)
+      }}
+    />
+  );
 };
 
 export default ContentfulBlock;

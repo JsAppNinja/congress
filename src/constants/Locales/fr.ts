@@ -1,6 +1,7 @@
 export default {
   signupForm: {
     signup: 'Enskri pou lis imel nou an',
+    joinOurFight: 'Join batay nou yo',
     firstName: 'Premye Non',
     lastName: 'Siyati',
     email: 'Imèl',

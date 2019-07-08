@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import { getLocale, Polyglot } from 'constants/Locales';
 import closeIcon from 'assets/close.svg';
 import { isValidName, isValidEmail } from 'utils/validations';
+import { Button, Image } from 'components/base';
 
 interface Props {
   header: string;
   show: boolean;
   hideSignup: () => void;
+  backgroundColor: 'green' | 'yellow';
+  showCloseIcon: boolean;
 }
 
 interface FormErrors {
@@ -156,19 +159,21 @@ class Signup extends Component<Props, State> {
 
     return (
       <div
-        className="Signup franklin-gothic bg-color-green flex flex-col text-md p1"
+        className={`Signup franklin-gothic bg-color-${this.props.backgroundColor} flex flex-col text-md p1`}
         role="region"
       >
         <div className="flex flex-row">
           <p className="text-xl">{this.props.header}</p>
-          <button
-            className="Signup__close-icon-container bg-color-transparent absolute pointer"
-            onClick={this.closeSignupForm}
-          >
-            <img alt="close icon" src={closeIcon} />
-          </button>
+          {this.props.showCloseIcon && (
+            <Button
+              className="Signup__close-icon-container bg-color-transparent absolute pointer"
+              onClick={this.closeSignupForm}
+              ariaLabel="close the sign up form"
+            >
+              <Image alt="close icon" src={closeIcon} />
+            </Button>
+          )}
         </div>
-
         <form
           className="flex flex-wrap justify-between"
           onSubmit={e => {
@@ -264,12 +269,13 @@ class Signup extends Component<Props, State> {
             </div>
           </div>
           <div className="col-12 md:col-4 md:pr2 mt1 md:mt2">
-            <button
+            <Button
               className="Signup__submit-button text-sm pointer w100 mt1 pt1 pb1"
               type="submit"
+              ariaLabel="submit sign up information"
             >
               {Language.t('signupForm.submit')}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

@@ -1,6 +1,7 @@
 export default {
   signupForm: {
     signup: 'Sign Up For Our Email List',
+    joinOurFight: 'Join our fight',
     firstName: 'First Name',
     lastName: 'Last Name',
     email: 'Email',

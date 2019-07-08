@@ -81,6 +81,8 @@ class App extends Component<Props> {
             hideSignup={this.props.actions.hideSignup}
             show={this.props.signupIsShown}
             header={Language.t('signupForm.signup')}
+            backgroundColor="green"
+            showCloseIcon={true}
           />
           <DonorCTA url="" />
           <TopNav
@@ -96,6 +98,13 @@ class App extends Component<Props> {
             body={this.props.mainParagraph}
             slogan={this.props.mainSlogan}
             photo={this.props.mainPhoto}
+          />
+          <Signup
+            hideSignup={this.props.actions.hideSignup}
+            show={true}
+            header={Language.t('signupForm.joinOurFight')}
+            backgroundColor="yellow"
+            showCloseIcon={false}
           />
           <Routes location={location} />
         </main>

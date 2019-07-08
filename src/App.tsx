@@ -20,6 +20,7 @@ import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
 import Hero from 'components/Hero';
 import SubNav from 'components/SubNav';
+import ContentfulSection from 'components/ContentfulSection';
 
 import { getLocale, Polyglot } from 'constants/Locales';
 
@@ -103,6 +104,13 @@ class App extends Component<Props> {
             photo={this.props.mainPhoto}
           />
           <SubNav sections={this.props.sections} />
+          {this.props.sections && (
+            <div className="flex flex-col items-end justify-end pr1">
+              {this.props.sections.map((section: Section) => {
+                return <ContentfulSection section={section} />;
+              })}
+            </div>
+          )}
           <Signup
             hideSignup={this.props.actions.hideSignup}
             show={true}

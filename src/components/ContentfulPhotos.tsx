@@ -14,7 +14,7 @@ const ContentfulPhotos: React.FC<Props> = ({ photos }) => {
           <div className="col-6" key={photo.fields.title}>
             <Image
               alt={photo.fields.title}
-              className="col-12"
+              className="col-12 w100"
               src={photo.fields.file.url}
             />
           </div>

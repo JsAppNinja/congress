@@ -14,7 +14,7 @@ const ContentfulSection: React.FC<Props> = ({ section }) => {
   const title = get(section, 'title');
 
   return (
-    <div className="ContentfulSection col-6 pt1">
+    <div className="ContentfulSection col-12 md:col-6 pt1 pl1 md:pl0">
       <p id={slugify(title)} className="text-xxxl uppercase">
         {title}
       </p>

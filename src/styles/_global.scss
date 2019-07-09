@@ -1,5 +1,9 @@
 body {
-  background: linear-gradient(180.86deg, #ffffff 34.72%, #fff500 65.02%);
+  background: linear-gradient(
+    180.86deg,
+    #ffffff 34.72%,
+    color('yellow') 65.02%
+  );
 }
 
 button {

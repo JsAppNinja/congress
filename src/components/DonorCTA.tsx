@@ -13,7 +13,7 @@ const DonorCTA: React.FC<Props> = ({ url }) => {
   return (
     <div className="DonorCTA bg-color-yellow flex w100 p1">
       <a
-        className="DonorCTA__copy text-md pr3 md:pr0"
+        className="DonorCTA__copy franklin-gothic text-md pr3 md:pr0"
         href={url}
         target="_blank"
         rel="noopener noreferrer"

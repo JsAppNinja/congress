@@ -12,7 +12,7 @@ const SubNav: React.FC<Props> = ({ sections }) => {
   const Language = getLocale() as Polyglot;
 
   return (
-    <ul className="SubNav pl1 inline-block">
+    <ul className="SubNav pl1 inline-block franklin-gothic">
       {sections &&
         sections.map((section: Section) => {
           return (

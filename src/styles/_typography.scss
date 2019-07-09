@@ -1,5 +1,35 @@
+@font-face {
+  font-family: 'DrukCond-Super';
+  src: url('../assets/fonts/DrukCond-Super-Web.woff');
+  src: url('../assets/fonts/DrukCond-Super-Web.woff2') format('woff'),
+    url('../assets/fonts/DrukCond-Super.otf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ITC Franklin Gothic Std';
+  src: url('/assets/fonts/39B6F2_0_0.eot');
+  src: url('/assets/fonts/39B6F2_0_0.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/39B6F2_0_0.woff'),
+    url('../assets/fonts/39B6F2_0_0.woff2') format('woff'),
+    url('../assets/fonts/39B6F2_0_0.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'ITC Franklin Gothic Std';
+  src: url('/assets/fonts/39B6F2_1_0.eot');
+  src: url('/assets/fonts/39B6F2_1_0.eot?#iefix') format('embedded-opentype'),
+    url('../assets/fonts/39B6F2_1_0.woff'),
+    url('../assets/fonts/39B6F2_1_0.woff2') format('woff'),
+    url('../assets/fonts/39B6F2_1_0.ttf') format('truetype');
+  font-style: italic;
+}
+
 .franklin-gothic {
   font-family: 'ITC Franklin Gothic Std';
+}
+
+.drunkcond-super {
+  font-family: 'DrukCond-Super';
 }
 
 .text-xl {

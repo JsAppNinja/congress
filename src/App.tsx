@@ -13,11 +13,13 @@ import { RootReducer } from 'types/RootReducer';
 import { Status } from 'types/Status';
 import { ContentfulPhoto } from 'types/ContentfulPhoto';
 import { Locale } from 'types/Locale';
+import { Section } from 'types/Section';
 
 import Signup from 'components/Signup';
 import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
 import Hero from 'components/Hero';
+import SubNav from 'components/SubNav';
 
 import { getLocale, Polyglot } from 'constants/Locales';
 
@@ -37,6 +39,7 @@ interface StoreProps {
   mainPhoto: ContentfulPhoto | null;
   mainSlogan: string[] | null;
   currentLocale: Locale;
+  sections: Section[] | null;
 }
 
 interface DispatchProps {
@@ -99,6 +102,7 @@ class App extends Component<Props> {
             slogan={this.props.mainSlogan}
             photo={this.props.mainPhoto}
           />
+          <SubNav sections={this.props.sections} />
           <Signup
             hideSignup={this.props.actions.hideSignup}
             show={true}
@@ -137,7 +141,8 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   mainSubheader: state.content.global.mainSubheader,
   mainParagraph: state.content.global.mainParagraph,
   mainPhoto: state.content.global.mainPhoto,
-  mainSlogan: state.content.global.mainSlogan
+  mainSlogan: state.content.global.mainSlogan,
+  sections: state.content.sections
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

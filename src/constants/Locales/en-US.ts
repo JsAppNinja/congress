@@ -22,5 +22,12 @@ export default {
     signUp: 'SIGN UP',
     donate: 'DONATE'
   },
-  generalError: 'There was a problem loading the page. Try again soon!'
+  generalError: 'There was a problem loading the page. Try again soon!',
+  subNav: {
+    shop: 'SHOP',
+    radio: 'RADIO',
+    joinUs: 'JOIN US',
+    volunteer: 'Volunteer',
+    houseParty: 'Host House Party'
+  }
 };

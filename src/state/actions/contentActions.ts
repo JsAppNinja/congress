@@ -12,6 +12,22 @@ export const fetchMainContent = () => {
       include: 4,
       content_type: 'section',
       locale: locale
+    }).then(response => {
+      const entries = get(response, 'items', null);
+
+      if (!entries) return null;
+
+      return entries.map((entry: any) => {
+        return {
+          title: entry.fields.title,
+          subSections: entry.fields.subSections.map((subSection: any) => {
+            return {
+              title: subSection.fields.title,
+              blocks: subSection.fields.blocks
+            };
+          })
+        };
+      });
     })
   };
 };

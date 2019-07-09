@@ -21,5 +21,12 @@ export default {
   topNav: {
     signUp: 'ENSKRI',
     donate: 'DONN'
+  },
+  subNav: {
+    shop: 'MAGAZEN',
+    radio: 'RADYO',
+    joinUs: 'VIN JWENN NOU',
+    volunteer: 'Volontè',
+    houseParty: 'Pati kay Akèy'
   }
 };

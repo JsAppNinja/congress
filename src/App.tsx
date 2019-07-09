@@ -107,7 +107,9 @@ class App extends Component<Props> {
           {this.props.sections && (
             <div className="flex flex-col items-end justify-end pr1">
               {this.props.sections.map((section: Section) => {
-                return <ContentfulSection section={section} />;
+                return (
+                  <ContentfulSection key={section.title} section={section} />
+                );
               })}
             </div>
           )}
@@ -150,7 +152,7 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   mainParagraph: state.content.global.mainParagraph,
   mainPhoto: state.content.global.mainPhoto,
   mainSlogan: state.content.global.mainSlogan,
-  sections: state.content.sections
+  sections: state.content.global.sections
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

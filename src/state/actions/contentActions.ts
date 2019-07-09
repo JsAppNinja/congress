@@ -2,36 +2,6 @@ import Content from 'lib/Content';
 import get from 'utils/get';
 import { getLocale, Polyglot } from 'constants/Locales';
 
-export const fetchMainContent = () => {
-  const Language = getLocale() as Polyglot;
-  const locale: string = Language.locale();
-
-  return {
-    type: 'FETCH_MAIN_CONTENT',
-    payload: Content.getEntries({
-      include: 4,
-      content_type: 'section',
-      locale: locale
-    }).then(response => {
-      const entries = get(response, 'items', null);
-
-      if (!entries) return null;
-
-      return entries.map((entry: any) => {
-        return {
-          title: entry.fields.title,
-          subSections: entry.fields.subSections.map((subSection: any) => {
-            return {
-              title: subSection.fields.title,
-              blocks: subSection.fields.blocks
-            };
-          })
-        };
-      });
-    })
-  };
-};
-
 export const fetchGlobalContent = () => {
   const Language = getLocale() as Polyglot;
   const locale: string = Language.locale();
@@ -45,7 +15,21 @@ export const fetchGlobalContent = () => {
     }).then(response => {
       const fields = get(response, 'items[0].fields');
 
+      const sections = get(fields, 'sections', []).map((section: any) => {
+        return {
+          title: section.fields.title,
+          description: section.fields.description,
+          subSections: section.fields.subSections.map((subSection: any) => {
+            return {
+              title: subSection.fields.title,
+              blocks: subSection.fields.blocks
+            };
+          })
+        };
+      });
+
       return {
+        sections,
         mainHeader: get(fields, 'mainHeader', ''),
         mainSubheader: get(fields, 'mainSubheader', ''),
         mainParagraph: get(fields, 'mainParagraph', ''),

@@ -1,4 +1,5 @@
 import { EntryFields } from 'contentful';
+
 import { SubSection } from 'types/SubSection';
 
 export type Section = {

@@ -1,5 +1,5 @@
-import { SubSection } from 'types/SubSection';
 import { EntryFields } from 'contentful';
+import { SubSection } from 'types/SubSection';
 
 export type Section = {
   title: string;

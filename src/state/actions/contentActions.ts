@@ -1,5 +1,6 @@
 import Content from 'lib/Content';
 import get from 'utils/get';
+import { Block } from 'types/Block';
 import { getLocale, Polyglot } from 'constants/Locales';
 
 export const fetchGlobalContent = () => {
@@ -17,14 +18,26 @@ export const fetchGlobalContent = () => {
 
       const sections = get(fields, 'sections', []).map((section: any) => {
         return {
-          title: section.fields.title,
-          description: section.fields.description,
-          subSections: section.fields.subSections.map((subSection: any) => {
-            return {
-              title: subSection.fields.title,
-              blocks: subSection.fields.blocks
-            };
-          })
+          title: get(section, 'fields.title'),
+          description: get(section, 'fields.description'),
+          subSections: get(section, 'fields.subSections', []).map(
+            (subSection: any) => {
+              return {
+                title: get(subSection, 'fields.title'),
+                blocks: get(subSection, 'fields.blocks', []).map(
+                  (block: any): Block[] => {
+                    const type = get(block, 'sys.contentType.sys.id');
+                    const fields = get(block, 'fields', {});
+
+                    return {
+                      ...fields,
+                      type
+                    };
+                  }
+                )
+              };
+            }
+          )
         };
       });
 

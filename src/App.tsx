@@ -105,7 +105,7 @@ class App extends Component<Props> {
           />
           <SubNav sections={this.props.sections} />
           {this.props.sections && (
-            <div className="flex flex-col items-end justify-end pr1 pt2 md:pt0">
+            <div className="flex flex-col items-end justify-end mt2 md:mt0">
               {this.props.sections.map((section: Section) => {
                 return (
                   <ContentfulSection key={section.title} section={section} />

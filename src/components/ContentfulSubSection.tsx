@@ -3,7 +3,6 @@ import { SubSection } from 'types/SubSection';
 import { Block } from 'types/Block';
 import ContentfulRichText from 'components/ContentfulRichText';
 import ContentfulPhotos from 'components/ContentfulPhotos';
-import get from 'utils/get';
 import slugify from 'utils/slugify';
 
 interface Props {
@@ -22,23 +21,24 @@ const ContentfulSubSection: React.FC<Props> = ({
     >
       <p className="text-xxxl uppercase">{subSection.title}</p>
       {subSection.blocks.map((block: Block) => {
-        const photos = get(block, 'fields.photos');
-
-        if (photos) {
-          return (
-            <ContentfulPhotos
-              key={get(block, 'fields.title')}
-              photos={photos}
-            />
-          );
+        switch (block.type) {
+          case 'blockPhotos':
+            return (
+              <ContentfulPhotos
+                key={`${block.title.split(' ').join('-')}`}
+                photos={block.photos}
+              />
+            );
+          case 'blockParagraph':
+            return (
+              <ContentfulRichText
+                key={`${block.title.split(' ').join('-')}`}
+                description={block.description}
+              />
+            );
+          default:
+            return null;
         }
-
-        return (
-          <ContentfulRichText
-            key={get(block, 'fields.title')}
-            description={get(block, 'fields.description')}
-          />
-        );
       })}
     </div>
   );

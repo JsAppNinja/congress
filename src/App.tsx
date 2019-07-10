@@ -87,7 +87,7 @@ class App extends Component<Props> {
             backgroundColor="green"
             showCloseIcon={true}
           />
-          <DonorCTA url="" />
+          <DonorCTA url={this.props.donateUrl} />
           <TopNav
             donateUrl={this.props.donateUrl}
             facebookUrl={this.props.facebookUrl}

@@ -20,6 +20,7 @@ import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
 import Hero from 'components/Hero';
 import SubNav from 'components/SubNav';
+import ContentfulSection from 'components/ContentfulSection';
 
 import { getLocale, Polyglot } from 'constants/Locales';
 
@@ -103,6 +104,15 @@ class App extends Component<Props> {
             photo={this.props.mainPhoto}
           />
           <SubNav sections={this.props.sections} />
+          {this.props.sections && (
+            <div className="flex flex-col items-end justify-end mt2 md:mt0">
+              {this.props.sections.map((section: Section) => {
+                return (
+                  <ContentfulSection key={section.title} section={section} />
+                );
+              })}
+            </div>
+          )}
           <Signup
             hideSignup={this.props.actions.hideSignup}
             show={true}
@@ -142,7 +152,7 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   mainParagraph: state.content.global.mainParagraph,
   mainPhoto: state.content.global.mainPhoto,
   mainSlogan: state.content.global.mainSlogan,
-  sections: state.content.sections
+  sections: state.content.global.sections
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

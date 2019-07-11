@@ -2,10 +2,7 @@ import { Dispatch } from 'redux';
 
 import ContentfulClient, { PreviewClient } from 'lib/Contentful';
 import Content from 'lib/Content';
-import {
-  fetchMainContent,
-  fetchGlobalContent
-} from 'state/actions/contentActions';
+import { fetchGlobalContent } from 'state/actions/contentActions';
 
 export const initializeApplication = (isPreview: boolean) => (
   dispatch: Dispatch
@@ -23,10 +20,7 @@ export const initializeApplication = (isPreview: boolean) => (
 
       Content.setRef('contentful', Contentful);
 
-      const initApp = Promise.all([
-        dispatch(fetchMainContent()),
-        dispatch(fetchGlobalContent())
-      ]);
+      const initApp = Promise.all([dispatch(fetchGlobalContent())]);
 
       const timeout = new Promise((resolve, reject) => {
         setTimeout(() => reject('Timeout'), 10000);

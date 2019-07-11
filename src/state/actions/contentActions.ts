@@ -1,36 +1,7 @@
 import Content from 'lib/Content';
 import get from 'utils/get';
+import { Block } from 'types/Block';
 import { getLocale, Polyglot } from 'constants/Locales';
-
-export const fetchMainContent = () => {
-  const Language = getLocale() as Polyglot;
-  const locale: string = Language.locale();
-
-  return {
-    type: 'FETCH_MAIN_CONTENT',
-    payload: Content.getEntries({
-      include: 4,
-      content_type: 'section',
-      locale: locale
-    }).then(response => {
-      const entries = get(response, 'items', null);
-
-      if (!entries) return null;
-
-      return entries.map((entry: any) => {
-        return {
-          title: entry.fields.title,
-          subSections: entry.fields.subSections.map((subSection: any) => {
-            return {
-              title: subSection.fields.title,
-              blocks: subSection.fields.blocks
-            };
-          })
-        };
-      });
-    })
-  };
-};
 
 export const fetchGlobalContent = () => {
   const Language = getLocale() as Polyglot;
@@ -45,7 +16,34 @@ export const fetchGlobalContent = () => {
     }).then(response => {
       const fields = get(response, 'items[0].fields');
 
+      const sections = get(fields, 'sections', []).map((section: any) => {
+        return {
+          title: get(section, 'fields.title'),
+          description: get(section, 'fields.description'),
+          subSections: get(section, 'fields.subSections', []).map(
+            (subSection: any) => {
+              return {
+                title: get(subSection, 'fields.title'),
+                blocks: get(subSection, 'fields.blocks', []).map(
+                  (block: any): Block[] => {
+                    const type = get(block, 'sys.contentType.sys.id');
+                    const fields = get(block, 'fields', {});
+
+                    return {
+                      ...fields,
+                      id: block.sys.id,
+                      type
+                    };
+                  }
+                )
+              };
+            }
+          )
+        };
+      });
+
       return {
+        sections,
         mainHeader: get(fields, 'mainHeader', ''),
         mainSubheader: get(fields, 'mainSubheader', ''),
         mainParagraph: get(fields, 'mainParagraph', ''),

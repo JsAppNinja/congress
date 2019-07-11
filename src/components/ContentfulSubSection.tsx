@@ -23,16 +23,11 @@ const ContentfulSubSection: React.FC<Props> = ({
       {subSection.blocks.map((block: Block) => {
         switch (block.type) {
           case 'blockPhotos':
-            return (
-              <ContentfulPhotos
-                key={`${block.title.split(' ').join('-')}`}
-                photos={block.photos}
-              />
-            );
+            return <ContentfulPhotos key={block.id} photos={block.photos} />;
           case 'blockParagraph':
             return (
               <ContentfulRichText
-                key={`${block.title.split(' ').join('-')}`}
+                key={block.id}
                 description={block.description}
               />
             );

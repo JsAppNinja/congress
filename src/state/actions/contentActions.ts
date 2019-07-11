@@ -31,6 +31,7 @@ export const fetchGlobalContent = () => {
 
                     return {
                       ...fields,
+                      id: block.sys.id,
                       type
                     };
                   }

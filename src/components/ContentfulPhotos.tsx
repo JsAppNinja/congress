@@ -13,7 +13,10 @@ const ContentfulPhotos: React.FC<Props> = ({ photos }) => {
     <div className="flex flex-row col-12 flex-wrap pt1">
       {photos.map((photo: Asset, i: number) => {
         return (
-          <div className={cx('col-6', { pr1: i % 2 })} key={photo.fields.title}>
+          <div
+            className={cx('col-6', { pr1: i % 2 })}
+            key={photo.fields.file.url}
+          >
             <Image
               alt={photo.fields.title}
               className="col-12 w100"

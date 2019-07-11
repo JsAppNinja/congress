@@ -44,6 +44,16 @@ export const fetchGlobalContent = () => {
 
       return {
         sections,
+        aboutTheSite: get(fields, 'aboutTheSite', ''),
+        address: {
+          city: get(fields, 'contactAddressCity', ''),
+          state: get(fields, 'contactAddressState', ''),
+          street: get(fields, 'contactAddressStreet', ''),
+          zipCode: get(fields, 'contactAddressZipcode', '')
+        },
+        designKitURL: get(fields, 'urlForDesignKit', ''),
+        contactEmailAddress: get(fields, 'contactEmailAddress', ''),
+        pressEmailAddress: get(fields, 'pressEmailAddress', ''),
         mainHeader: get(fields, 'mainHeader', ''),
         mainSubheader: get(fields, 'mainSubheader', ''),
         mainParagraph: get(fields, 'mainParagraph', ''),
@@ -52,7 +62,10 @@ export const fetchGlobalContent = () => {
         donateUrl: get(fields, 'donateUrl', ''),
         facebookUrl: get(fields, 'facebookUrl', ''),
         instagramUrl: get(fields, 'instagramUrl', ''),
-        twitterUrl: get(fields, 'twitterUrl', '')
+        mediumUrl: get(fields, 'mediumUrl', ''),
+        twitterUrl: get(fields, 'twitterUrl', ''),
+        radioUrl: get(fields, 'radioUrl', ''),
+        shopUrl: get(fields, 'shopUrl', '')
       };
     })
   };

@@ -14,6 +14,7 @@ import { Status } from 'types/Status';
 import { ContentfulPhoto } from 'types/ContentfulPhoto';
 import { Locale } from 'types/Locale';
 import { Section } from 'types/Section';
+import { Address } from 'types/Address';
 
 import Signup from 'components/Signup';
 import DonorCTA from 'components/DonorCTA';
@@ -21,6 +22,7 @@ import TopNav from 'components/TopNav';
 import Hero from 'components/Hero';
 import SubNav from 'components/SubNav';
 import ContentfulSection from 'components/ContentfulSection';
+import Footer from 'components/Footer';
 
 import { getLocale, Polyglot } from 'constants/Locales';
 
@@ -34,6 +36,9 @@ interface StoreProps {
   facebookUrl: string;
   twitterUrl: string;
   instagramUrl: string;
+  radioUrl: string;
+  shopUrl: string;
+  mediumUrl: string;
   mainHeader: string;
   mainSubheader: string;
   mainParagraph: string;
@@ -41,6 +46,11 @@ interface StoreProps {
   mainSlogan: string[] | null;
   currentLocale: Locale;
   sections: Section[] | null;
+  aboutTheSite: string;
+  address: Address | null;
+  designKitURL: string;
+  contactEmailAddress: string;
+  pressEmailAddress: string;
 }
 
 interface DispatchProps {
@@ -113,6 +123,21 @@ class App extends Component<Props> {
               })}
             </div>
           )}
+          <Footer
+            sections={this.props.sections}
+            aboutTheSite={this.props.aboutTheSite}
+            address={this.props.address}
+            contactEmailAddress={this.props.contactEmailAddress}
+            pressEmailAddress={this.props.pressEmailAddress}
+            designKitURL={this.props.designKitURL}
+            donateUrl={this.props.donateUrl}
+            facebookUrl={this.props.facebookUrl}
+            twitterUrl={this.props.twitterUrl}
+            instagramUrl={this.props.instagramUrl}
+            mediumUrl={this.props.mediumUrl}
+            radioUrl={this.props.radioUrl}
+            shopUrl={this.props.shopUrl}
+          />
           <Signup
             hideSignup={this.props.actions.hideSignup}
             show={true}
@@ -146,13 +171,21 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   donateUrl: state.content.global.donateUrl,
   facebookUrl: state.content.global.facebookUrl,
   twitterUrl: state.content.global.twitterUrl,
+  mediumUrl: state.content.global.mediumUrl,
   instagramUrl: state.content.global.instagramUrl,
+  radioUrl: state.content.global.radioUrl,
+  shopUrl: state.content.global.shopUrl,
   mainHeader: state.content.global.mainHeader,
   mainSubheader: state.content.global.mainSubheader,
   mainParagraph: state.content.global.mainParagraph,
   mainPhoto: state.content.global.mainPhoto,
   mainSlogan: state.content.global.mainSlogan,
-  sections: state.content.global.sections
+  sections: state.content.global.sections,
+  aboutTheSite: state.content.global.aboutTheSite,
+  address: state.content.global.address,
+  designKitURL: state.content.global.designKitURL,
+  contactEmailAddress: state.content.global.contactEmailAddress,
+  pressEmailAddress: state.content.global.pressEmailAddress
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

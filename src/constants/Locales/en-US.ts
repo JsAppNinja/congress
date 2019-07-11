@@ -29,5 +29,21 @@ export default {
     joinUs: 'JOIN US',
     volunteer: 'Volunteer',
     houseParty: 'Host House Party'
+  },
+  footer: {
+    contact: 'Contact',
+    media: 'Media',
+    designToolkit: 'Design Toolkit',
+    social: 'Social',
+    aboutTheSite: 'About the site',
+    joinOurFight: 'Join our fight',
+    donate: 'Donate',
+    downloadAssets: 'Download Assets',
+    facebook: 'facebook',
+    instagram: 'instagram',
+    medium: 'medium',
+    twitter: 'twitter',
+    paidForBy: 'Paid for by friends of Adem 2010',
+    ademForCongress: 'Adem For Congress'
   }
 };

@@ -28,5 +28,21 @@ export default {
     joinUs: 'VIN JWENN NOU',
     volunteer: 'Volontè',
     houseParty: 'Pati kay Akèy'
+  },
+  footer: {
+    contact: 'Kontak',
+    media: 'Medya',
+    designToolkit: 'Konsepsyon wat zouti',
+    social: 'Sosyal',
+    aboutTheSite: 'Sou sit la',
+    joinOurFight: 'Join batay nou yo',
+    donate: 'Fè don',
+    downloadAssets: 'Telechaje Byen',
+    facebook: 'facebook',
+    instagram: 'instagram',
+    medium: 'mwayen',
+    twitter: 'twitter',
+    paidForBy: 'Peye pou zanmi nan Adem 2010',
+    ademForCongress: 'Adem pou kongrè'
   }
 };

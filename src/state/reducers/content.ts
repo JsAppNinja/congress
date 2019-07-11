@@ -8,6 +8,11 @@ export interface ContentReducer {
 const initialState: ContentReducer = {
   global: {
     sections: [],
+    aboutTheSite: '',
+    address: null,
+    designKitURL: '',
+    contactEmailAddress: '',
+    pressEmailAddress: '',
     mainHeader: '',
     mainSubheader: '',
     mainParagraph: '',
@@ -16,7 +21,10 @@ const initialState: ContentReducer = {
     donateUrl: '',
     facebookUrl: '',
     instagramUrl: '',
-    twitterUrl: ''
+    mediumUrl: '',
+    twitterUrl: '',
+    radioUrl: '',
+    shopUrl: ''
   }
 };
 

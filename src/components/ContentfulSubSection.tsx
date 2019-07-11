@@ -19,7 +19,7 @@ const ContentfulSubSection: React.FC<Props> = ({
       id={[sectionTitle, subSection.title].map(slugify).join('-')}
       className="ContentfulSubSection pt2"
     >
-      <p className="text-xxxl uppercase">{subSection.title}</p>
+      <p className="drunkcond-super text-h1 uppercase">{subSection.title}</p>
       {subSection.blocks.map((block: Block) => {
         switch (block.type) {
           case 'blockPhotos':

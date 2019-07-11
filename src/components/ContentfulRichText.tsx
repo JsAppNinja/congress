@@ -15,12 +15,12 @@ const options = {
       return `<Image class="ContentfulRichText pt1 w100" alt="${node.data.target.fields.title}" src=${node.data.target.fields.file.url} />`;
     },
     [BLOCKS.HEADING_1]: (node: NodeData, next: Next) => {
-      return `<p class="ContentfulRichText text-xxl pt1 md:mr3 md:pr3">${next(
+      return `<p class="ContentfulRichText franklin-gothic text-xxl bold pt1 md:mr3 md:pr3">${next(
         node.content
       )}</p>`;
     },
     [BLOCKS.PARAGRAPH]: (node: NodeData, next: Next) => {
-      return `<p class="ContentfulRichText text-md pt1 md:mr3 md:pr3">${next(
+      return `<p class="ContentfulRichText franklin-gothic text-md pt1 md:mr3 md:pr3">${next(
         node.content
       )}</p>`;
     }

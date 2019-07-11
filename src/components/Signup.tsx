@@ -163,7 +163,7 @@ class Signup extends Component<Props, State> {
         role="region"
       >
         <div className="flex flex-row">
-          <p className="text-xl">{this.props.header}</p>
+          <p className="text-xxxl bold">{this.props.header}</p>
           {this.props.showCloseIcon && (
             <Button
               className="Signup__close-icon-container bg-color-transparent absolute pointer"

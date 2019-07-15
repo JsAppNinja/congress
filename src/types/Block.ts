@@ -1,6 +1,13 @@
 import { EntryFields } from 'contentful';
 import { Entry, Asset } from 'contentful';
 
+export type BlockButton = {
+  type: 'blockButton';
+  buttonText: string;
+  url: string;
+  description: EntryFields.RichText;
+};
+
 export type BlockParagraph = {
   type: 'blockParagraph';
   title: string;
@@ -15,4 +22,4 @@ export type BlockPhotos = {
   photos: Asset[];
 };
 
-export type Block = BlockPhotos | BlockParagraph;
+export type Block = BlockPhotos | BlockParagraph | BlockButton;

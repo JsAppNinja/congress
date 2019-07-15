@@ -3,6 +3,7 @@ import { SubSection } from 'types/SubSection';
 import { Block } from 'types/Block';
 import ContentfulRichText from 'components/ContentfulRichText';
 import ContentfulPhotos from 'components/ContentfulPhotos';
+import ContentfulButton from 'components/ContentfulButton';
 import slugify from 'utils/slugify';
 
 interface Props {
@@ -22,6 +23,14 @@ const ContentfulSubSection: React.FC<Props> = ({
       <p className="drunkcond-super text-h1 uppercase">{subSection.title}</p>
       {subSection.blocks.map((block: Block) => {
         switch (block.type) {
+          case 'blockButton':
+            return (
+              <ContentfulButton
+                description={block.description}
+                url={block.url}
+                buttonText={block.buttonText}
+              />
+            );
           case 'blockPhotos':
             return <ContentfulPhotos key={block.id} photos={block.photos} />;
           case 'blockParagraph':

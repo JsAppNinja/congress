@@ -1,0 +1,80 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    - image: circleci/node:8-browsers
+
+jobs:
+  install:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: yarn test
+
+  deploy-staging:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: NODE_ENV=production CI="" yarn build
+      - run: sudo apt-get install python-dev python-pip
+      - run: sudo pip install awscli
+      - run: aws configure set preview.cloudfront true
+      - run: aws s3 sync build s3://com-ademforcongress-staging/ --delete
+      - run: aws s3 cp build/index.html s3://com-ademforcongress-staging/ --cache-control max-age=0
+      - run: aws cloudfront create-invalidation --distribution-id E24O4NHI8C9ZDQ --paths '/*'
+
+  deploy-production:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: NODE_ENV=production CI="" yarn build
+      - run: sudo apt-get install python-dev python-pip
+      - run: sudo pip install awscli
+      - run: aws configure set preview.cloudfront true
+      - run: aws s3 sync build s3://com-ademforcongress-production/ --delete
+      - run: aws s3 cp build/index.html s3://com-ademforcongress-production/ --cache-control max-age=0
+      - run: aws cloudfront create-invalidation --distribution-id E31LQFB2H2FXUS --paths '/*'
+
+workflows:
+  version: 2
+  build-n-deploy:
+    jobs:
+      - install
+      - test:
+          requires:
+            - install
+      - deploy-staging:
+          requires:
+            - test
+          filters:
+            branches:
+              only: staging
+      - deploy-production:
+          requires:
+            - test
+          filters:
+            branches:
+              only: production

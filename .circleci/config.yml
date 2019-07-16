@@ -30,6 +30,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - checkout
       - run: NODE_ENV=production CI="" yarn build
       - run: sudo apt-get install python-dev python-pip
       - run: sudo pip install awscli
@@ -43,6 +44,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - checkout
       - run: NODE_ENV=production CI="" yarn build
       - run: sudo apt-get install python-dev python-pip
       - run: sudo pip install awscli

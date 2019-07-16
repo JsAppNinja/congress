@@ -25,13 +25,6 @@ jobs:
           root: .
           paths: .
 
-  test:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - run: yarn test
-
   deploy-staging:
     <<: *defaults
     steps:
@@ -63,18 +56,11 @@ workflows:
   build-n-deploy:
     jobs:
       - install
-      - test:
-          requires:
-            - install
       - deploy-staging:
-          requires:
-            - test
           filters:
             branches:
               only: staging
       - deploy-production:
-          requires:
-            - test
           filters:
             branches:
               only: production

@@ -6,7 +6,7 @@ defaults: &defaults
     - image: circleci/node:8-browsers
 
 jobs:
-  install-dependencies:
+  deploy-staging:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -24,13 +24,6 @@ jobs:
       - persist_to_workspace:
           root: .
           paths: .
-
-  deploy-staging:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - checkout
       - run: NODE_ENV=production CI="" yarn build
       - run: sudo apt-get install python-dev python-pip
       - run: sudo pip install awscli
@@ -45,6 +38,18 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - checkout
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "yarn.lock" }}
+          - v1-dependencies-
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: .
+          paths: .
       - run: NODE_ENV=production CI="" yarn build
       - run: sudo apt-get install python-dev python-pip
       - run: sudo pip install awscli
@@ -57,7 +62,6 @@ workflows:
   version: 2
   build-n-deploy:
     jobs:
-      - install-dependencies
       - deploy-staging:
           filters:
             branches:

@@ -2,17 +2,23 @@ import React from 'react';
 import { getLocale, Polyglot } from 'constants/Locales';
 import { Section } from 'types/Section';
 import { SubSection } from 'types/SubSection';
+import cx from 'classnames';
 import slugify from 'utils/slugify';
 
 interface Props {
   sections: Section[] | null;
+  fullHeaderIsShown: boolean;
 }
 
-const SubNav: React.FC<Props> = ({ sections }) => {
+const SubNav: React.FC<Props> = ({ sections, fullHeaderIsShown }) => {
   const Language = getLocale() as Polyglot;
 
   return (
-    <ul className="SubNav pl1 inline-block franklin-gothic">
+    <ul
+      className={cx('SubNav p2 pl1 inline-block franklin-gothic', {
+        'SubNav__full-header-is-shown': fullHeaderIsShown
+      })}
+    >
       {sections &&
         sections.map((section: Section) => {
           return (

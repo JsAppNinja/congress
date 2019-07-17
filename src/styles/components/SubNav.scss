@@ -1,0 +1,17 @@
+.SubNav {
+  top: calc(
+    #{$desktop-site-title-top-without-full-header} + #{$desktop-site-title-height}
+  );
+
+  @include media('md') {
+    position: sticky;
+  }
+
+  &__full-header-is-shown {
+    @include media('md') {
+      top: calc(
+        #{$desktop-site-title-top-with-full-header} + #{$desktop-site-title-height}
+      );
+    }
+  }
+}

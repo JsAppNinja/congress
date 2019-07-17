@@ -163,11 +163,9 @@ class App extends Component<Props, State> {
               mobileMenuIsShown={this.props.mobileMenuIsShown}
             />
           </div>
-          <div className="SubnavSiteTitleAndContentfulContentWrapper">
+          <div>
             {this.state.deviceIsMobile && (
-              <div className="pt3 transition-slide-right-in">
-                <SiteTitle />
-              </div>
+              <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />
             )}
             <Hero
               header={this.props.mainHeader}
@@ -177,18 +175,13 @@ class App extends Component<Props, State> {
               photo={this.props.mainPhoto}
             />
             {!this.state.deviceIsMobile && (
-              <div
-                className={cx(
-                  'SubnavAndSiteTitleWrapper transition-slide-right-in',
-                  {
-                    'SubnavAndSiteTitleWrapper__full-header-is-shown': this
-                      .props.fullHeaderIsShown
-                  }
-                )}
-              >
-                <SiteTitle />
-                <SubNav sections={this.props.sections} />
-              </div>
+              <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />
+            )}
+            {!this.state.deviceIsMobile && (
+              <SubNav
+                fullHeaderIsShown={this.props.fullHeaderIsShown}
+                sections={this.props.sections}
+              />
             )}
             {this.props.sections && (
               <div className="flex flex-col items-end justify-end mt2 md:mt0">

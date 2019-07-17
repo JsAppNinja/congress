@@ -1,6 +1,8 @@
 $hero-padding-top: 10rem;
 
 .Hero {
+  padding-top: calc(#{$mobile-site-title-height});
+
   @include media('md') {
     padding-top: $hero-padding-top;
   }

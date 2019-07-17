@@ -23,6 +23,16 @@ const options = {
       return `<p class="ContentfulRichText franklin-gothic text-md pt1 md:mr3 md:pr3">${next(
         node.content
       )}</p>`;
+    },
+    [BLOCKS.UL_LIST]: (node: NodeData, next: Next) => {
+      return `<ul class="ContentfulRichText franklin-gothic text-md pt1 pl1">${next(
+        node.content
+      )}</ul>`;
+    },
+    [BLOCKS.LIST_ITEM]: (node: NodeData, next: Next) => {
+      return `<li class="ContentfulRichText franklin-gothic text-md pl1">${next(
+        node.content
+      )}</li>`;
     }
   }
 };

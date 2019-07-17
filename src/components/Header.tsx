@@ -43,9 +43,9 @@ const Header: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={cx('Header w100 fixed', {
+      className={cx('Header w100 fixed z3', {
         'vh100 overflow-auto': isMobile() && fullHeaderIsShown,
-        'Header__signup-active z3': fullHeaderIsShown
+        'Header__signup-active': fullHeaderIsShown
       })}
     >
       <Signup

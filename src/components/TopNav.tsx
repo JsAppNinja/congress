@@ -34,11 +34,11 @@ class TopNav extends Component<Props, State> {
     deviceIsMobile: isMobile()
   };
 
-  checkIfDeviceIsMobile() {
+  checkIfDeviceIsMobile = () => {
     if (this.state.deviceIsMobile !== isMobile()) {
       this.setState({ deviceIsMobile: isMobile() });
     }
-  }
+  };
 
   componentDidMount() {
     window.addEventListener('resize', this.checkIfDeviceIsMobile);
@@ -108,7 +108,7 @@ class TopNav extends Component<Props, State> {
     return (
       <div
         className={cx(
-          'TopNav flex flex-col items-center md:flex-row bg-color-white',
+          'TopNav flex flex-col items-center md:flex-row bg-color-white transition-slide-up-in',
           {
             'fixed t0 l0 r0 b0': mobileMenuIsShown
           }

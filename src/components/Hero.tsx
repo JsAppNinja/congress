@@ -12,7 +12,7 @@ interface Props {
 
 const Hero: React.FC<Props> = ({ header, subHeader, body, photo, slogan }) => (
   <div
-    className="Hero franklin-gothic flex p1 pt2 bg-color-transparent"
+    className="Hero franklin-gothic flex p1 pt2 bg-color-transparent transition-slide-up-in"
     role="region"
   >
     <div className="col-12">

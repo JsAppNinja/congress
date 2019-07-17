@@ -98,11 +98,11 @@ class App extends Component<Props, State> {
     }
   }
 
-  checkIfDeviceIsMobile() {
+  checkIfDeviceIsMobile = () => {
     if (this.state.deviceIsMobile !== isMobile()) {
       this.setState({ deviceIsMobile: isMobile() });
     }
-  }
+  };
 
   componentDidMount() {
     window.addEventListener('resize', this.checkIfDeviceIsMobile);
@@ -144,9 +144,12 @@ class App extends Component<Props, State> {
             />
           </div>
           <div
-            className={cx('TopNav__mobile-container z3 col-12', {
-              hidden: !this.props.mobileMenuIsShown
-            })}
+            className={cx(
+              'TopNav__mobile-container z3 col-12 transition-slide-up-in',
+              {
+                hidden: !this.props.mobileMenuIsShown
+              }
+            )}
           >
             <TopNav
               donateUrl={this.props.donateUrl}
@@ -162,7 +165,7 @@ class App extends Component<Props, State> {
           </div>
           <div className="SubnavSiteTitleAndContentfulContentWrapper">
             {this.state.deviceIsMobile && (
-              <div className="pt3">
+              <div className="pt3 transition-slide-right-in">
                 <SiteTitle />
               </div>
             )}
@@ -175,10 +178,13 @@ class App extends Component<Props, State> {
             />
             {!this.state.deviceIsMobile && (
               <div
-                className={cx('SubnavAndSiteTitleWrapper', {
-                  'SubnavAndSiteTitleWrapper__full-header-is-shown': this.props
-                    .fullHeaderIsShown
-                })}
+                className={cx(
+                  'SubnavAndSiteTitleWrapper transition-slide-right-in',
+                  {
+                    'SubnavAndSiteTitleWrapper__full-header-is-shown': this
+                      .props.fullHeaderIsShown
+                  }
+                )}
               >
                 <SiteTitle />
                 <SubNav sections={this.props.sections} />

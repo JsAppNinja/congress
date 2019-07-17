@@ -1,4 +1,7 @@
 export default {
+  global: {
+    AdemForCongress: 'Adem Bunkedekko for congress'
+  },
   signupForm: {
     signup: 'Sign Up For Our Email List',
     joinOurFight: 'Join our fight',
@@ -20,7 +23,12 @@ export default {
   },
   topNav: {
     signUp: 'SIGN UP',
-    donate: 'DONATE'
+    donate: 'DONATE',
+    siteToEnglish: 'changes site language to English',
+    siteToHaitian: 'changes site language to Haitian',
+    openMenu: 'opens the menu',
+    closesTheMenu: 'closes the menu',
+    showSignupForm: 'shows the sign up form'
   },
   generalError: 'There was a problem loading the page. Try again soon!',
   subNav: {

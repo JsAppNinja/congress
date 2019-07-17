@@ -1,17 +1,17 @@
-.TopNav {
-  height: 90vh;
+$topnav-height: 4rem;
 
-  &__container {
-    border-top: 2px solid color('black');
-    border-bottom: 2px solid color('black');
-  }
+.TopNav {
+  height: 100vh;
+
+  border-top: 2px solid color('black');
+  border-bottom: 2px solid color('black');
 
   &__mobile-bar {
-    height: 4rem;
+    height: $topnav-height;
   }
 
   @include media('md') {
-    height: auto;
+    height: $topnav-height;
     width: auto;
   }
 
@@ -35,6 +35,7 @@
   &__language-button {
     width: 3rem;
     height: 3rem;
+    z-index: 1;
 
     &--selected {
       position: relative;
@@ -55,5 +56,9 @@
 
   &__hamburger-container {
     border-left: 2px solid color('black');
+  }
+
+  &__mobile-container {
+    position: fixed;
   }
 }

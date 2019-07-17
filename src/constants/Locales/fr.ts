@@ -1,4 +1,7 @@
 export default {
+  global: {
+    AdemForCongress: 'Adem Bunkedekko pou kongrè'
+  },
   signupForm: {
     signup: 'Enskri pou lis imel nou an',
     joinOurFight: 'Join batay nou yo',
@@ -20,7 +23,12 @@ export default {
   },
   topNav: {
     signUp: 'ENSKRI',
-    donate: 'DONN'
+    donate: 'DONN',
+    siteToEnglish: 'chanje sit lang angle nan',
+    siteToHaitian: 'chanjman lang sit nan ayisyen',
+    openMenu: 'louvri meni an',
+    closesTheMenu: 'fèmen meni an',
+    showSignupForm: 'montre fòm enskripsyon an'
   },
   subNav: {
     shop: 'MAGAZEN',

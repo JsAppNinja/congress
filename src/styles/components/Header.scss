@@ -1,0 +1,10 @@
+$header-transition: 1s;
+
+.Header {
+  transform: translate3d(0, calc((100% - #{$topnav-height}) * -1), 0);
+  transition: transform $header-transition ease-in-out;
+
+  &__signup-active {
+    transform: translate3d(0, 0, 0);
+  }
+}

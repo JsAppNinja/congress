@@ -1,6 +1,7 @@
 @import 'settings', 'reset';
 @import '~@sanctucompu/basement/src/index';
 @import 'global', 'typography';
+@import 'components/ContentfulRichText';
 @import 'components/Signup';
 @import 'components/DonorCTA';
 @import 'components/TopNav';
@@ -8,3 +9,5 @@
 @import 'components/ContentfulRichText';
 @import 'components/Footer';
 @import 'components/ContentfulButton';
+@import 'components/Header';
+@import 'components/SiteTitle';

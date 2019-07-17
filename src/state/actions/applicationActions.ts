@@ -3,6 +3,7 @@ import { Dispatch } from 'redux';
 import ContentfulClient, { PreviewClient } from 'lib/Contentful';
 import Content from 'lib/Content';
 import { fetchGlobalContent } from 'state/actions/contentActions';
+import { showFullHeader } from 'state/actions/headerActions';
 
 export const initializeApplication = (isPreview: boolean) => (
   dispatch: Dispatch
@@ -28,7 +29,12 @@ export const initializeApplication = (isPreview: boolean) => (
 
       const checkTimeout = Promise.race([initApp, timeout]);
 
-      return checkTimeout.then(resolve).catch(reject);
+      return checkTimeout
+        .then(() => {
+          setTimeout(() => dispatch(showFullHeader()), 2000);
+          resolve();
+        })
+        .catch(reject);
     })
   });
 };

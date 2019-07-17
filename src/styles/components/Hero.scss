@@ -1,2 +1,7 @@
+$hero-padding-top: 10rem;
+
 .Hero {
+  @include media('md') {
+    padding-top: $hero-padding-top;
+  }
 }

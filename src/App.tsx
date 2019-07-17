@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import { RouteComponentProps } from 'react-router-dom';
 import { Dispatch, bindActionCreators } from 'redux';
 import Routes from 'routes';
+import cx from 'classnames';
 
 import isContentfulPreview from 'utils/isContentfulPreview';
+import isMobile from 'utils/isMobile';
 import { initializeApplication } from 'state/actions/applicationActions';
-import { showSignup, hideSignup } from 'state/actions/signupActions';
+import { showFullHeader, hideFullHeader } from 'state/actions/headerActions';
+import { showMobileMenu, hideMobileMenu } from 'state/actions/menuActions';
 import { setLocale } from 'state/actions/localeActions';
 
 import { RootReducer } from 'types/RootReducer';
@@ -17,12 +20,13 @@ import { Section } from 'types/Section';
 import { Address } from 'types/Address';
 
 import Signup from 'components/Signup';
-import DonorCTA from 'components/DonorCTA';
-import TopNav from 'components/TopNav';
+import Header from 'components/Header';
 import Hero from 'components/Hero';
 import SubNav from 'components/SubNav';
 import ContentfulSection from 'components/ContentfulSection';
 import Footer from 'components/Footer';
+import SiteTitle from 'components/SiteTitle';
+import TopNav from 'components/TopNav';
 
 import { getLocale, Polyglot } from 'constants/Locales';
 
@@ -31,7 +35,7 @@ import 'styles/App.scss';
 
 interface StoreProps {
   initializeApplicationStatus: Status;
-  signupIsShown: boolean;
+  fullHeaderIsShown: boolean;
   donateUrl: string;
   facebookUrl: string;
   twitterUrl: string;
@@ -51,20 +55,27 @@ interface StoreProps {
   designKitURL: string;
   contactEmailAddress: string;
   pressEmailAddress: string;
+  mobileMenuIsShown: boolean;
 }
 
 interface DispatchProps {
   actions: {
     initializeApplication: (isPreview: boolean) => void;
-    showSignup: () => void;
-    hideSignup: () => void;
+    hideFullHeader: () => void;
     setLocale: (locale: Locale) => void;
+    showFullHeader: () => void;
+    showMobileMenu: () => void;
+    hideMobileMenu: () => void;
   };
 }
 
 type Props = StoreProps & DispatchProps & RouteComponentProps;
 
-class App extends Component<Props> {
+interface State {
+  deviceIsMobile: boolean;
+}
+
+class App extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -74,6 +85,10 @@ class App extends Component<Props> {
       const isPreview = isContentfulPreview();
       actions.initializeApplication(isPreview);
     }
+
+    this.state = {
+      deviceIsMobile: isMobile()
+    };
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -81,6 +96,20 @@ class App extends Component<Props> {
     if (pathname !== prevProps.location.pathname) {
       window.scrollTo(0, 0);
     }
+  }
+
+  checkIfDeviceIsMobile() {
+    if (this.state.deviceIsMobile !== isMobile()) {
+      this.setState({ deviceIsMobile: isMobile() });
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.checkIfDeviceIsMobile);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.checkIfDeviceIsMobile);
   }
 
   render() {
@@ -91,38 +120,80 @@ class App extends Component<Props> {
     if (initializeApplicationStatus === Status.FULFILLED) {
       return (
         <main className="App" role="main">
-          <Signup
-            hideSignup={this.props.actions.hideSignup}
-            show={this.props.signupIsShown}
-            header={Language.t('signupForm.signup')}
-            backgroundColor="green"
-            showCloseIcon={true}
-          />
-          <DonorCTA url={this.props.donateUrl} />
-          <TopNav
-            donateUrl={this.props.donateUrl}
-            facebookUrl={this.props.facebookUrl}
-            twitterUrl={this.props.twitterUrl}
-            instagramUrl={this.props.instagramUrl}
-            setLocale={actions.setLocale}
-          />
-          <Hero
-            header={this.props.mainHeader}
-            subHeader={this.props.mainSubheader}
-            body={this.props.mainParagraph}
-            slogan={this.props.mainSlogan}
-            photo={this.props.mainPhoto}
-          />
-          <SubNav sections={this.props.sections} />
-          {this.props.sections && (
-            <div className="flex flex-col items-end justify-end mt2 md:mt0">
-              {this.props.sections.map((section: Section) => {
-                return (
-                  <ContentfulSection key={section.title} section={section} />
-                );
-              })}
-            </div>
-          )}
+          <div
+            className={cx({
+              vh100: this.props.fullHeaderIsShown && this.state.deviceIsMobile
+            })}
+          >
+            <Header
+              showMobileMenu={this.props.actions.showMobileMenu}
+              hideMobileMenu={this.props.actions.hideMobileMenu}
+              mobileMenuIsShown={this.props.mobileMenuIsShown}
+              hideSignup={this.props.actions.hideFullHeader}
+              signupHeader={Language.t('signupForm.signup')}
+              backgroundColor="green"
+              showSignupCloseIcon={true}
+              donateUrl={this.props.donateUrl}
+              facebookUrl={this.props.facebookUrl}
+              twitterUrl={this.props.twitterUrl}
+              instagramUrl={this.props.instagramUrl}
+              setLocale={actions.setLocale}
+              showSignupAction={actions.showFullHeader}
+              fullHeaderIsShown={this.props.fullHeaderIsShown}
+              showFullHeaderAction={actions.showFullHeader}
+            />
+          </div>
+          <div
+            className={cx('TopNav__mobile-container z3 col-12', {
+              hidden: !this.props.mobileMenuIsShown
+            })}
+          >
+            <TopNav
+              donateUrl={this.props.donateUrl}
+              facebookUrl={this.props.facebookUrl}
+              twitterUrl={this.props.twitterUrl}
+              instagramUrl={this.props.instagramUrl}
+              setLocale={actions.setLocale}
+              showFullHeader={actions.showFullHeader}
+              showMobileMenu={actions.showMobileMenu}
+              hideMobileMenu={actions.hideMobileMenu}
+              mobileMenuIsShown={this.props.mobileMenuIsShown}
+            />
+          </div>
+          <div className="SubnavSiteTitleAndContentfulContentWrapper">
+            {this.state.deviceIsMobile && (
+              <div className="pt3">
+                <SiteTitle />
+              </div>
+            )}
+            <Hero
+              header={this.props.mainHeader}
+              subHeader={this.props.mainSubheader}
+              body={this.props.mainParagraph}
+              slogan={this.props.mainSlogan}
+              photo={this.props.mainPhoto}
+            />
+            {!this.state.deviceIsMobile && (
+              <div
+                className={cx('SubnavAndSiteTitleWrapper', {
+                  'SubnavAndSiteTitleWrapper__full-header-is-shown': this.props
+                    .fullHeaderIsShown
+                })}
+              >
+                <SiteTitle />
+                <SubNav sections={this.props.sections} />
+              </div>
+            )}
+            {this.props.sections && (
+              <div className="flex flex-col items-end justify-end mt2 md:mt0">
+                {this.props.sections.map((section: Section) => {
+                  return (
+                    <ContentfulSection key={section.title} section={section} />
+                  );
+                })}
+              </div>
+            )}
+          </div>
           <Footer
             sections={this.props.sections}
             aboutTheSite={this.props.aboutTheSite}
@@ -139,8 +210,7 @@ class App extends Component<Props> {
             shopUrl={this.props.shopUrl}
           />
           <Signup
-            hideSignup={this.props.actions.hideSignup}
-            show={true}
+            hideSignup={this.props.actions.hideFullHeader}
             header={Language.t('signupForm.joinOurFight')}
             backgroundColor="yellow"
             showCloseIcon={false}
@@ -166,7 +236,7 @@ class App extends Component<Props> {
 
 const mapStateToProps = (state: RootReducer): StoreProps => ({
   initializeApplicationStatus: state.status.initializeApplication,
-  signupIsShown: state.signup.signupIsShown,
+  fullHeaderIsShown: state.header.fullHeaderIsShown,
   currentLocale: state.locale.currentLocale,
   donateUrl: state.content.global.donateUrl,
   facebookUrl: state.content.global.facebookUrl,
@@ -185,16 +255,19 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   address: state.content.global.address,
   designKitURL: state.content.global.designKitURL,
   contactEmailAddress: state.content.global.contactEmailAddress,
-  pressEmailAddress: state.content.global.pressEmailAddress
+  pressEmailAddress: state.content.global.pressEmailAddress,
+  mobileMenuIsShown: state.menu.mobileMenuIsShown
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
   actions: bindActionCreators(
     {
       initializeApplication,
-      showSignup,
-      hideSignup,
-      setLocale
+      setLocale,
+      showFullHeader,
+      hideFullHeader,
+      showMobileMenu,
+      hideMobileMenu
     },
     dispatch
   )

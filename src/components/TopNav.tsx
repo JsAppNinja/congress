@@ -17,16 +17,36 @@ interface Props {
   twitterUrl: string;
   instagramUrl: string;
   setLocale(locale: Locale): void;
+  showFullHeader(): void;
+  showMobileMenu(): void;
+  hideMobileMenu(): void;
+  mobileMenuIsShown: boolean;
 }
 
 interface State {
   menuIsActive: boolean;
+  deviceIsMobile: boolean;
 }
 
 class TopNav extends Component<Props, State> {
   state: State = {
-    menuIsActive: !isMobile()
+    menuIsActive: false,
+    deviceIsMobile: isMobile()
   };
+
+  checkIfDeviceIsMobile() {
+    if (this.state.deviceIsMobile !== isMobile()) {
+      this.setState({ deviceIsMobile: isMobile() });
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('resize', this.checkIfDeviceIsMobile);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.checkIfDeviceIsMobile);
+  }
 
   showMenu = () => {
     this.setState({ menuIsActive: true });
@@ -37,21 +57,25 @@ class TopNav extends Component<Props, State> {
   };
 
   render() {
-    const { setLocale } = this.props;
+    const {
+      setLocale,
+      showFullHeader,
+      showMobileMenu,
+      hideMobileMenu,
+      mobileMenuIsShown
+    } = this.props;
     const Language = getLocale() as Polyglot;
 
-    const deviceIsMobile = isMobile();
-
-    if (!this.state.menuIsActive && deviceIsMobile) {
+    if (!mobileMenuIsShown && this.state.deviceIsMobile) {
       return (
-        <div className="TopNav__container flex TopNav__mobile-bar">
+        <div className="TopNav flex TopNav__mobile-bar bg-color-white">
           <div className="flex justify-start items-center col-12 ml1 pt1 pb1">
             <Button
               className={cx('TopNav__language-button m0 p0 pointer', {
                 'TopNav__language-button--selected':
                   Language.locale() === 'en-US'
               })}
-              ariaLabel="changes site language to English"
+              ariaLabel={Language.t('topNav.siteToEnglish')}
               onClick={() => setLocale('en-US')}
             >
               <span className="flex justify-center items-center circle p_25">
@@ -63,14 +87,17 @@ class TopNav extends Component<Props, State> {
               className={cx('TopNav__language-button m0 p0 pointer', {
                 'TopNav__language-button--selected': Language.locale() === 'fr'
               })}
-              ariaLabel="changes site language to Haitian"
+              ariaLabel={Language.t('topNav.siteToHaitian')}
               onClick={() => setLocale('fr')}
             >
               <span>HAI</span>
             </Button>
           </div>
           <div className="TopNav__hamburger-container flex justify-center items-center pl1 pr1 pointer h100">
-            <Button onClick={this.showMenu} ariaLabel="opens the menu">
+            <Button
+              onClick={showMobileMenu}
+              ariaLabel={Language.t('topNav.openMenu')}
+            >
               <Image className="pointer" src={hamburger} alt="menu icon" />
             </Button>
           </div>
@@ -79,13 +106,20 @@ class TopNav extends Component<Props, State> {
     }
 
     return (
-      <div className="TopNav TopNav__container flex flex-col items-center md:flex-row">
-        {deviceIsMobile && (
+      <div
+        className={cx(
+          'TopNav flex flex-col items-center md:flex-row bg-color-white',
+          {
+            'fixed t0 l0 r0 b0': mobileMenuIsShown
+          }
+        )}
+      >
+        {this.state.deviceIsMobile && (
           <div className="flex justify-end items-center col-12 md:col-4 p1">
             <Button
               className="TopNav__language-button m0 p0 mr_25 pointer"
-              onClick={this.hideMenu}
-              ariaLabel="closes the menu"
+              onClick={hideMobileMenu}
+              ariaLabel={Language.t('topNav.closesTheMenu')}
             >
               <img
                 className="mr_5 ml_5 pointer"
@@ -100,7 +134,7 @@ class TopNav extends Component<Props, State> {
             className={cx('TopNav__language-button m0 p0 mr_25 pointer', {
               'TopNav__language-button--selected': Language.locale() === 'en-US'
             })}
-            ariaLabel="changes site language to English"
+            ariaLabel={Language.t('topNav.siteToEnglish')}
             onClick={() => setLocale('en-US')}
           >
             <span className="text-md franklin-gothic flex justify-center items-center p_25">
@@ -112,7 +146,7 @@ class TopNav extends Component<Props, State> {
             className={cx('TopNav__language-button m0 p0 mr_25 pointer', {
               'TopNav__language-button--selected': Language.locale() === 'fr'
             })}
-            ariaLabel="changes site language to Haitian"
+            ariaLabel={Language.t('topNav.siteToHaitian')}
             onClick={() => setLocale('fr')}
           >
             <span className="text-md franklin-gothic">HAI</span>
@@ -122,8 +156,11 @@ class TopNav extends Component<Props, State> {
         <div className="TopNav__nav-item flex justify-center items-center h100 col-12 md:col-4">
           <Button
             className="flex flex-1 justify-center pointer"
-            onClick={f => f}
-            ariaLabel="shows the sign up form"
+            onClick={() => {
+              hideMobileMenu();
+              showFullHeader();
+            }}
+            ariaLabel={Language.t('topNav.showSignupForm')}
           >
             <span className="text-md franklin-gothic">
               {Language.t('topNav.signUp')}

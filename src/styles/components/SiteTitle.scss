@@ -1,0 +1,22 @@
+.SubnavSiteTitleAndContentfulContentWrapper {
+  margin-bottom: 5rem;
+
+  @include media('md') {
+    margin-bottom: 14rem;
+  }
+}
+
+.SubnavAndSiteTitleWrapper {
+  top: 5rem;
+
+  @include media('md') {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+  }
+
+  &__full-header-is-shown {
+    @include media('md') {
+      top: 27rem;
+    }
+  }
+}

@@ -6,7 +6,6 @@ import { Button, Image } from 'components/base';
 
 interface Props {
   header: string;
-  show: boolean;
   hideSignup: () => void;
   backgroundColor: 'green' | 'yellow';
   showCloseIcon: boolean;
@@ -153,8 +152,6 @@ class Signup extends Component<Props, State> {
   };
 
   render() {
-    if (!this.props.show) return null;
-
     const Language = getLocale() as Polyglot;
 
     return (
@@ -175,7 +172,7 @@ class Signup extends Component<Props, State> {
           )}
         </div>
         <form
-          className="flex flex-wrap justify-between"
+          className="flex flex-wrap justify-between pb2"
           onSubmit={e => {
             e.preventDefault();
             this.onSubmit();
@@ -270,7 +267,7 @@ class Signup extends Component<Props, State> {
           </div>
           <div className="col-12 md:col-4 md:pr2 mt1 md:mt2">
             <Button
-              className="Signup__submit-button text-sm pointer w100 mt1 pt1 pb1"
+              className="Signup__submit-button text-sm pointer w100 mt1 py_5"
               type="submit"
               ariaLabel="submit sign up information"
             >

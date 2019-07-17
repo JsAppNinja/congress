@@ -15,7 +15,10 @@ export default {
     noLastNameError: 'Please provide a last name',
     noEmailError: 'Please provide an email',
     invalidEmailError: 'Please provide a valid email',
-    noZipCodeError: 'Please provide a zip code'
+    noZipCodeError: 'Please provide a zip code',
+    thankYou: 'Thank You!',
+    emailIsAlreadySubscribed: 'You are already subscribed',
+    defaultError: 'Sorry, please try again'
   },
   donorCTA: {
     copy:

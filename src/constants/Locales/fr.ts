@@ -15,7 +15,10 @@ export default {
     noLastNameError: 'Tanpri bay yon siyati',
     noEmailError: 'Tanpri bay yon imèl',
     invalidEmailError: 'Tanpri bay yon imèl ki valab',
-    noZipCodeError: 'Tanpri bay yon kòd postal'
+    noZipCodeError: 'Tanpri bay yon kòd postal',
+    thankYou: 'Mèsi!',
+    emailIsAlreadySubscribed: 'Ou deja enskri',
+    defaultError: 'Padon, tanpri eseye ankò'
   },
   donorCTA: {
     copy:

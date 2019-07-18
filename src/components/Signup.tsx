@@ -166,11 +166,11 @@ class Signup extends Component<Props, State> {
 
     if (status === statusSuccess) {
       return (
-        <p className="text-xxxl bold">{Language.t('signupForm.thankYou')}</p>
+        <p className="text-xxl bold">{Language.t('signupForm.thankYou')}</p>
       );
     }
 
-    return <p className="text-xxxl bold">{this.props.header}</p>;
+    return <p className="text-xxl bold">{this.props.header}</p>;
   };
 
   renderSubscriptionError = (status: string, submitMessage: string) => {

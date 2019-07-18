@@ -10,6 +10,7 @@ $desktop-site-title-top-with-full-header: 27rem;
   z-index: -1;
 
   @include media('md') {
+    margin-top: 5rem;
     z-index: 3;
     position: sticky;
     width: 80vw;

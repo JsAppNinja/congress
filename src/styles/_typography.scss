@@ -42,19 +42,13 @@
   }
 }
 
-.text-xxxl {
+.text-xxl {
   font-size: 1.7rem;
   line-height: 2rem;
-
   @include media('md') {
-    font-size: 3.7rem;
-    line-height: 4rem;
+    font-size: 3rem;
+    line-height: 3.3rem;
   }
-}
-
-.text-xxl {
-  font-size: 3rem;
-  line-height: 3.3rem;
 }
 
 .text-xl {

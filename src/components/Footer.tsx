@@ -135,7 +135,7 @@ const Footer: React.FC<Props> = ({
           </div>
         </div>
 
-        <div className="FooterContent__section-design-and-social p1">
+        <div className="FooterContent__section-design-and-social p1 md:ml3 md:pl3">
           <div className="flex flex-col">
             <p className="franklin-gothic color-white text-md uppercase bold">
               {Language.t('footer.designToolkit')}
@@ -196,8 +196,8 @@ const Footer: React.FC<Props> = ({
           </p>
         </div>
 
-        <div className="FooterContent__paid-for-by flex justify-center align-center p1 m1">
-          <p className="franklin-gothic color-white text-sm uppercase bold">
+        <div className="FooterContent__paid-for-by flex">
+          <p className="franklin-gothic color-white text-sm uppercase bold p1 m1">
             {Language.t('footer.paidForBy')}
           </p>
         </div>

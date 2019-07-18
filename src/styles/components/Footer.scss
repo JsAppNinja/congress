@@ -14,6 +14,12 @@ $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
     width: $footer-bg-text-width;
     height: $footer-bg-text-height;
   }
+
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 .FooterContent {
@@ -33,6 +39,7 @@ $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
     grid-row: 2;
     grid-column-start: 1;
     grid-column-end: 3;
+
     @include media('md') {
       grid-row: 1;
       grid-column: 2;
@@ -42,6 +49,7 @@ $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
   &__section-design-and-social {
     grid-column: 2;
     grid-row: 1;
+
     @include media('md') {
       grid-row: 1;
       grid-column: 3;
@@ -52,6 +60,7 @@ $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
     grid-row: 3;
     grid-column-start: 1;
     grid-column-end: 3;
+
     @include media('md') {
       grid-row: 2;
       grid-column-start: 1;
@@ -59,8 +68,16 @@ $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
   }
 
   &__paid-for-by {
-    border: 1px solid color('white');
     grid-row: 4;
     grid-column-start: 1;
+    grid-column-end: 2;
+
+    @include media('md') {
+      grid-column-end: 3;
+    }
+
+    p {
+      border: 1px solid color('white');
+    }
   }
 }

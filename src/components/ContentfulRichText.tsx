@@ -1,5 +1,5 @@
 import React from 'react';
-import { BLOCKS, NodeData } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS, NodeData } from '@contentful/rich-text-types';
 import {
   documentToHtmlString,
   Next
@@ -10,6 +10,11 @@ interface Props {
 }
 
 const options = {
+  renderMark: {
+    [MARKS.BOLD]: (text: string) => {
+      return `<strong class="ContentfulRichText franklin-gothic text-md bold pt1 md:mr3 md:pr3">${text}</strong>`;
+    }
+  },
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node: NodeData) => {
       return `<Image class="ContentfulRichText pt1 w100" alt="${node.data.target.fields.title}" src=${node.data.target.fields.file.url} />`;

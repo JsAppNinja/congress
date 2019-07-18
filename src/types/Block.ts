@@ -5,6 +5,7 @@ export type BlockButton = {
   type: 'blockButton';
   buttonText: string;
   url: string;
+  id: string;
   description: EntryFields.RichText;
 };
 

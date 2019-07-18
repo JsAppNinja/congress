@@ -26,6 +26,7 @@ const ContentfulSubSection: React.FC<Props> = ({
           case 'blockButton':
             return (
               <ContentfulButton
+                key={block.id}
                 description={block.description}
                 url={block.url}
                 buttonText={block.buttonText}

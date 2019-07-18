@@ -37,7 +37,7 @@ const SubNav: React.FC<Props> = ({
           return (
             <li className="flex flex-col" key={section.title}>
               <a
-                className="uppercase text-sm"
+                className="SubNav__link uppercase text-sm"
                 href={`#${slugify(section.title)}`}
               >
                 {section.title}
@@ -47,7 +47,7 @@ const SubNav: React.FC<Props> = ({
                   return (
                     <li className="list-style-none" key={subSection.title}>
                       <a
-                        className="pl2 text-sm"
+                        className="SubNav__link pl2 text-sm"
                         href={`#${[section.title, subSection.title]
                           .map(slugify)
                           .join('-')}`}
@@ -63,7 +63,7 @@ const SubNav: React.FC<Props> = ({
         })}
       <li className="flex flex-col">
         <a
-          className="col-12 text-sm"
+          className="SubNav__link col-12 text-sm"
           href={shopUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -73,7 +73,7 @@ const SubNav: React.FC<Props> = ({
       </li>
       <li className="flex flex-col">
         <a
-          className="col-12 text-sm"
+          className="SubNav__link col-12 text-sm"
           href={radioUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -85,7 +85,7 @@ const SubNav: React.FC<Props> = ({
         <ul className="flex flex-col">
           <li className="list-style-none">
             <a
-              className="col-12 text-sm"
+              className="SubNav__link col-12 text-sm"
               href={joinUsUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -95,7 +95,7 @@ const SubNav: React.FC<Props> = ({
           </li>
           <li className="list-style-none">
             <a
-              className="pl2 text-sm"
+              className="SubNav__link pl2 text-sm"
               href={volunteerUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -105,7 +105,7 @@ const SubNav: React.FC<Props> = ({
           </li>
           <li className="list-style-none">
             <a
-              className="pl2 text-sm"
+              className="SubNav__link pl2 text-sm"
               href={hostHousePartyUrl}
               target="_blank"
               rel="noopener noreferrer"

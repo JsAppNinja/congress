@@ -3,6 +3,12 @@
     #{$desktop-site-title-top-without-full-header} + #{$desktop-site-title-height}
   );
 
+  &__link {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   @include media('md') {
     position: sticky;
   }

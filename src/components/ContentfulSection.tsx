@@ -15,9 +15,9 @@ const ContentfulSection: React.FC<Props> = ({ section }) => {
 
   return (
     <div className="ContentfulSection col-12 md:col-6 pt1 pl1 md:pl0">
-      <p id={slugify(title)} className="drunkcond-super text-h1 uppercase">
+      <h2 id={slugify(title)} className="drunkcond-super text-h1 uppercase">
         {title}
-      </p>
+      </h2>
       {section.description && (
         <ContentfulRichText description={section.description} />
       )}

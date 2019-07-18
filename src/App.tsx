@@ -56,6 +56,9 @@ interface StoreProps {
   contactEmailAddress: string;
   pressEmailAddress: string;
   mobileMenuIsShown: boolean;
+  joinUsUrl: string;
+  volunteerUrl: string;
+  hostHousePartyUrl: string;
 }
 
 interface DispatchProps {
@@ -179,6 +182,11 @@ class App extends Component<Props, State> {
             )}
             {!this.state.deviceIsMobile && (
               <SubNav
+                shopUrl={this.props.shopUrl}
+                radioUrl={this.props.radioUrl}
+                joinUsUrl={this.props.joinUsUrl}
+                volunteerUrl={this.props.volunteerUrl}
+                hostHousePartyUrl={this.props.hostHousePartyUrl}
                 fullHeaderIsShown={this.props.fullHeaderIsShown}
                 sections={this.props.sections}
               />
@@ -255,7 +263,10 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   designKitURL: state.content.global.designKitURL,
   contactEmailAddress: state.content.global.contactEmailAddress,
   pressEmailAddress: state.content.global.pressEmailAddress,
-  mobileMenuIsShown: state.menu.mobileMenuIsShown
+  mobileMenuIsShown: state.menu.mobileMenuIsShown,
+  joinUsUrl: state.content.global.joinUsUrl,
+  volunteerUrl: state.content.global.volunteerUrl,
+  hostHousePartyUrl: state.content.global.hostHousePartyUrl
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({

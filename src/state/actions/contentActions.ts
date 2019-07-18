@@ -65,7 +65,10 @@ export const fetchGlobalContent = () => {
         mediumUrl: get(fields, 'mediumUrl', ''),
         twitterUrl: get(fields, 'twitterUrl', ''),
         radioUrl: get(fields, 'radioUrl', ''),
-        shopUrl: get(fields, 'shopUrl', '')
+        shopUrl: get(fields, 'shopUrl', ''),
+        joinUsUrl: get(fields, 'urlToJoinUs', ''),
+        volunteerUrl: get(fields, 'urlToVolunteer', ''),
+        hostHousePartyUrl: get(fields, 'urlToHostHouseParty', '')
       };
     })
   };

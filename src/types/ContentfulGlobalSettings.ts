@@ -21,4 +21,7 @@ export type ContentfulGlobalSettings = {
   twitterUrl: string;
   radioUrl: string;
   shopUrl: string;
+  joinUsUrl: string;
+  volunteerUrl: string;
+  hostHousePartyUrl: string;
 };

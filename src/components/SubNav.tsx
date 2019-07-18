@@ -8,9 +8,22 @@ import slugify from 'utils/slugify';
 interface Props {
   sections: Section[] | null;
   fullHeaderIsShown: boolean;
+  shopUrl: string;
+  radioUrl: string;
+  joinUsUrl: string;
+  volunteerUrl: string;
+  hostHousePartyUrl: string;
 }
 
-const SubNav: React.FC<Props> = ({ sections, fullHeaderIsShown }) => {
+const SubNav: React.FC<Props> = ({
+  sections,
+  fullHeaderIsShown,
+  shopUrl,
+  radioUrl,
+  joinUsUrl,
+  volunteerUrl,
+  hostHousePartyUrl
+}) => {
   const Language = getLocale() as Polyglot;
 
   return (
@@ -49,29 +62,54 @@ const SubNav: React.FC<Props> = ({ sections, fullHeaderIsShown }) => {
           );
         })}
       <li className="flex flex-col">
-        <a className="col-12 text-sm" href="#shop">
+        <a
+          className="col-12 text-sm"
+          href={shopUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {Language.t('subNav.shop')}
         </a>
       </li>
       <li className="flex flex-col">
-        <a className="col-12 text-sm" href="#radio">
+        <a
+          className="col-12 text-sm"
+          href={radioUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           {Language.t('subNav.radio')}
         </a>
       </li>
       <li className="flex flex-col">
         <ul className="flex flex-col">
           <li className="list-style-none">
-            <a className="col-12 text-sm" href="#join-us">
+            <a
+              className="col-12 text-sm"
+              href={joinUsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {Language.t('subNav.joinUs')}
             </a>
           </li>
           <li className="list-style-none">
-            <a className="pl2 text-sm" href="#join-us-volunteer">
+            <a
+              className="pl2 text-sm"
+              href={volunteerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {Language.t('subNav.volunteer')}
             </a>
           </li>
           <li className="list-style-none">
-            <a className="pl2 text-sm" href="#join-us-host-house-party">
+            <a
+              className="pl2 text-sm"
+              href={hostHousePartyUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               {Language.t('subNav.houseParty')}
             </a>
           </li>

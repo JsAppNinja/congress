@@ -24,7 +24,10 @@ const initialState: ContentReducer = {
     mediumUrl: '',
     twitterUrl: '',
     radioUrl: '',
-    shopUrl: ''
+    shopUrl: '',
+    joinUsUrl: '',
+    volunteerUrl: '',
+    hostHousePartyUrl: ''
   }
 };
 

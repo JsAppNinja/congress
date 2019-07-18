@@ -16,11 +16,13 @@ const ContentfulSubSection: React.FC<Props> = ({
   subSection
 }) => {
   return (
-    <div
-      id={[sectionTitle, subSection.title].map(slugify).join('-')}
-      className="ContentfulSubSection pt2"
-    >
-      <p className="drunkcond-super text-h1 uppercase">{subSection.title}</p>
+    <div className="ContentfulSubSection pt2">
+      <h3
+        className="drunkcond-super text-h1 uppercase"
+        id={[sectionTitle, subSection.title].map(slugify).join('-')}
+      >
+        {subSection.title}
+      </h3>
       {subSection.blocks.map((block: Block) => {
         switch (block.type) {
           case 'blockButton':

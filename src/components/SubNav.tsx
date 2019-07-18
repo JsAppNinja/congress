@@ -32,9 +32,8 @@ const SubNav: React.FC<Props> = ({ sections, fullHeaderIsShown }) => {
               <ul>
                 {section.subSections.map((subSection: SubSection) => {
                   return (
-                    <li className="list-style-none">
+                    <li className="list-style-none" key={subSection.title}>
                       <a
-                        key={subSection.title}
                         className="pl2 text-sm"
                         href={`#${[section.title, subSection.title]
                           .map(slugify)

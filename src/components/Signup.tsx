@@ -24,8 +24,6 @@ interface State {
   zipCode: string;
   phoneNumber: string;
   errors: FormErrors;
-  submitStatus: string;
-  submitMessage: string;
   formUUID: number;
 }
 
@@ -46,8 +44,6 @@ class Signup extends Component<Props, State> {
       zipCode: '',
       phoneNumber: ''
     },
-    submitStatus: '',
-    submitMessage: '',
     formUUID: Math.floor(Math.random() * 100000)
   };
 
@@ -165,26 +161,10 @@ class Signup extends Component<Props, State> {
     this.props.hideSignup();
   };
 
-  updateSubmitStatus = (submitStatus: string) => {
-    if (this.state.submitStatus !== submitStatus) {
-      return this.setState({ submitStatus });
-    }
-
-    return null;
-  };
-
-  updateSubmitMessage = (submitMessage: string) => {
-    if (this.state.submitMessage !== submitMessage) {
-      return this.setState({ submitMessage });
-    }
-
-    return null;
-  };
-
-  renderHeader = () => {
+  renderHeader = (status: string) => {
     const Language = getLocale() as Polyglot;
 
-    if (this.state.submitStatus === statusSuccess) {
+    if (status === statusSuccess) {
       return (
         <p className="text-xxxl bold">{Language.t('signupForm.thankYou')}</p>
       );
@@ -193,12 +173,12 @@ class Signup extends Component<Props, State> {
     return <p className="text-xxxl bold">{this.props.header}</p>;
   };
 
-  renderSubscriptionError = () => {
+  renderSubscriptionError = (status: string, submitMessage: string) => {
     const Language = getLocale() as Polyglot;
 
-    if (this.state.submitStatus !== statusError) return null;
+    if (status !== statusError) return null;
 
-    if (this.state.submitMessage.includes('is already subscribed to list')) {
+    if (submitMessage.includes('is already subscribed to list')) {
       return (
         <p className="Signup__input-error">
           {Language.t('signupForm.emailIsAlreadySubscribed')}
@@ -221,32 +201,29 @@ class Signup extends Component<Props, State> {
     const Language = getLocale() as Polyglot;
 
     return (
-      <div
-        className={`Signup franklin-gothic bg-color-${this.props.backgroundColor} flex flex-col text-md p1`}
-        role="region"
-      >
-        <div className="flex flex-row">
-          {this.renderHeader()}
-          {this.props.showCloseIcon && (
-            <Button
-              className="Signup__close-icon-container bg-color-transparent absolute pointer"
-              onClick={this.closeSignupForm}
-              ariaLabel="close the sign up form"
+      <MailchimpSubscribe
+        url={url}
+        render={({ subscribe, status, message }) => {
+          return (
+            <div
+              className={`Signup franklin-gothic bg-color-${this.props.backgroundColor} flex flex-col text-md p1`}
+              role="region"
             >
-              <Image alt="close icon" src={closeIcon} />
-            </Button>
-          )}
-        </div>
-        <MailchimpSubscribe
-          url={url}
-          render={({ subscribe, status, message }) => {
-            this.updateSubmitStatus(status);
-            this.updateSubmitMessage(message);
-
-            return (
+              <div className="flex flex-row">
+                {this.renderHeader(status)}
+                {this.props.showCloseIcon && (
+                  <Button
+                    className="Signup__close-icon-container bg-color-transparent absolute pointer"
+                    onClick={this.closeSignupForm}
+                    ariaLabel="close the sign up form"
+                  >
+                    <Image alt="close icon" src={closeIcon} />
+                  </Button>
+                )}
+              </div>
               <form
                 className={cx('flex flex-wrap justify-between', {
-                  hidden: this.state.submitStatus === statusSuccess
+                  hidden: status === statusSuccess
                 })}
                 onSubmit={e => {
                   e.preventDefault();
@@ -364,7 +341,7 @@ class Signup extends Component<Props, State> {
                   </div>
                 </div>
                 <div className="relative col-12 md:col-4 md:pr2 mt1 md:mt2">
-                  {this.renderSubscriptionError()}
+                  {this.renderSubscriptionError(status, message)}
                   <Button
                     className="Signup__submit-button text-sm pointer w100 mt1 p1"
                     type="submit"
@@ -373,10 +350,10 @@ class Signup extends Component<Props, State> {
                   />
                 </div>
               </form>
-            );
-          }}
-        />
-      </div>
+            </div>
+          );
+        }}
+      />
     );
   }
 }

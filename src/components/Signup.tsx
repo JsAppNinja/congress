@@ -26,6 +26,7 @@ interface State {
   errors: FormErrors;
   submitStatus: string;
   submitMessage: string;
+  formUUID: number;
 }
 
 const statusSuccess = 'success';
@@ -46,7 +47,8 @@ class Signup extends Component<Props, State> {
       phoneNumber: ''
     },
     submitStatus: '',
-    submitMessage: ''
+    submitMessage: '',
+    formUUID: Math.floor(Math.random() * 100000)
   };
 
   onChangeFirstName = (value: string) => {
@@ -258,11 +260,14 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="firstName"
-                    id="firstName"
+                    id={`${this.state.formUUID}-firstName`}
                     value={this.state.firstName}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
-                    <label htmlFor="firstName" className="Signup__input-label">
+                    <label
+                      htmlFor={`${this.state.formUUID}-firstName`}
+                      className="Signup__input-label"
+                    >
                       {Language.t('signupForm.firstName')}
                     </label>
                     <p className="Signup__input-error">
@@ -278,11 +283,14 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="lastName"
-                    id="lastName"
+                    id={`${this.state.formUUID}-lastName`}
                     value={this.state.lastName}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
-                    <label htmlFor="lastName" className="Signup__input-label">
+                    <label
+                      htmlFor={`${this.state.formUUID}-lastName`}
+                      className="Signup__input-label"
+                    >
                       {Language.t('signupForm.lastName')}
                     </label>
                     <p className="Signup__input-error">
@@ -298,11 +306,14 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="email"
-                    id="email"
+                    id={`${this.state.formUUID}-email`}
                     value={this.state.email}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
-                    <label htmlFor="email" className="Signup__input-label">
+                    <label
+                      htmlFor={`${this.state.formUUID}-email`}
+                      className="Signup__input-label"
+                    >
                       {Language.t('signupForm.email')}
                     </label>
                     <p className="Signup__input-error">
@@ -318,11 +329,14 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="zipcode"
-                    id="zipcode"
+                    id={`${this.state.formUUID}-zipcode`}
                     value={this.state.zipCode}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
-                    <label htmlFor="zipcode" className="Signup__input-label">
+                    <label
+                      htmlFor={`${this.state.formUUID}-zipcode`}
+                      className="Signup__input-label"
+                    >
                       {Language.t('signupForm.zipCode')}
                     </label>
                     <p className="Signup__input-error">
@@ -337,11 +351,14 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="phone"
-                    id="phone"
+                    id={`${this.state.formUUID}-phone`}
                     value={this.state.phoneNumber}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
-                    <label htmlFor="phone" className="Signup__input-label">
+                    <label
+                      htmlFor={`${this.state.formUUID}-phone`}
+                      className="Signup__input-label"
+                    >
                       {Language.t('signupForm.phoneOptional')}
                     </label>
                   </div>

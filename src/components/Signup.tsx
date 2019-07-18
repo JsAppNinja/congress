@@ -206,10 +206,10 @@ class Signup extends Component<Props, State> {
         render={({ subscribe, status, message }) => {
           return (
             <div
-              className={`Signup franklin-gothic bg-color-${this.props.backgroundColor} flex flex-col text-md p1`}
+              className={`Signup franklin-gothic bg-color-${this.props.backgroundColor} flex flex-col text-md p1 pb3`}
               role="region"
             >
-              <div className="flex flex-row">
+              <div className="flex flex-row mb3">
                 {this.renderHeader(status)}
                 {this.props.showCloseIcon && (
                   <Button

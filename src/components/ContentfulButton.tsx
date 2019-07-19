@@ -14,7 +14,7 @@ const ContentfulButton: React.FC<Props> = ({
   url
 }) => {
   return (
-    <div className="col-12">
+    <div className="col-12 pl1 md:pl0">
       <p className="franklin-gothic text-md">{description}</p>
       <Button
         className="ContentfulButton pointer mt1 pt1 pb1 col-6 franklin-gothic text-md"

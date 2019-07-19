@@ -45,7 +45,7 @@ const options = {
 const ContentfulRichText: React.FC<Props> = ({ description }) => {
   return (
     <div
-      className="pr1"
+      className="pr1 pl1 md:pl0"
       dangerouslySetInnerHTML={{
         __html: documentToHtmlString(description, options)
       }}

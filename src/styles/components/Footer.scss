@@ -4,6 +4,8 @@ $desktop-overlap: calc(#{$footer-bg-text-height} / 3 * 1.7);
 $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
 
 .Footer {
+  margin-top: 10rem;
+
   padding-bottom: calc(#{$footer-bg-text-height} - #{$mobile-overlap});
 
   @include media('md') {

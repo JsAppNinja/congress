@@ -12,7 +12,7 @@ const ContentfulPhotos: React.FC<Props> = ({ photos }) => {
     <div className="ContentfulPhotos flex flex-row col-12 pt1 overflow-x-scroll">
       {photos.map((photo: Asset, i: number) => {
         return (
-          <div className="pr1" key={photo.fields.file.url}>
+          <div className="pl1 pr0 md:pl0 md:pr1" key={photo.fields.file.url}>
             <Image
               alt={photo.fields.title}
               className="ContentfulPhotos__photo pb_5"

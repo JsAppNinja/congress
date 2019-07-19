@@ -18,7 +18,7 @@ const ContentfulSubSection: React.FC<Props> = ({
   return (
     <div className="ContentfulSubSection pt2">
       <h3
-        className="drunkcond-super text-h1 uppercase"
+        className="drunkcond-super text-h1 uppercase pl1 md:pl0"
         id={[sectionTitle, subSection.title].map(slugify).join('-')}
       >
         {subSection.title}

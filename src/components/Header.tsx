@@ -63,7 +63,8 @@ class Header extends Component<Props, State> {
     return (
       <div
         className={cx('Header w100 fixed z3', {
-          'vh100 overflow-auto': isMobile() && this.props.fullHeaderIsShown,
+          'vh100 overflow-auto':
+            this.state.deviceIsMobile && this.props.fullHeaderIsShown,
           'Header__signup-active': this.props.fullHeaderIsShown
         })}
       >

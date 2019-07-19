@@ -24,8 +24,6 @@ interface Props {
   showSignupAction(): void;
   showMobileMenu(): void;
   hideMobileMenu(): void;
-  saveLastScrollTop(top: number): void;
-  scrollTop: number;
 }
 
 interface State {
@@ -47,7 +45,7 @@ class Header extends Component<Props, State> {
     if (!this.state.deviceIsMobile) return null;
 
     if (!prevProps.fullHeaderIsShown && this.props.fullHeaderIsShown) {
-      freezeScroll(this.props.saveLastScrollTop);
+      freezeScroll();
     }
   }
 
@@ -73,7 +71,6 @@ class Header extends Component<Props, State> {
           header={this.props.signupHeader}
           backgroundColor={this.props.backgroundColor}
           showCloseIcon={this.props.showSignupCloseIcon}
-          scrollTop={this.props.scrollTop}
         />
         <DonorCTA url={this.props.donateUrl} />
         <TopNav
@@ -86,8 +83,6 @@ class Header extends Component<Props, State> {
           showMobileMenu={this.props.showMobileMenu}
           hideMobileMenu={this.props.hideMobileMenu}
           mobileMenuIsShown={this.props.mobileMenuIsShown}
-          saveLastScrollTop={this.props.saveLastScrollTop}
-          scrollTop={this.props.scrollTop}
         />
       </div>
     );

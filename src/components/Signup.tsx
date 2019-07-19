@@ -12,7 +12,6 @@ interface Props {
   hideSignup: () => void;
   backgroundColor: 'green' | 'yellow';
   showCloseIcon: boolean;
-  scrollTop: number;
 }
 
 interface FormErrors {
@@ -161,7 +160,7 @@ class Signup extends Component<Props, State> {
 
   closeSignupForm = () => {
     this.props.hideSignup();
-    unfreezeScroll(this.props.scrollTop);
+    unfreezeScroll();
   };
 
   renderHeader = (status: string) => {

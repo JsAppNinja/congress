@@ -10,7 +10,6 @@ import isMobile from 'utils/isMobile';
 import { initializeApplication } from 'state/actions/applicationActions';
 import { showFullHeader, hideFullHeader } from 'state/actions/headerActions';
 import { showMobileMenu, hideMobileMenu } from 'state/actions/menuActions';
-import { saveLastScrollTop } from 'state/actions/scrollActions';
 import { setLocale } from 'state/actions/localeActions';
 
 import { RootReducer } from 'types/RootReducer';
@@ -60,7 +59,6 @@ interface StoreProps {
   joinUsUrl: string;
   volunteerUrl: string;
   hostHousePartyUrl: string;
-  scrollTop: number;
 }
 
 interface DispatchProps {
@@ -71,7 +69,6 @@ interface DispatchProps {
     showFullHeader: () => void;
     showMobileMenu: () => void;
     hideMobileMenu: () => void;
-    saveLastScrollTop: (top: number) => void;
   };
 }
 
@@ -147,32 +144,27 @@ class App extends Component<Props, State> {
               showSignupAction={actions.showFullHeader}
               fullHeaderIsShown={this.props.fullHeaderIsShown}
               showFullHeaderAction={actions.showFullHeader}
-              saveLastScrollTop={this.props.actions.saveLastScrollTop}
-              scrollTop={this.props.scrollTop}
             />
           </div>
-          <div
-            className={cx(
-              'TopNav__mobile-container z3 col-12 transition-slide-up-in',
-              {
+          {this.props.mobileMenuIsShown && (
+            <div
+              className={cx('TopNav__mobile-container z3 col-12', {
                 hidden: !this.props.mobileMenuIsShown
-              }
-            )}
-          >
-            <TopNav
-              donateUrl={this.props.donateUrl}
-              facebookUrl={this.props.facebookUrl}
-              twitterUrl={this.props.twitterUrl}
-              instagramUrl={this.props.instagramUrl}
-              setLocale={actions.setLocale}
-              showFullHeader={actions.showFullHeader}
-              showMobileMenu={actions.showMobileMenu}
-              hideMobileMenu={actions.hideMobileMenu}
-              mobileMenuIsShown={this.props.mobileMenuIsShown}
-              saveLastScrollTop={this.props.actions.saveLastScrollTop}
-              scrollTop={this.props.scrollTop}
-            />
-          </div>
+              })}
+            >
+              <TopNav
+                donateUrl={this.props.donateUrl}
+                facebookUrl={this.props.facebookUrl}
+                twitterUrl={this.props.twitterUrl}
+                instagramUrl={this.props.instagramUrl}
+                setLocale={actions.setLocale}
+                showFullHeader={actions.showFullHeader}
+                showMobileMenu={actions.showMobileMenu}
+                hideMobileMenu={actions.hideMobileMenu}
+                mobileMenuIsShown={this.props.mobileMenuIsShown}
+              />
+            </div>
+          )}
           <div>
             {this.state.deviceIsMobile && (
               <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />
@@ -228,7 +220,6 @@ class App extends Component<Props, State> {
             header={Language.t('signupForm.joinOurFight')}
             backgroundColor="yellow"
             showCloseIcon={false}
-            scrollTop={this.props.scrollTop}
           />
           <Routes location={location} />
         </main>
@@ -274,8 +265,7 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   mobileMenuIsShown: state.menu.mobileMenuIsShown,
   joinUsUrl: state.content.global.joinUsUrl,
   volunteerUrl: state.content.global.volunteerUrl,
-  hostHousePartyUrl: state.content.global.hostHousePartyUrl,
-  scrollTop: state.scroll.scrollTop
+  hostHousePartyUrl: state.content.global.hostHousePartyUrl
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
@@ -286,8 +276,7 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
       showFullHeader,
       hideFullHeader,
       showMobileMenu,
-      hideMobileMenu,
-      saveLastScrollTop
+      hideMobileMenu
     },
     dispatch
   )

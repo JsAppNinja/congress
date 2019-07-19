@@ -22,8 +22,6 @@ interface Props {
   showMobileMenu(): void;
   hideMobileMenu(): void;
   mobileMenuIsShown: boolean;
-  saveLastScrollTop(top: number): void;
-  scrollTop: number;
 }
 
 interface State {
@@ -47,7 +45,7 @@ class TopNav extends Component<Props, State> {
     if (!this.state.deviceIsMobile) return;
 
     if (!prevProps.mobileMenuIsShown && this.props.mobileMenuIsShown) {
-      freezeScroll(this.props.saveLastScrollTop);
+      freezeScroll();
     }
   }
 
@@ -73,8 +71,7 @@ class TopNav extends Component<Props, State> {
       showFullHeader,
       showMobileMenu,
       hideMobileMenu,
-      mobileMenuIsShown,
-      saveLastScrollTop
+      mobileMenuIsShown
     } = this.props;
     const Language = getLocale() as Polyglot;
 
@@ -136,7 +133,7 @@ class TopNav extends Component<Props, State> {
             <Button
               className="TopNav__language-button m0 p0 pointer"
               onClick={() => {
-                unfreezeScroll(this.props.scrollTop);
+                unfreezeScroll();
                 hideMobileMenu();
               }}
               ariaLabel={Language.t('topNav.closesTheMenu')}

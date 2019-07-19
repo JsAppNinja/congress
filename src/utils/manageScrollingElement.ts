@@ -10,15 +10,16 @@ const unfreezeStyle = {
   width: 'auto'
 };
 
-const freezeScroll = (saveLastScrollTop: (top: number) => void) => {
+let lastScrollTop = 0;
+
+const freezeScroll = () => {
   const bodyEl = document.body;
-  const currentScrollTop = document.documentElement.scrollTop;
-  saveLastScrollTop(currentScrollTop);
-  Object.assign(freezeStyle, { top: `-${currentScrollTop}px` });
+  lastScrollTop = document.documentElement.scrollTop;
+  Object.assign(freezeStyle, { top: `-${lastScrollTop}px` });
   Object.assign(bodyEl.style, freezeStyle);
 };
 
-const unfreezeScroll = (lastScrollTop: number) => {
+const unfreezeScroll = () => {
   const bodyEl = document.body;
   Object.assign(bodyEl.style, unfreezeStyle);
   document.documentElement.scrollTop = lastScrollTop;

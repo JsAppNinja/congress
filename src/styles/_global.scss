@@ -3,12 +3,17 @@ body {
 }
 
 button {
-  box-shadow: none;
+  -webkit-appearance: none;
+  border-radius: 0;
+  box-shadow: 0 0 0 0;
   background: transparent;
   outline: none;
 }
 
 input {
+  -webkit-appearance: none;
+  border-radius: 0;
+  box-shadow: 0 0 0 0;
   border: none;
   border-bottom: 2px solid color('black');
   outline: none;

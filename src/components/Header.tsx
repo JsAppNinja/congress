@@ -6,7 +6,7 @@ import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
 import { Locale } from 'types/Locale';
 import isMobile from 'utils/isMobile';
-import { freezeScroll, unfreezeScroll } from 'utils/manageScrollingElement';
+import { freezeScroll } from 'utils/manageScrollingElement';
 
 interface Props {
   mobileMenuIsShown: boolean;

@@ -120,7 +120,7 @@ class TopNav extends Component<Props, State> {
         )}
       >
         {this.state.deviceIsMobile && (
-          <div className="flex justify-end items-center col-12 md:col-4 pr1">
+          <div className="flex justify-end items-center col-12 md:col-4 p1">
             <Button
               className="TopNav__language-button m0 p0 pointer"
               onClick={hideMobileMenu}

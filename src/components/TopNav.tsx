@@ -98,7 +98,11 @@ class TopNav extends Component<Props, State> {
               onClick={showMobileMenu}
               ariaLabel={Language.t('topNav.openMenu')}
             >
-              <Image className="pointer" src={hamburger} alt="menu icon" />
+              <Image
+                className="TopNav__icon pointer"
+                src={hamburger}
+                alt="menu icon"
+              />
             </Button>
           </div>
         </div>
@@ -108,21 +112,22 @@ class TopNav extends Component<Props, State> {
     return (
       <div
         className={cx(
-          'TopNav flex flex-col items-center md:flex-row bg-color-white transition-slide-up-in',
+          'TopNav flex flex-col items-center md:flex-row bg-color-white',
           {
+            'transition-slide-up-in': !mobileMenuIsShown,
             'fixed t0 l0 r0 b0': mobileMenuIsShown
           }
         )}
       >
         {this.state.deviceIsMobile && (
-          <div className="flex justify-end items-center col-12 md:col-4 p1">
+          <div className="flex justify-end items-center col-12 md:col-4 pr1">
             <Button
-              className="TopNav__language-button m0 p0 mr_25 pointer"
+              className="TopNav__language-button m0 p0 pointer"
               onClick={hideMobileMenu}
               ariaLabel={Language.t('topNav.closesTheMenu')}
             >
               <img
-                className="mr_5 ml_5 pointer"
+                className="TopNav__icon pointer"
                 src={closeIcon}
                 alt="close icon"
               />

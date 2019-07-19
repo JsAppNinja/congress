@@ -78,7 +78,7 @@ class TopNav extends Component<Props, State> {
               ariaLabel={Language.t('topNav.siteToEnglish')}
               onClick={() => setLocale('en-US')}
             >
-              <span className="flex justify-center items-center circle p_25">
+              <span className="text-sm franklin-gothic flex justify-center items-center circle p_25">
                 EN
               </span>
             </Button>
@@ -90,7 +90,7 @@ class TopNav extends Component<Props, State> {
               ariaLabel={Language.t('topNav.siteToHaitian')}
               onClick={() => setLocale('fr')}
             >
-              <span>HAI</span>
+              <span className="text-sm franklin-gothic">HAI</span>
             </Button>
           </div>
           <div className="TopNav__hamburger-container flex justify-center items-center pl1 pr1 pointer h100">

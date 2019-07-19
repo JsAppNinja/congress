@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { getLocale, Polyglot } from 'constants/Locales';
 import closeIcon from 'assets/close.svg';
 import { isValidName, isValidEmail } from 'utils/validations';
+import { unfreezeScroll } from 'utils/manageScrollingElement';
 import { Button, Image } from 'components/base';
 
 interface Props {
@@ -11,6 +12,7 @@ interface Props {
   hideSignup: () => void;
   backgroundColor: 'green' | 'yellow';
   showCloseIcon: boolean;
+  scrollTop: number;
 }
 
 interface FormErrors {
@@ -159,6 +161,7 @@ class Signup extends Component<Props, State> {
 
   closeSignupForm = () => {
     this.props.hideSignup();
+    unfreezeScroll(this.props.scrollTop);
   };
 
   renderHeader = (status: string) => {

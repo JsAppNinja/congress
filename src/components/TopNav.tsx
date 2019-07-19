@@ -10,6 +10,7 @@ import closeIcon from 'assets/close.svg';
 import { Image, Button } from 'components/base';
 import { Locale } from 'types/Locale';
 import { getLocale, Polyglot } from 'constants/Locales';
+import { freezeScroll, unfreezeScroll } from 'utils/manageScrollingElement';
 
 interface Props {
   donateUrl: string;
@@ -21,6 +22,8 @@ interface Props {
   showMobileMenu(): void;
   hideMobileMenu(): void;
   mobileMenuIsShown: boolean;
+  saveLastScrollTop(top: number): void;
+  scrollTop: number;
 }
 
 interface State {
@@ -39,6 +42,14 @@ class TopNav extends Component<Props, State> {
       this.setState({ deviceIsMobile: isMobile() });
     }
   };
+
+  componentDidUpdate(prevProps: Props) {
+    if (!this.state.deviceIsMobile) return;
+
+    if (!prevProps.mobileMenuIsShown && this.props.mobileMenuIsShown) {
+      freezeScroll(this.props.saveLastScrollTop);
+    }
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this.checkIfDeviceIsMobile);
@@ -62,7 +73,8 @@ class TopNav extends Component<Props, State> {
       showFullHeader,
       showMobileMenu,
       hideMobileMenu,
-      mobileMenuIsShown
+      mobileMenuIsShown,
+      saveLastScrollTop
     } = this.props;
     const Language = getLocale() as Polyglot;
 
@@ -123,7 +135,10 @@ class TopNav extends Component<Props, State> {
           <div className="flex justify-end items-center col-12 md:col-4 p1">
             <Button
               className="TopNav__language-button m0 p0 pointer"
-              onClick={hideMobileMenu}
+              onClick={() => {
+                unfreezeScroll(this.props.scrollTop);
+                hideMobileMenu();
+              }}
               ariaLabel={Language.t('topNav.closesTheMenu')}
             >
               <img

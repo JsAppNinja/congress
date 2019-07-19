@@ -153,23 +153,20 @@ class TopNav extends Component<Props, State> {
           </Button>
         </div>
 
-        <div className="TopNav__nav-item flex justify-center items-center h100 col-12 md:col-4">
+        <div className="TopNav__nav-item-action flex justify-center items-center h100 col-12 md:col-4">
           <Button
-            className="flex flex-1 justify-center pointer"
+            className="flex flex-1 justify-center pointer text-md franklin-gothic TopNav__nav-item-text"
             onClick={() => {
               hideMobileMenu();
               showFullHeader();
             }}
             ariaLabel={Language.t('topNav.showSignupForm')}
-          >
-            <span className="text-md franklin-gothic">
-              {Language.t('topNav.signUp')}
-            </span>
-          </Button>
+            label={Language.t('topNav.signUp')}
+          ></Button>
         </div>
-        <div className="TopNav__nav-item flex justify-center items-center h100 col-12 md:col-4">
+        <div className="TopNav__nav-item-action flex justify-center items-center h100 col-12 md:col-4">
           <a
-            className="text-md franklin-gothic flex flex-1 justify-center pointer"
+            className="text-md franklin-gothic flex flex-1 justify-center items-center pointer h100 TopNav__nav-item-text"
             href={this.props.donateUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -179,7 +176,7 @@ class TopNav extends Component<Props, State> {
         </div>
         <div className="TopNav__social-media flex justify-center items-center h100 md:m1">
           <a
-            className="flex justify-center pointer p1 md:p0"
+            className="TopNav__social-media-icon flex justify-center pointer p1 md:p0"
             href={this.props.facebookUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -191,7 +188,7 @@ class TopNav extends Component<Props, State> {
             />
           </a>
           <a
-            className="flex justify-center pointer p1 md:p0"
+            className="TopNav__social-media-icon flex justify-center pointer p1 md:p0"
             href={this.props.twitterUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -203,7 +200,7 @@ class TopNav extends Component<Props, State> {
             />
           </a>
           <a
-            className="flex justify-center pointer p1 md:p0"
+            className="TopNav__social-media-icon flex justify-center pointer p1 md:p0"
             href={this.props.instagramUrl}
             target="_blank"
             rel="noopener noreferrer"

@@ -83,6 +83,15 @@
 }
 
 .text-sm {
-  font-size: 1.3rem;
-  line-height: 1.6125rem;
+  font-size: 1.1rem;
+  line-height: 1.4125rem;
+  @include media('md') {
+    font-size: 1.3rem;
+    line-height: 1.6125rem;
+  }
+}
+
+.text-xsm {
+  font-size: 1rem;
+  line-height: 1.3125rem;
 }

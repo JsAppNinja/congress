@@ -31,7 +31,7 @@ export const initializeApplication = (isPreview: boolean) => (
 
       return checkTimeout
         .then(() => {
-          setTimeout(() => dispatch(showFullHeader()), 2000);
+          setTimeout(() => dispatch(showFullHeader()), 4000);
           resolve();
         })
         .catch(reject);

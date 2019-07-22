@@ -184,14 +184,14 @@ class Signup extends Component<Props, State> {
 
     if (submitMessage.includes('is already subscribed to list')) {
       return (
-        <p className="Signup__input-error">
+        <p className="Signup__input-error mt_5">
           {Language.t('signupForm.emailIsAlreadySubscribed')}
         </p>
       );
     }
 
     return (
-      <p className="Signup__input-error">
+      <p className="Signup__input-error mt_5">
         {Language.t('signupForm.defaultError')}
       </p>
     );
@@ -344,10 +344,21 @@ class Signup extends Component<Props, State> {
                     </label>
                   </div>
                 </div>
-                <div className="relative col-12 md:col-4 md:pr2 mt1 md:mt2">
+                <div
+                  className={cx('relative col-12 md:col-4 md:pr2 mt1', {
+                    'md:mt2': status !== statusError,
+                    'md:mt0': status === statusError
+                  })}
+                >
                   {this.renderSubscriptionError(status, message)}
                   <Button
-                    className="Signup__submit-button text-sm pointer w100 mt1 p1"
+                    className={cx(
+                      'Signup__submit-button text-sm pointer w100 p1',
+                      {
+                        mt1: status !== statusError,
+                        mt_5: status === statusError
+                      }
+                    )}
                     type="submit"
                     ariaLabel="submit sign up information"
                     label={Language.t('signupForm.submit')}

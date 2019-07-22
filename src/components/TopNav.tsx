@@ -10,6 +10,7 @@ import closeIcon from 'assets/close.svg';
 import { Image, Button } from 'components/base';
 import { Locale } from 'types/Locale';
 import { getLocale, Polyglot } from 'constants/Locales';
+import { freezeScroll, unfreezeScroll } from 'utils/manageScrollingElement';
 
 interface Props {
   donateUrl: string;
@@ -39,6 +40,14 @@ class TopNav extends Component<Props, State> {
       this.setState({ deviceIsMobile: isMobile() });
     }
   };
+
+  componentDidUpdate(prevProps: Props) {
+    if (!this.state.deviceIsMobile) return;
+
+    if (!prevProps.mobileMenuIsShown && this.props.mobileMenuIsShown) {
+      freezeScroll();
+    }
+  }
 
   componentDidMount() {
     window.addEventListener('resize', this.checkIfDeviceIsMobile);
@@ -101,7 +110,7 @@ class TopNav extends Component<Props, State> {
               <Image
                 className="TopNav__icon pointer"
                 src={hamburger}
-                alt="menu icon"
+                alt={Language.t('topNav.altTextForMenuIcon')}
               />
             </Button>
           </div>
@@ -123,13 +132,16 @@ class TopNav extends Component<Props, State> {
           <div className="flex justify-end items-center col-12 md:col-4 p1">
             <Button
               className="TopNav__language-button m0 p0 pointer"
-              onClick={hideMobileMenu}
+              onClick={() => {
+                unfreezeScroll();
+                hideMobileMenu();
+              }}
               ariaLabel={Language.t('topNav.closesTheMenu')}
             >
               <img
                 className="TopNav__icon pointer"
                 src={closeIcon}
-                alt="close icon"
+                alt={Language.t('topNav.altTextForCloseIcon')}
               />
             </Button>
           </div>
@@ -189,7 +201,7 @@ class TopNav extends Component<Props, State> {
             <img
               className="mr_5 ml_5 pointer"
               src={facebook}
-              alt="open up Adem's Facebook page"
+              alt={Language.t('topNav.altTextForFacebookIcon')}
             />
           </a>
           <a
@@ -201,7 +213,7 @@ class TopNav extends Component<Props, State> {
             <img
               className="mr_5 ml_5 pointer"
               src={twitter}
-              alt="open up Adem's Twitter page"
+              alt={Language.t('topNav.altTextForTwitterIcon')}
             />
           </a>
           <a
@@ -213,7 +225,7 @@ class TopNav extends Component<Props, State> {
             <img
               className="mr_5 ml_5 pointer"
               src={instagram}
-              alt="open up Adem's Instagram page"
+              alt={Language.t('topNav.altTextForInstagramIcon')}
             />
           </a>
         </div>

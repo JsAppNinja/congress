@@ -31,7 +31,12 @@ export default {
     siteToHaitian: 'changes site language to Haitian',
     openMenu: 'opens the menu',
     closesTheMenu: 'closes the menu',
-    showSignupForm: 'shows the sign up form'
+    showSignupForm: 'shows the sign up form',
+    altTextForMenuIcon: 'menu icon',
+    altTextForCloseIcon: 'close icon',
+    altTextForFacebookIcon: "open up Adem's Facebook page",
+    altTextForTwitterIcon: "open up Adem's Twitter page",
+    altTextForInstagramIcon: "open up Adem's Instagram page"
   },
   generalError: 'There was a problem loading the page. Try again soon!',
   subNav: {

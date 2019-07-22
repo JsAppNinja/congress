@@ -4,6 +4,7 @@ import cx from 'classnames';
 import { getLocale, Polyglot } from 'constants/Locales';
 import closeIcon from 'assets/close.svg';
 import { isValidName, isValidEmail } from 'utils/validations';
+import { unfreezeScroll } from 'utils/manageScrollingElement';
 import { Button, Image } from 'components/base';
 
 interface Props {
@@ -159,6 +160,7 @@ class Signup extends Component<Props, State> {
 
   closeSignupForm = () => {
     this.props.hideSignup();
+    unfreezeScroll();
   };
 
   renderHeader = (status: string) => {

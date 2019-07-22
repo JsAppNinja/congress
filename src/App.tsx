@@ -146,26 +146,25 @@ class App extends Component<Props, State> {
               showFullHeaderAction={actions.showFullHeader}
             />
           </div>
-          <div
-            className={cx(
-              'TopNav__mobile-container z3 col-12 transition-slide-up-in',
-              {
+          {this.props.mobileMenuIsShown && (
+            <div
+              className={cx('TopNav__mobile-container z3 col-12', {
                 hidden: !this.props.mobileMenuIsShown
-              }
-            )}
-          >
-            <TopNav
-              donateUrl={this.props.donateUrl}
-              facebookUrl={this.props.facebookUrl}
-              twitterUrl={this.props.twitterUrl}
-              instagramUrl={this.props.instagramUrl}
-              setLocale={actions.setLocale}
-              showFullHeader={actions.showFullHeader}
-              showMobileMenu={actions.showMobileMenu}
-              hideMobileMenu={actions.hideMobileMenu}
-              mobileMenuIsShown={this.props.mobileMenuIsShown}
-            />
-          </div>
+              })}
+            >
+              <TopNav
+                donateUrl={this.props.donateUrl}
+                facebookUrl={this.props.facebookUrl}
+                twitterUrl={this.props.twitterUrl}
+                instagramUrl={this.props.instagramUrl}
+                setLocale={actions.setLocale}
+                showFullHeader={actions.showFullHeader}
+                showMobileMenu={actions.showMobileMenu}
+                hideMobileMenu={actions.hideMobileMenu}
+                mobileMenuIsShown={this.props.mobileMenuIsShown}
+              />
+            </div>
+          )}
           <div>
             {this.state.deviceIsMobile && (
               <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />

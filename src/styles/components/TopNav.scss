@@ -79,6 +79,11 @@ $topnav-height: 3rem;
     }
   }
 
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+
   &__hamburger-container {
     border-left: 2px solid color('black');
   }

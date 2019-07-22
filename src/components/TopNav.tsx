@@ -78,7 +78,7 @@ class TopNav extends Component<Props, State> {
               ariaLabel={Language.t('topNav.siteToEnglish')}
               onClick={() => setLocale('en-US')}
             >
-              <span className="flex justify-center items-center circle p_25">
+              <span className="text-sm franklin-gothic flex justify-center items-center circle p_25">
                 EN
               </span>
             </Button>
@@ -90,7 +90,7 @@ class TopNav extends Component<Props, State> {
               ariaLabel={Language.t('topNav.siteToHaitian')}
               onClick={() => setLocale('fr')}
             >
-              <span>HAI</span>
+              <span className="text-sm franklin-gothic">HAI</span>
             </Button>
           </div>
           <div className="TopNav__hamburger-container flex justify-center items-center pl1 pr1 pointer h100">
@@ -98,7 +98,11 @@ class TopNav extends Component<Props, State> {
               onClick={showMobileMenu}
               ariaLabel={Language.t('topNav.openMenu')}
             >
-              <Image className="pointer" src={hamburger} alt="menu icon" />
+              <Image
+                className="TopNav__icon pointer"
+                src={hamburger}
+                alt="menu icon"
+              />
             </Button>
           </div>
         </div>
@@ -108,8 +112,9 @@ class TopNav extends Component<Props, State> {
     return (
       <div
         className={cx(
-          'TopNav flex flex-col items-center md:flex-row bg-color-white transition-slide-up-in',
+          'TopNav flex flex-col items-center md:flex-row bg-color-white',
           {
+            'transition-slide-up-in': !mobileMenuIsShown,
             'fixed t0 l0 r0 b0': mobileMenuIsShown
           }
         )}
@@ -117,12 +122,12 @@ class TopNav extends Component<Props, State> {
         {this.state.deviceIsMobile && (
           <div className="flex justify-end items-center col-12 md:col-4 p1">
             <Button
-              className="TopNav__language-button m0 p0 mr_25 pointer"
+              className="TopNav__language-button m0 p0 pointer"
               onClick={hideMobileMenu}
               ariaLabel={Language.t('topNav.closesTheMenu')}
             >
               <img
-                className="mr_5 ml_5 pointer"
+                className="TopNav__icon pointer"
                 src={closeIcon}
                 alt="close icon"
               />

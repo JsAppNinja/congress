@@ -138,12 +138,16 @@ class TopNav extends Component<Props, State> {
                   onClick={
                     mobileSubnavIsShown ? hideMobileSubNav : showMobileSubNav
                   }
-                  ariaLabel={Language.t('topNav.openMenu')}
+                  ariaLabel={Language.t('topNav.openSubnav')}
                 >
                   <Image
                     className="TopNav__icon pointer"
                     src={carrot}
-                    alt={Language.t('topNav.altTextForMenuIcon')}
+                    alt={
+                      mobileSubnavIsShown
+                        ? Language.t('topNav.upArrow')
+                        : Language.t('topNav.downArrow')
+                    }
                   />
                 </Button>
               </div>

@@ -36,7 +36,10 @@ export default {
     altTextForCloseIcon: 'close icon',
     altTextForFacebookIcon: "open up Adem's Facebook page",
     altTextForTwitterIcon: "open up Adem's Twitter page",
-    altTextForInstagramIcon: "open up Adem's Instagram page"
+    altTextForInstagramIcon: "open up Adem's Instagram page",
+    openSubnav: 'opens the subnav',
+    downArrow: 'down arrow',
+    upArrow: 'up arrow'
   },
   generalError: 'There was a problem loading the page. Try again soon!',
   subNav: {

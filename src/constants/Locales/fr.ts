@@ -36,7 +36,10 @@ export default {
     altTextForCloseIcon: 'fèmen icon',
     altTextForFacebookIcon: "louvri paj Facebook Adem's lan",
     altTextForTwitterIcon: "louvri paj Twitter Adem's lan",
-    altTextForInstagramIcon: "louvri paj Instagram Adem's lan"
+    altTextForInstagramIcon: "louvri paj Instagram Adem's lan",
+    openSubnav: 'louvri subnav la',
+    downArrow: 'flèch desann',
+    upArrow: 'moute flèch'
   },
   subNav: {
     shop: 'MAGAZEN',

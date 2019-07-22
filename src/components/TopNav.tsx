@@ -110,7 +110,7 @@ class TopNav extends Component<Props, State> {
               <Image
                 className="TopNav__icon pointer"
                 src={hamburger}
-                alt="menu icon"
+                alt={Language.t('topNav.altTextForMenuIcon')}
               />
             </Button>
           </div>
@@ -141,7 +141,7 @@ class TopNav extends Component<Props, State> {
               <img
                 className="TopNav__icon pointer"
                 src={closeIcon}
-                alt="close icon"
+                alt={Language.t('topNav.altTextForCloseIcon')}
               />
             </Button>
           </div>
@@ -201,7 +201,7 @@ class TopNav extends Component<Props, State> {
             <img
               className="mr_5 ml_5 pointer"
               src={facebook}
-              alt="open up Adem's Facebook page"
+              alt={Language.t('topNav.altTextForFacebookIcon')}
             />
           </a>
           <a
@@ -213,7 +213,7 @@ class TopNav extends Component<Props, State> {
             <img
               className="mr_5 ml_5 pointer"
               src={twitter}
-              alt="open up Adem's Twitter page"
+              alt={Language.t('topNav.altTextForTwitterIcon')}
             />
           </a>
           <a
@@ -225,7 +225,7 @@ class TopNav extends Component<Props, State> {
             <img
               className="mr_5 ml_5 pointer"
               src={instagram}
-              alt="open up Adem's Instagram page"
+              alt={Language.t('topNav.altTextForInstagramIcon')}
             />
           </a>
         </div>

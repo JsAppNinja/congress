@@ -31,7 +31,12 @@ export default {
     siteToHaitian: 'chanjman lang sit nan ayisyen',
     openMenu: 'louvri meni an',
     closesTheMenu: 'fèmen meni an',
-    showSignupForm: 'montre fòm enskripsyon an'
+    showSignupForm: 'montre fòm enskripsyon an',
+    altTextForMenuIcon: 'icon meni',
+    altTextForCloseIcon: 'fèmen icon',
+    altTextForFacebookIcon: "louvri paj Facebook Adem's lan",
+    altTextForTwitterIcon: "louvri paj Twitter Adem's lan",
+    altTextForInstagramIcon: "louvri paj Instagram Adem's lan"
   },
   subNav: {
     shop: 'MAGAZEN',

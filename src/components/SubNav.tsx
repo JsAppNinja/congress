@@ -13,6 +13,8 @@ interface Props {
   joinUsUrl: string;
   volunteerUrl: string;
   hostHousePartyUrl: string;
+  hideMobileSubNav: () => void;
+  mobileSubnavIsShown: boolean;
 }
 
 const SubNav: React.FC<Props> = ({
@@ -22,9 +24,17 @@ const SubNav: React.FC<Props> = ({
   radioUrl,
   joinUsUrl,
   volunteerUrl,
-  hostHousePartyUrl
+  hostHousePartyUrl,
+  hideMobileSubNav,
+  mobileSubnavIsShown
 }) => {
   const Language = getLocale() as Polyglot;
+
+  const closeMobileMenu = () => {
+    if (mobileSubnavIsShown) return hideMobileSubNav();
+
+    return null;
+  };
 
   return (
     <ul
@@ -35,7 +45,11 @@ const SubNav: React.FC<Props> = ({
       {sections &&
         sections.map((section: Section) => {
           return (
-            <li className="flex flex-col" key={section.title}>
+            <li
+              className="flex flex-col"
+              key={section.title}
+              onClick={closeMobileMenu}
+            >
               <a
                 className="SubNav__link uppercase text-sm"
                 href={`#${slugify(section.title)}`}
@@ -45,7 +59,11 @@ const SubNav: React.FC<Props> = ({
               <ul>
                 {section.subSections.map((subSection: SubSection) => {
                   return (
-                    <li className="list-style-none" key={subSection.title}>
+                    <li
+                      className="list-style-none"
+                      key={subSection.title}
+                      onClick={closeMobileMenu}
+                    >
                       <a
                         className="SubNav__link pl2 text-sm"
                         href={`#${[section.title, subSection.title]
@@ -61,7 +79,7 @@ const SubNav: React.FC<Props> = ({
             </li>
           );
         })}
-      <li className="flex flex-col">
+      <li className="flex flex-col" onClick={closeMobileMenu}>
         <a
           className="SubNav__link col-12 text-sm"
           href={shopUrl}
@@ -71,7 +89,7 @@ const SubNav: React.FC<Props> = ({
           {Language.t('subNav.shop')}
         </a>
       </li>
-      <li className="flex flex-col">
+      <li className="flex flex-col" onClick={closeMobileMenu}>
         <a
           className="SubNav__link col-12 text-sm"
           href={radioUrl}
@@ -81,9 +99,9 @@ const SubNav: React.FC<Props> = ({
           {Language.t('subNav.radio')}
         </a>
       </li>
-      <li className="flex flex-col">
+      <li className="flex flex-col" onClick={closeMobileMenu}>
         <ul className="flex flex-col">
-          <li className="list-style-none">
+          <li className="list-style-none" onClick={closeMobileMenu}>
             <a
               className="SubNav__link col-12 text-sm"
               href={joinUsUrl}
@@ -93,7 +111,7 @@ const SubNav: React.FC<Props> = ({
               {Language.t('subNav.joinUs')}
             </a>
           </li>
-          <li className="list-style-none">
+          <li className="list-style-none" onClick={closeMobileMenu}>
             <a
               className="SubNav__link pl2 text-sm"
               href={volunteerUrl}
@@ -103,7 +121,7 @@ const SubNav: React.FC<Props> = ({
               {Language.t('subNav.volunteer')}
             </a>
           </li>
-          <li className="list-style-none">
+          <li className="list-style-none" onClick={closeMobileMenu}>
             <a
               className="SubNav__link pl2 text-sm"
               href={hostHousePartyUrl}

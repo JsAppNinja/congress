@@ -10,6 +10,10 @@ import isMobile from 'utils/isMobile';
 import { initializeApplication } from 'state/actions/applicationActions';
 import { showFullHeader, hideFullHeader } from 'state/actions/headerActions';
 import { showMobileMenu, hideMobileMenu } from 'state/actions/menuActions';
+import {
+  showMobileSubNav,
+  hideMobileSubNav
+} from 'state/actions/subnavActions';
 import { setLocale } from 'state/actions/localeActions';
 
 import { RootReducer } from 'types/RootReducer';
@@ -59,6 +63,7 @@ interface StoreProps {
   joinUsUrl: string;
   volunteerUrl: string;
   hostHousePartyUrl: string;
+  mobileSubnavIsShown: boolean;
 }
 
 interface DispatchProps {
@@ -69,6 +74,8 @@ interface DispatchProps {
     showFullHeader: () => void;
     showMobileMenu: () => void;
     hideMobileMenu: () => void;
+    showMobileSubNav: () => void;
+    hideMobileSubNav: () => void;
   };
 }
 
@@ -144,6 +151,15 @@ class App extends Component<Props, State> {
               showSignupAction={actions.showFullHeader}
               fullHeaderIsShown={this.props.fullHeaderIsShown}
               showFullHeaderAction={actions.showFullHeader}
+              shopUrl={this.props.shopUrl}
+              radioUrl={this.props.radioUrl}
+              joinUsUrl={this.props.joinUsUrl}
+              volunteerUrl={this.props.volunteerUrl}
+              hostHousePartyUrl={this.props.hostHousePartyUrl}
+              sections={this.props.sections}
+              showMobileSubNav={actions.showMobileSubNav}
+              hideMobileSubNav={actions.hideMobileSubNav}
+              mobileSubnavIsShown={this.props.mobileSubnavIsShown}
             />
           </div>
           {this.props.mobileMenuIsShown && (
@@ -162,6 +178,16 @@ class App extends Component<Props, State> {
                 showMobileMenu={actions.showMobileMenu}
                 hideMobileMenu={actions.hideMobileMenu}
                 mobileMenuIsShown={this.props.mobileMenuIsShown}
+                shopUrl={this.props.shopUrl}
+                radioUrl={this.props.radioUrl}
+                joinUsUrl={this.props.joinUsUrl}
+                volunteerUrl={this.props.volunteerUrl}
+                hostHousePartyUrl={this.props.hostHousePartyUrl}
+                fullHeaderIsShown={this.props.fullHeaderIsShown}
+                sections={this.props.sections}
+                hideMobileSubNav={actions.hideMobileSubNav}
+                showMobileSubNav={actions.showMobileSubNav}
+                mobileSubnavIsShown={this.props.mobileSubnavIsShown}
               />
             </div>
           )}
@@ -188,6 +214,8 @@ class App extends Component<Props, State> {
                 hostHousePartyUrl={this.props.hostHousePartyUrl}
                 fullHeaderIsShown={this.props.fullHeaderIsShown}
                 sections={this.props.sections}
+                hideMobileSubNav={actions.hideMobileSubNav}
+                mobileSubnavIsShown={this.props.mobileSubnavIsShown}
               />
             )}
             {this.props.sections && (
@@ -265,7 +293,8 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   mobileMenuIsShown: state.menu.mobileMenuIsShown,
   joinUsUrl: state.content.global.joinUsUrl,
   volunteerUrl: state.content.global.volunteerUrl,
-  hostHousePartyUrl: state.content.global.hostHousePartyUrl
+  hostHousePartyUrl: state.content.global.hostHousePartyUrl,
+  mobileSubnavIsShown: state.subnav.mobileSubnavIsShown
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
@@ -276,7 +305,9 @@ const mapDispatchToProps = (dispatch: Dispatch): DispatchProps => ({
       showFullHeader,
       hideFullHeader,
       showMobileMenu,
-      hideMobileMenu
+      hideMobileMenu,
+      showMobileSubNav,
+      hideMobileSubNav
     },
     dispatch
   )

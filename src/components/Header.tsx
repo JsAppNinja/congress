@@ -5,6 +5,7 @@ import Signup from 'components/Signup';
 import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
 import { Locale } from 'types/Locale';
+import { Section } from 'types/Section';
 import isMobile from 'utils/isMobile';
 import { freezeScroll } from 'utils/manageScrollingElement';
 
@@ -24,6 +25,15 @@ interface Props {
   showSignupAction(): void;
   showMobileMenu(): void;
   hideMobileMenu(): void;
+  shopUrl: string;
+  radioUrl: string;
+  joinUsUrl: string;
+  volunteerUrl: string;
+  hostHousePartyUrl: string;
+  sections: Section[] | null;
+  showMobileSubNav: () => void;
+  hideMobileSubNav: () => void;
+  mobileSubnavIsShown: boolean;
 }
 
 interface State {
@@ -83,6 +93,16 @@ class Header extends Component<Props, State> {
           showMobileMenu={this.props.showMobileMenu}
           hideMobileMenu={this.props.hideMobileMenu}
           mobileMenuIsShown={this.props.mobileMenuIsShown}
+          shopUrl={this.props.shopUrl}
+          radioUrl={this.props.radioUrl}
+          joinUsUrl={this.props.joinUsUrl}
+          volunteerUrl={this.props.volunteerUrl}
+          hostHousePartyUrl={this.props.hostHousePartyUrl}
+          fullHeaderIsShown={this.props.fullHeaderIsShown}
+          sections={this.props.sections}
+          showMobileSubNav={this.props.showMobileSubNav}
+          hideMobileSubNav={this.props.hideMobileSubNav}
+          mobileSubnavIsShown={this.props.mobileSubnavIsShown}
         />
       </div>
     );

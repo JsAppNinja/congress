@@ -7,10 +7,13 @@ import twitter from 'assets/twitter.svg';
 import instagram from 'assets/instagram.svg';
 import hamburger from 'assets/hamburger.svg';
 import closeIcon from 'assets/close.svg';
+import carrot from 'assets/carrot.svg';
 import { Image, Button } from 'components/base';
 import { Locale } from 'types/Locale';
+import { Section } from 'types/Section';
 import { getLocale, Polyglot } from 'constants/Locales';
 import { freezeScroll, unfreezeScroll } from 'utils/manageScrollingElement';
+import SubNav from 'components/SubNav';
 
 interface Props {
   donateUrl: string;
@@ -22,6 +25,16 @@ interface Props {
   showMobileMenu(): void;
   hideMobileMenu(): void;
   mobileMenuIsShown: boolean;
+  shopUrl: string;
+  radioUrl: string;
+  joinUsUrl: string;
+  volunteerUrl: string;
+  hostHousePartyUrl: string;
+  fullHeaderIsShown: boolean;
+  sections: Section[] | null;
+  showMobileSubNav: () => void;
+  hideMobileSubNav: () => void;
+  mobileSubnavIsShown: boolean;
 }
 
 interface State {
@@ -71,49 +84,101 @@ class TopNav extends Component<Props, State> {
       showFullHeader,
       showMobileMenu,
       hideMobileMenu,
-      mobileMenuIsShown
+      mobileMenuIsShown,
+      shopUrl,
+      radioUrl,
+      joinUsUrl,
+      volunteerUrl,
+      hostHousePartyUrl,
+      fullHeaderIsShown,
+      sections,
+      hideMobileSubNav,
+      showMobileSubNav,
+      mobileSubnavIsShown
     } = this.props;
     const Language = getLocale() as Polyglot;
 
     if (!mobileMenuIsShown && this.state.deviceIsMobile) {
       return (
-        <div className="TopNav flex TopNav__mobile-bar bg-color-white">
-          <div className="flex justify-start items-center col-12 ml1 pt1 pb1">
-            <Button
-              className={cx('TopNav__language-button m0 p0 pointer', {
-                'TopNav__language-button--selected':
-                  Language.locale() === 'en-US'
-              })}
-              ariaLabel={Language.t('topNav.siteToEnglish')}
-              onClick={() => setLocale('en-US')}
-            >
-              <span className="text-sm franklin-gothic flex justify-center items-center circle p_25">
-                EN
-              </span>
-            </Button>
-            <span className="m_25">/</span>
-            <Button
-              className={cx('TopNav__language-button m0 p0 pointer', {
-                'TopNav__language-button--selected': Language.locale() === 'fr'
-              })}
-              ariaLabel={Language.t('topNav.siteToHaitian')}
-              onClick={() => setLocale('fr')}
-            >
-              <span className="text-sm franklin-gothic">HAI</span>
-            </Button>
+        <div className="flex flex-col col-12">
+          <div className="TopNav__mobile-bar flex col-12 bg-color-white">
+            <div className="TopNav__mobile-dropdown-container flex flex-row col-10">
+              <div className="flex justify-start items-center col-12 pl1 pt1 pb1 h100">
+                <Button
+                  className={cx('TopNav__language-button m0 p0 pointer', {
+                    'TopNav__language-button--selected':
+                      Language.locale() === 'en-US'
+                  })}
+                  ariaLabel={Language.t('topNav.siteToEnglish')}
+                  onClick={() => setLocale('en-US')}
+                >
+                  <span className="text-sm franklin-gothic flex justify-center items-center circle p_25">
+                    EN
+                  </span>
+                </Button>
+                <span className="m_25">/</span>
+                <Button
+                  className={cx('TopNav__language-button m0 p0 pointer', {
+                    'TopNav__language-button--selected':
+                      Language.locale() === 'fr'
+                  })}
+                  ariaLabel={Language.t('topNav.siteToHaitian')}
+                  onClick={() => setLocale('fr')}
+                >
+                  <span className="text-sm franklin-gothic">HAI</span>
+                </Button>
+              </div>
+
+              <div
+                className={cx('flex justify-center items-center mr_5', {
+                  'TopNav__icon-for-subnav--is-active': mobileSubnavIsShown
+                })}
+              >
+                <Button
+                  onClick={
+                    mobileSubnavIsShown ? hideMobileSubNav : showMobileSubNav
+                  }
+                  ariaLabel={Language.t('topNav.openMenu')}
+                >
+                  <Image
+                    className="TopNav__icon pointer"
+                    src={carrot}
+                    alt={Language.t('topNav.altTextForMenuIcon')}
+                  />
+                </Button>
+              </div>
+            </div>
+
+            <div className="TopNav__hamburger-container flex justify-center items-center pl1 pr1 pointer h100 col-2">
+              <div>
+                <Button
+                  onClick={showMobileMenu}
+                  ariaLabel={Language.t('topNav.openMenu')}
+                >
+                  <Image
+                    className="TopNav__icon pointer"
+                    src={hamburger}
+                    alt={Language.t('topNav.altTextForMenuIcon')}
+                  />
+                </Button>
+              </div>
+            </div>
           </div>
-          <div className="TopNav__hamburger-container flex justify-center items-center pl1 pr1 pointer h100">
-            <Button
-              onClick={showMobileMenu}
-              ariaLabel={Language.t('topNav.openMenu')}
-            >
-              <Image
-                className="TopNav__icon pointer"
-                src={hamburger}
-                alt={Language.t('topNav.altTextForMenuIcon')}
+          {mobileSubnavIsShown && (
+            <div className="TopNav__menu-subnav fixed flex justify-start col-10 mt3 bg-color-white">
+              <SubNav
+                shopUrl={shopUrl}
+                radioUrl={radioUrl}
+                joinUsUrl={joinUsUrl}
+                volunteerUrl={volunteerUrl}
+                hostHousePartyUrl={hostHousePartyUrl}
+                fullHeaderIsShown={fullHeaderIsShown}
+                sections={sections}
+                hideMobileSubNav={hideMobileSubNav}
+                mobileSubnavIsShown={mobileSubnavIsShown}
               />
-            </Button>
-          </div>
+            </div>
+          )}
         </div>
       );
     }

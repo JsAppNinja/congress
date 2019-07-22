@@ -6,8 +6,23 @@ $topnav-height: 3rem;
   border-top: 2px solid color('black');
   border-bottom: 2px solid color('black');
 
+  &__icon-for-subnav--is-active {
+    transform: rotate(180deg);
+  }
+
   &__mobile-bar {
     height: $topnav-height;
+    border-top: 2px solid color('black');
+    border-bottom: 2px solid color('black');
+  }
+
+  &__mobile-dropdown-container {
+    border-right: 2px solid color('black');
+  }
+
+  &__menu-subnav {
+    border-right: 2px solid color('black');
+    border-bottom: 2px solid color('black');
   }
 
   @include media('md') {
@@ -82,10 +97,6 @@ $topnav-height: 3rem;
   &__icon {
     width: 1.6rem;
     height: 1.6rem;
-  }
-
-  &__hamburger-container {
-    border-left: 2px solid color('black');
   }
 
   &__mobile-container {

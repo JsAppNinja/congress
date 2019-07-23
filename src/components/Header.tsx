@@ -16,6 +16,7 @@ interface Props {
   hideSignup: () => void;
   backgroundColor: 'green' | 'yellow';
   showSignupCloseIcon: boolean;
+  donorCTA: string;
   donateUrl: string;
   facebookUrl: string;
   twitterUrl: string;
@@ -82,7 +83,7 @@ class Header extends Component<Props, State> {
           backgroundColor={this.props.backgroundColor}
           showCloseIcon={this.props.showSignupCloseIcon}
         />
-        <DonorCTA url={this.props.donateUrl} />
+        <DonorCTA donorCTA={this.props.donorCTA} url={this.props.donateUrl} />
         <TopNav
           donateUrl={this.props.donateUrl}
           facebookUrl={this.props.facebookUrl}

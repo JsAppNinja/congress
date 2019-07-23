@@ -4,7 +4,7 @@ export default {
   },
   signupForm: {
     signup: 'Enskri pou lis imel nou an',
-    joinOurFight: 'Join batay nou yo',
+    joinOurTeam: 'Antre nan ekip nou an',
     firstName: 'Premye Non',
     lastName: 'Siyati',
     email: 'Imèl',
@@ -19,10 +19,6 @@ export default {
     thankYou: 'Mèsi!',
     emailIsAlreadySubscribed: 'Ou deja enskri',
     defaultError: 'Padon, tanpri eseye ankò'
-  },
-  donorCTA: {
-    copy:
-      'Adem refize aksepte don nan lobiist, PAC antrepriz, ak gwo devlopè byen imobilye. Vin yon donatè jodi a'
   },
   topNav: {
     signUp: 'ENSKRI',
@@ -54,14 +50,14 @@ export default {
     designToolkit: 'Konsepsyon wat zouti',
     social: 'Sosyal',
     aboutTheSite: 'Sou sit la',
-    joinOurFight: 'Join batay nou yo',
+    joinOurTeam: 'Antre nan ekip nou an',
     donate: 'Fè don',
     downloadAssets: 'Telechaje Byen',
     facebook: 'facebook',
     instagram: 'instagram',
     medium: 'mwayen',
     twitter: 'twitter',
-    paidForBy: 'Peye pou zanmi nan Adem 2010',
+    paidForBy: 'Peye pou zanmi nan Adem 2020',
     ademForCongress: 'Adem pou kongrè'
   }
 };

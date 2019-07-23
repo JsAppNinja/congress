@@ -55,7 +55,7 @@ const Footer: React.FC<Props> = ({
         <div className="flex flex-col pt1 pb1 pl_5 pr_5 md:p1">
           <div className="flex flex-col">
             <p className="w100 franklin-gothic color-white text-xsm md:text-sm uppercase">
-              {Language.t('footer.joinOurFight')}
+              {Language.t('footer.joinOurTeam')}
             </p>
             <a
               className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"

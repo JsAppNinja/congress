@@ -51,6 +51,7 @@ export const fetchGlobalContent = () => {
           street: get(fields, 'contactAddressStreet', ''),
           zipCode: get(fields, 'contactAddressZipcode', '')
         },
+        donorCTA: get(fields, 'donorCta', ''),
         designKitURL: get(fields, 'urlForDesignKit', ''),
         contactEmailAddress: get(fields, 'contactEmailAddress', ''),
         pressEmailAddress: get(fields, 'pressEmailAddress', ''),

@@ -4,7 +4,7 @@ export default {
   },
   signupForm: {
     signup: 'Sign Up For Our Email List',
-    joinOurFight: 'Join our fight',
+    joinOurTeam: 'Join our team',
     firstName: 'First Name',
     lastName: 'Last Name',
     email: 'Email',
@@ -19,10 +19,6 @@ export default {
     thankYou: 'Thank You!',
     emailIsAlreadySubscribed: 'You are already subscribed',
     defaultError: 'Sorry, please try again'
-  },
-  donorCTA: {
-    copy:
-      'Adem refuses to accept donations from lobbyists, corporate PACs, and big real estate developers. Become a donor today'
   },
   topNav: {
     signUp: 'SIGN UP',
@@ -55,14 +51,14 @@ export default {
     designToolkit: 'Design Toolkit',
     social: 'Social',
     aboutTheSite: 'About the site',
-    joinOurFight: 'Join our fight',
+    joinOurTeam: 'Join our team',
     donate: 'Donate',
     downloadAssets: 'Download Assets',
     facebook: 'facebook',
     instagram: 'instagram',
     medium: 'medium',
     twitter: 'twitter',
-    paidForBy: 'Paid for by friends of Adem 2010',
+    paidForBy: 'Paid for by friends of Adem 2020',
     ademForCongress: 'Adem For Congress'
   }
 };

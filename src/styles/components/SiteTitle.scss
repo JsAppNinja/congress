@@ -2,7 +2,7 @@ $mobile-site-title-top: 5rem;
 $mobile-site-title-height: 36vw;
 $desktop-site-title-height: 8.43vw;
 $desktop-site-title-top-without-full-header: 5rem;
-$desktop-site-title-top-with-full-header: 32rem;
+$desktop-site-title-top-with-full-header: 33rem;
 
 .SiteTitle {
   width: 90vw;
@@ -10,7 +10,7 @@ $desktop-site-title-top-with-full-header: 32rem;
   z-index: -1;
 
   @include media('md') {
-    margin-top: 5rem;
+    margin-top: 4rem;
     z-index: 3;
     position: sticky;
     width: 80vw;

@@ -40,6 +40,7 @@ import 'styles/App.scss';
 interface StoreProps {
   initializeApplicationStatus: Status;
   fullHeaderIsShown: boolean;
+  donorCTA: string;
   donateUrl: string;
   facebookUrl: string;
   twitterUrl: string;
@@ -143,6 +144,7 @@ class App extends Component<Props, State> {
               signupHeader={Language.t('signupForm.signup')}
               backgroundColor="green"
               showSignupCloseIcon={true}
+              donorCTA={this.props.donorCTA}
               donateUrl={this.props.donateUrl}
               facebookUrl={this.props.facebookUrl}
               twitterUrl={this.props.twitterUrl}
@@ -245,7 +247,7 @@ class App extends Component<Props, State> {
           />
           <Signup
             hideSignup={this.props.actions.hideFullHeader}
-            header={Language.t('signupForm.joinOurFight')}
+            header={Language.t('signupForm.joinOurTeam')}
             backgroundColor="yellow"
             showCloseIcon={false}
           />
@@ -272,6 +274,7 @@ const mapStateToProps = (state: RootReducer): StoreProps => ({
   initializeApplicationStatus: state.status.initializeApplication,
   fullHeaderIsShown: state.header.fullHeaderIsShown,
   currentLocale: state.locale.currentLocale,
+  donorCTA: state.content.global.donorCTA,
   donateUrl: state.content.global.donateUrl,
   facebookUrl: state.content.global.facebookUrl,
   twitterUrl: state.content.global.twitterUrl,

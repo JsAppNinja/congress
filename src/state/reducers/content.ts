@@ -18,6 +18,7 @@ const initialState: ContentReducer = {
     mainParagraph: '',
     mainPhoto: null,
     mainSlogan: null,
+    donorCTA: '',
     donateUrl: '',
     facebookUrl: '',
     instagramUrl: '',

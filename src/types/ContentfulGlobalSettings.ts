@@ -14,6 +14,7 @@ export type ContentfulGlobalSettings = {
   mainParagraph: string;
   mainPhoto: ContentfulPhoto | null;
   mainSlogan: string[] | null;
+  donorCTA: string;
   donateUrl: string;
   facebookUrl: string;
   instagramUrl: string;

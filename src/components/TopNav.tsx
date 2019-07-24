@@ -169,7 +169,7 @@ class TopNav extends Component<Props, State> {
             </div>
           </div>
           {mobileSubnavIsShown && (
-            <div className="TopNav__menu-subnav fixed flex justify-start col-10 mt3 bg-color-white">
+            <div className="TopNav__menu-subnav fixed flex justify-start col-10 mt3 bg-color-white overflow-y-scroll">
               <SubNav
                 shopUrl={shopUrl}
                 radioUrl={radioUrl}

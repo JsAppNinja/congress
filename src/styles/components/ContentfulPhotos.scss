@@ -3,5 +3,9 @@
     min-height: 12rem;
     max-height: 37rem;
     height: 50vh;
+
+    &:hover {
+      cursor: e-resize;
+    }
   }
 }

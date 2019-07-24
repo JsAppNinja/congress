@@ -31,15 +31,15 @@
 }
 
 .franklin-gothic {
-  font-family: 'ITC Franklin Gothic Std';
+  font-family: 'ITC Franklin Gothic Std', 'Arial', 'Sans-Serif';
 }
 
 .drunkcond-super {
-  font-family: 'DrukCond-Super';
+  font-family: 'DrukCond-Super', 'Arial', 'Sans-Serif';
 }
 
 .itc-franklin-gothic-demi-compressed {
-  font-family: 'ITC Franklin Gothic Demi Compressed';
+  font-family: 'ITC Franklin Gothic Demi Compressed', 'Arial', 'Sans-Serif';
 }
 
 .text-h1 {
@@ -94,6 +94,7 @@
 .text-sm {
   font-size: 1.25rem;
   line-height: 1.53rem;
+
   @include media('md') {
     font-size: 1.3rem;
     line-height: 1.6125rem;

@@ -168,16 +168,26 @@ class Signup extends Component<Props, State> {
 
     if (status === statusSuccess) {
       return (
-        <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3">
-          {Language.t('signupForm.thankYou')}
-        </p>
+        <div className="mt2 md:mt0">
+          <p className="flex drunkcond-super text-h1 uppercase col-12">
+            {Language.t('global.AdemForCongress')}
+          </p>
+          <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3 pt1">
+            {Language.t('signupForm.thankYou')}
+          </p>
+        </div>
       );
     }
 
     return (
-      <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3">
-        {this.props.header}
-      </p>
+      <div className="mt2 md:mt0">
+        <p className="flex drunkcond-super text-h1 uppercase col-12">
+          {Language.t('global.AdemForCongress')}
+        </p>
+        <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3 pt1">
+          {this.props.header}
+        </p>
+      </div>
     );
   };
 
@@ -284,7 +294,7 @@ class Signup extends Component<Props, State> {
                     </p>
                   </div>
                 </div>
-                <div className="col-12 md:col-4 md:pr2">
+                <div className="col-12 md:col-4">
                   <input
                     onBlur={() => this.isValid('email')}
                     onChange={e => this.onChangeEmail(e.target.value)}
@@ -349,7 +359,7 @@ class Signup extends Component<Props, State> {
                   </div>
                 </div>
                 <div
-                  className={cx('relative col-12 md:col-4 md:pr2 mt1', {
+                  className={cx('relative col-12 md:col-4 mt1', {
                     'md:mt2': status !== statusError,
                     'md:mt0': status === statusError
                   })}

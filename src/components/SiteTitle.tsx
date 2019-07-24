@@ -39,6 +39,7 @@ class SiteTitle extends Component<Props, State> {
     return (
       <div
         className={cx('SiteTitle pl1 transition-slide-right-in', {
+          hidden: this.props.fullHeaderIsShown,
           'SiteTitle__full-header-is-shown': this.props.fullHeaderIsShown,
           'SiteTitle__is-mobile relative': this.state.deviceIsMobile
         })}

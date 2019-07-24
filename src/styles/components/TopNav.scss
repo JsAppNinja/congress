@@ -23,6 +23,7 @@ $topnav-height: 3rem;
   &__menu-subnav {
     border-right: 2px solid color('black');
     border-bottom: 2px solid color('black');
+    max-height: 100vh;
   }
 
   @include media('md') {

@@ -60,3 +60,26 @@ $transition-easing: cubic-bezier(0.25, 0.02, 0.2, 1);
   animation-name: slide-up-in;
   animation-timing-function: $transition-easing;
 }
+
+@keyframes slide-up-out {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-5rem);
+  }
+}
+
+.transition-slide-up-out {
+  animation-duration: $transition-duration-page-long;
+  animation-fill-mode: forwards;
+  animation-name: slide-up-out;
+  animation-timing-function: $transition-easing;
+}

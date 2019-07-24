@@ -12,7 +12,7 @@ interface Props {
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text: string) => {
-      return `<strong class="ContentfulRichText franklin-gothic text-md bold pt1 md:mr3 md:pr3">${text}</strong>`;
+      return `<strong class="franklin-gothic text-md bold pt1 md:mr3 md:pr3">${text}</strong>`;
     }
   },
   renderNode: {
@@ -22,25 +22,25 @@ const options = {
       }>${next(node.content)}</a>`;
     },
     [BLOCKS.EMBEDDED_ASSET]: (node: NodeData) => {
-      return `<Image class="ContentfulRichText pt1 w100" alt="${node.data.target.fields.title}" src=${node.data.target.fields.file.url} />`;
+      return `<Image class="pt1 w100" alt="${node.data.target.fields.title}" src=${node.data.target.fields.file.url} />`;
     },
     [BLOCKS.HEADING_1]: (node: NodeData, next: Next) => {
-      return `<h3 class="ContentfulRichText franklin-gothic text-xxl bold pt1 md:mr3 md:pr3">${next(
+      return `<h3 class="franklin-gothic text-xxl bold pt1 md:mr3 md:pr3">${next(
         node.content
       )}</h3>`;
     },
     [BLOCKS.PARAGRAPH]: (node: NodeData, next: Next) => {
-      return `<p class="ContentfulRichText franklin-gothic text-md pt1 md:mr3 md:pr3">${next(
+      return `<p class="franklin-gothic text-md pt1 md:mr3 md:pr3">${next(
         node.content
       )}</p>`;
     },
     [BLOCKS.UL_LIST]: (node: NodeData, next: Next) => {
-      return `<ul class="ContentfulRichText franklin-gothic text-md pt1 pl1">${next(
+      return `<ul class="franklin-gothic text-md pt1 pl1">${next(
         node.content
       )}</ul>`;
     },
     [BLOCKS.LIST_ITEM]: (node: NodeData, next: Next) => {
-      return `<li class="ContentfulRichText franklin-gothic text-md pl1">${next(
+      return `<li class="franklin-gothic text-md pl1">${next(
         node.content
       )}</li>`;
     }
@@ -50,7 +50,7 @@ const options = {
 const ContentfulRichText: React.FC<Props> = ({ description }) => {
   return (
     <div
-      className="pr1 pl1 md:pl0"
+      className="ContentfulRichText pr1 pl1 md:pl0"
       dangerouslySetInnerHTML={{
         __html: documentToHtmlString(description, options)
       }}

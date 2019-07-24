@@ -42,8 +42,8 @@ const Footer: React.FC<Props> = ({
   const Language = getLocale() as Polyglot;
 
   return (
-    <div className="Footer relative bg-color-black pt3">
-      <div className="Footer__background-text absolute col-12 b0 l0 p1 mb3">
+    <div className="Footer relative bg-color-black md:pt3">
+      <div className="Footer__background-text absolute col-12 b0 l0 px1 pt2 mb3">
         <Image
           className="w100 h100"
           alt={Language.t('footer.ademForCongress')}
@@ -54,11 +54,11 @@ const Footer: React.FC<Props> = ({
       <div className="FooterContent pt1 pb1 pl_5 pr_5 md:p1">
         <div className="flex flex-col pt1 pb1 pl_5 pr_5 md:p1">
           <div className="flex flex-col">
-            <p className="w100 franklin-gothic color-white text-xsm md:text-sm uppercase">
+            <p className="w100 franklin-gothic color-white text-sm md:text-sm uppercase">
               {Language.t('footer.joinOurTeam')}
             </p>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               target="_blank"
               rel="noopener noreferrer"
               href={donateUrl}
@@ -73,7 +73,7 @@ const Footer: React.FC<Props> = ({
                 return (
                   <a
                     key={section.title}
-                    className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+                    className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
                     href={`#${slugify(section.title)}`}
                   >
                     {section.title}
@@ -81,7 +81,7 @@ const Footer: React.FC<Props> = ({
                 );
               })}
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={shopUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -89,7 +89,7 @@ const Footer: React.FC<Props> = ({
               {Language.t('subNav.shop')}
             </a>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={radioUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -141,7 +141,7 @@ const Footer: React.FC<Props> = ({
               {Language.t('footer.designToolkit')}
             </p>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={designKitURL}
             >
               {Language.t('footer.downloadAssets')}
@@ -153,7 +153,7 @@ const Footer: React.FC<Props> = ({
               {Language.t('footer.social')}
             </p>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={facebookUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -161,7 +161,7 @@ const Footer: React.FC<Props> = ({
               {Language.t('footer.facebook')}
             </a>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={twitterUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -169,7 +169,7 @@ const Footer: React.FC<Props> = ({
               {Language.t('footer.twitter')}
             </a>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={mediumUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -177,7 +177,7 @@ const Footer: React.FC<Props> = ({
               {Language.t('footer.medium')}
             </a>
             <a
-              className="franklin-gothic color-white text-xsm md:text-sm uppercase mt_5"
+              className="franklin-gothic color-white text-sm md:text-sm uppercase mt_5"
               href={instagramUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -197,7 +197,7 @@ const Footer: React.FC<Props> = ({
         </div>
 
         <div className="FooterContent__paid-for-by flex">
-          <p className="franklin-gothic color-white text-xsm md:text-sm uppercase bold pt1 pb1 pl_25 pr_25 md:p1 m_5 md:m1">
+          <p className="itc-franklin-gothic-demi-compressed color-white text-sm md:text-sm uppercase bold pt1 pb1 pl_25 pr_25 md:p1 m_5 md:m1">
             {Language.t('footer.paidForBy')}
           </p>
         </div>

@@ -12,7 +12,7 @@ interface Props {
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text: string) => {
-      return `<strong class="franklin-gothic text-md bold pt1 md:mr3 md:pr3">${text}</strong>`;
+      return `<strong class="franklin-gothic text-sm md:text-md bold pt1 md:mr3 md:pr3">${text}</strong>`;
     }
   },
   renderNode: {
@@ -30,17 +30,17 @@ const options = {
       )}</h3>`;
     },
     [BLOCKS.PARAGRAPH]: (node: NodeData, next: Next) => {
-      return `<p class="franklin-gothic text-md pt1 md:mr3 md:pr3">${next(
+      return `<p class="franklin-gothic text-sm md:text-md pt1 md:mr3 md:pr3">${next(
         node.content
       )}</p>`;
     },
     [BLOCKS.UL_LIST]: (node: NodeData, next: Next) => {
-      return `<ul class="franklin-gothic text-md pt1 pl1">${next(
+      return `<ul class="franklin-gothic text-sm md:text-md pt1 pl2">${next(
         node.content
       )}</ul>`;
     },
     [BLOCKS.LIST_ITEM]: (node: NodeData, next: Next) => {
-      return `<li class="franklin-gothic text-md pl1">${next(
+      return `<li class="franklin-gothic text-sm md:text-md pl1">${next(
         node.content
       )}</li>`;
     }

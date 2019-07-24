@@ -72,7 +72,7 @@ $mobile-overlap: calc(#{$footer-bg-text-height} / 3 * 1.2);
   &__paid-for-by {
     grid-row: 4;
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 3;
 
     @include media('md') {
       grid-column-end: 3;

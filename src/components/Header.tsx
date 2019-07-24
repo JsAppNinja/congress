@@ -83,7 +83,11 @@ class Header extends Component<Props, State> {
           backgroundColor={this.props.backgroundColor}
           showCloseIcon={this.props.showSignupCloseIcon}
         />
-        <DonorCTA donorCTA={this.props.donorCTA} url={this.props.donateUrl} />
+        <DonorCTA
+          fullHeaderIsShown={this.props.fullHeaderIsShown}
+          donorCTA={this.props.donorCTA}
+          url={this.props.donateUrl}
+        />
         <TopNav
           donateUrl={this.props.donateUrl}
           facebookUrl={this.props.facebookUrl}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BLOCKS, MARKS, NodeData } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS, INLINES, NodeData } from '@contentful/rich-text-types';
 import {
   documentToHtmlString,
   Next
@@ -16,6 +16,12 @@ const options = {
     }
   },
   renderNode: {
+    [INLINES.HYPERLINK]: (node: NodeData, next: Next) => {
+      console.log(node.data.uri);
+      return `<a target="_blank" rel="noopener noreferrer" href=${
+        node.data.uri
+      }>${next(node.content)}</a>`;
+    },
     [BLOCKS.EMBEDDED_ASSET]: (node: NodeData) => {
       return `<Image class="ContentfulRichText pt1 w100" alt="${node.data.target.fields.title}" src=${node.data.target.fields.file.url} />`;
     },

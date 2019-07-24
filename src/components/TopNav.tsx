@@ -218,7 +218,8 @@ class TopNav extends Component<Props, State> {
         <div className="TopNav__nav-item flex justify-center items-center h100 col-12 md:col-4">
           <Button
             className={cx('TopNav__language-button m0 p0 mr_25 pointer', {
-              'TopNav__language-button--selected': Language.locale() === 'en-US'
+              'TopNav__language-button--selected':
+                Language.locale() === 'en-US' && !this.state.deviceIsMobile
             })}
             ariaLabel={Language.t('topNav.siteToEnglish')}
             onClick={() => setLocale('en-US')}
@@ -230,7 +231,8 @@ class TopNav extends Component<Props, State> {
           <span className="text-md franklin-gothic mr_25">/</span>
           <Button
             className={cx('TopNav__language-button m0 p0 mr_25 pointer', {
-              'TopNav__language-button--selected': Language.locale() === 'fr'
+              'TopNav__language-button--selected':
+                Language.locale() === 'fr' && !this.state.deviceIsMobile
             })}
             ariaLabel={Language.t('topNav.siteToHaitian')}
             onClick={() => setLocale('fr')}
@@ -241,7 +243,7 @@ class TopNav extends Component<Props, State> {
 
         <div className="TopNav__nav-item-action flex justify-center items-center h100 col-12 md:col-4">
           <Button
-            className="flex flex-1 justify-center pointer text-md franklin-gothic TopNav__nav-item-text"
+            className="text-md franklin-gothicflex flex-1 justify-center items-center pointer h100 TopNav__nav-item-text"
             onClick={() => {
               hideMobileMenu();
               showFullHeader();

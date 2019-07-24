@@ -1,9 +1,9 @@
-$hero-padding-top: 6rem;
+$hero-padding-top: $topnav-height + 1rem;
 
 .Hero {
   padding-top: calc(#{$mobile-site-title-height});
 
   @include media('md') {
-    padding-top: $hero-padding-top;
+    padding-top: calc(#{$hero-padding-top} + #{$desktop-donor-cta-height});
   }
 }

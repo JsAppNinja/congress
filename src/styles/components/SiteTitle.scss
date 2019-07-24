@@ -1,8 +1,8 @@
-$mobile-site-title-top: 5rem;
+$mobile-site-title-top: 4rem;
 $mobile-site-title-height: 36vw;
 $desktop-site-title-height: 8.43vw;
-$desktop-site-title-top-without-full-header: 5rem;
-$desktop-site-title-top-with-full-header: 33rem;
+$desktop-site-title-top-without-full-header: 4rem;
+$desktop-site-title-top-with-full-header: 33.8rem;
 
 .SiteTitle {
   width: 90vw;
@@ -10,11 +10,12 @@ $desktop-site-title-top-with-full-header: 33rem;
   z-index: -1;
 
   @include media('md') {
-    margin-top: 4rem;
-    z-index: 3;
+    z-index: 2;
     position: sticky;
     width: 80vw;
-    top: $desktop-site-title-top-without-full-header;
+    top: calc(
+      #{$desktop-site-title-top-without-full-header + $desktop-donor-cta-height}
+    );
   }
 
   &__full-header-is-shown {

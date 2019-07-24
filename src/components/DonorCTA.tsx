@@ -1,15 +1,25 @@
 import React from 'react';
+import cx from 'classnames';
+
 import arrow from 'assets/arrow.svg';
 import { Image } from 'components/base';
+import isMobile from 'utils/isMobile';
 
 interface Props {
   url: string;
   donorCTA: string;
+  fullHeaderIsShown: boolean;
 }
 
-const DonorCTA: React.FC<Props> = ({ url, donorCTA }) => {
+const DonorCTA: React.FC<Props> = ({ url, donorCTA, fullHeaderIsShown }) => {
   return (
-    <div className="DonorCTA bg-color-yellow flex w100 p1">
+    <div
+      className={cx('DonorCTA flex justify-center items-center flex w100 p1', {
+        'bg-color-yellow': fullHeaderIsShown,
+        'bg-color-green': !fullHeaderIsShown,
+        'transition-slide-up-in': !isMobile()
+      })}
+    >
       <a
         className="DonorCTA__copy franklin-gothic text-md pr3 md:pr0"
         href={url}

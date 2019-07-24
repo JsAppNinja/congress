@@ -1,6 +1,6 @@
 export default {
   global: {
-    AdemForCongress: 'Adem Bunkedekko for congress'
+    AdemForCongress: 'Adem Bunkeddeko for congress'
   },
   signupForm: {
     signup: 'Sign Up For Our Email List',

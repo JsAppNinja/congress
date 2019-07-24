@@ -7,8 +7,8 @@
 
 @font-face {
   font-family: 'ITC Franklin Gothic Std';
-  src: url('/assets/fonts/39B6F2_0_0.eot');
-  src: url('/assets/fonts/39B6F2_0_0.eot?#iefix') format('embedded-opentype'),
+  src: url('../assets/fonts/39B6F2_0_0.eot');
+  src: url('../assets/fonts/39B6F2_0_0.eot?#iefix') format('embedded-opentype'),
     url('../assets/fonts/39B6F2_0_0.woff'),
     url('../assets/fonts/39B6F2_0_0.woff2') format('woff'),
     url('../assets/fonts/39B6F2_0_0.ttf') format('truetype');
@@ -16,12 +16,18 @@
 
 @font-face {
   font-family: 'ITC Franklin Gothic Std';
-  src: url('/assets/fonts/39B6F2_1_0.eot');
-  src: url('/assets/fonts/39B6F2_1_0.eot?#iefix') format('embedded-opentype'),
+  src: url('../assets/fonts/39B6F2_1_0.eot');
+  src: url('../assets/fonts/39B6F2_1_0.eot?#iefix') format('embedded-opentype'),
     url('../assets/fonts/39B6F2_1_0.woff'),
     url('../assets/fonts/39B6F2_1_0.woff2') format('woff'),
     url('../assets/fonts/39B6F2_1_0.ttf') format('truetype');
   font-style: italic;
+}
+
+@font-face {
+  font-family: 'ITC Franklin Gothic Demi Compressed';
+  src: url('../assets/fonts/ITC - ITCFranklinGothicStd-DmCp.otf')
+    format('truetype');
 }
 
 .franklin-gothic {
@@ -30,6 +36,10 @@
 
 .drunkcond-super {
   font-family: 'DrukCond-Super';
+}
+
+.itc-franklin-gothic-demi-compressed {
+  font-family: 'ITC Franklin Gothic Demi Compressed';
 }
 
 .text-h1 {
@@ -79,12 +89,11 @@
 
 .text-md {
   font-size: 1.5rem;
-  line-height: 1.8125rem;
 }
 
 .text-sm {
-  font-size: 1.1rem;
-  line-height: 1.4125rem;
+  font-size: 1.25rem;
+  line-height: 1.53rem;
   @include media('md') {
     font-size: 1.3rem;
     line-height: 1.6125rem;

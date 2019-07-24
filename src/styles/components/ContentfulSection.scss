@@ -1,0 +1,7 @@
+.ContentfulSection {
+  &:not(:last-of-type) {
+    @include media('md') {
+      padding-bottom: 10rem;
+    }
+  }
+}

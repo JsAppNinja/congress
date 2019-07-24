@@ -1,8 +1,16 @@
-$header-transition: 1s;
+$header-transition: 0.6s;
 
 .Header {
   transform: translate3d(0, calc((100% - #{$topnav-height}) * -1), 0);
   transition: transform $header-transition ease-in-out;
+
+  @include media('md') {
+    transform: translate3d(
+      0,
+      calc((100% - #{$topnav-height + $desktop-donor-cta-height}) * -1),
+      0
+    );
+  }
 
   &__signup-active {
     transform: translate3d(0, 0, 0);

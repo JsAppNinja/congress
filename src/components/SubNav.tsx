@@ -38,7 +38,7 @@ const SubNav: React.FC<Props> = ({
 
   return (
     <ul
-      className={cx('SubNav p2 pl1 inline-block franklin-gothic', {
+      className={cx('SubNav py2 pl1 pr2 inline-block franklin-gothic', {
         'SubNav__full-header-is-shown': fullHeaderIsShown
       })}
     >

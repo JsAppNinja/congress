@@ -168,13 +168,17 @@ class Signup extends Component<Props, State> {
 
     if (status === statusSuccess) {
       return (
-        <p className="text-xxxl bold pr3">
+        <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3">
           {Language.t('signupForm.thankYou')}
         </p>
       );
     }
 
-    return <p className="text-xxxl bold pr3">{this.props.header}</p>;
+    return (
+      <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3">
+        {this.props.header}
+      </p>
+    );
   };
 
   renderSubscriptionError = (status: string, submitMessage: string) => {
@@ -353,7 +357,7 @@ class Signup extends Component<Props, State> {
                   {this.renderSubscriptionError(status, message)}
                   <Button
                     className={cx(
-                      'Signup__submit-button text-sm pointer w100 p1',
+                      'Signup__submit-button itc-franklin-gothic-demi-compressed text-md pointer w100 p1',
                       {
                         mt1: status !== statusError,
                         mt_5: status === statusError

@@ -1,9 +1,12 @@
 .ContentfulRichText {
   a {
     text-decoration: underline;
-
     &:hover {
       text-decoration: none;
     }
+  }
+
+  ul {
+    list-style-image: url('/arrow-right.svg');
   }
 }

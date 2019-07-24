@@ -17,7 +17,6 @@ const options = {
   },
   renderNode: {
     [INLINES.HYPERLINK]: (node: NodeData, next: Next) => {
-      console.log(node.data.uri);
       return `<a target="_blank" rel="noopener noreferrer" href=${
         node.data.uri
       }>${next(node.content)}</a>`;

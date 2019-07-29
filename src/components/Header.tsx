@@ -47,7 +47,6 @@ class Header extends Component<Props> {
     return (
       <div
         className={cx('Header w100 fixed z3', {
-          'vh100 overflow-auto': this.props.fullHeaderIsShown,
           'Header__signup-active': this.props.fullHeaderIsShown
         })}
       >

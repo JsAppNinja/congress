@@ -1,25 +1,20 @@
-$mobile-site-title-top: 4rem;
-$mobile-site-title-height: 36vw;
-$desktop-site-title-height: 8.43vw;
-$desktop-site-title-top-without-full-header: 4rem;
-$desktop-site-title-top-with-full-header: 33.8rem;
-
 .SiteTitle {
   animation: site-title-animation 1s;
   width: 90vw;
   z-index: -1;
+  top: calc(#{$topnav-height} + #{$desktop-donor-cta-height});
   transition: 0.6s ease-in-out;
 
   @include media('md') {
     z-index: 2;
     position: sticky;
-    top: 1rem;
+    top: calc(#{$topnav-height} + #{$desktop-donor-cta-height} + 1rem);
     width: 80vw;
   }
 
   &__full-header-is-shown {
     @include media('md') {
-      transform: translate3d(0, $desktop-site-title-top-with-full-header, 0);
+      opacity: 0;
     }
   }
 }

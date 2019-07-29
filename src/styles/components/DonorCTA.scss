@@ -1,7 +1,6 @@
-$desktop-donor-cta-height: 6rem;
-
 .DonorCTA {
   border-top: 2px solid color('black');
+  transition: 0.6s ease-in-out;
 
   @include media('md') {
     height: $desktop-donor-cta-height;

@@ -3,7 +3,6 @@ import cx from 'classnames';
 
 import arrow from 'assets/arrow.svg';
 import { Image } from 'components/base';
-import isMobile from 'utils/isMobile';
 
 interface Props {
   url: string;
@@ -16,8 +15,7 @@ const DonorCTA: React.FC<Props> = ({ url, donorCTA, fullHeaderIsShown }) => {
     <div
       className={cx('DonorCTA flex justify-center items-center flex w100 p1', {
         'bg-color-yellow': fullHeaderIsShown,
-        'bg-color-green': !fullHeaderIsShown,
-        'transition-slide-up-in': !isMobile()
+        'bg-color-green': !fullHeaderIsShown
       })}
     >
       <a

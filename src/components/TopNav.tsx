@@ -192,7 +192,6 @@ class TopNav extends Component<Props, State> {
         className={cx(
           'TopNav flex flex-col items-center md:flex-row bg-color-white',
           {
-            'transition-slide-up-in': !mobileMenuIsShown,
             'fixed t0 l0 r0 b0': mobileMenuIsShown
           }
         )}
@@ -245,7 +244,6 @@ class TopNav extends Component<Props, State> {
           <Button
             className="text-md franklin-gothicflex flex-1 justify-center items-center pointer h100 TopNav__nav-item-text"
             onClick={() => {
-              hideMobileMenu();
               showFullHeader();
             }}
             ariaLabel={Language.t('topNav.showSignupForm')}

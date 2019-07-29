@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { getLocale, Polyglot } from 'constants/Locales';
 import cx from 'classnames';
 import { Image } from 'components/base';
-import AdemForCongressSiteTitleDesktop from 'assets/adem_bunkedekko_for_congress_site_title_desktop.svg';
-import AdemForCongressSiteTitleMobile from 'assets/adem_bunkedekko_for_congress_site_title_mobile.svg';
+import AdemForCongressSiteTitleDesktop from 'assets/adem-bunkeddeko-for-congress-black-desktop.svg';
+import AdemForCongressSiteTitleMobile from 'assets/adem-bunkeddeko-for-congress-black-mobile.svg';
 import isMobile from 'utils/isMobile';
 
 interface Props {

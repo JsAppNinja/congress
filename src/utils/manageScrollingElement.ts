@@ -1,5 +1,5 @@
 const freezeStyle = {
-  position: 'fixed',
+  position: 'initial',
   overflow: 'hidden',
   width: '100%'
 };

@@ -37,103 +37,105 @@ const SubNav: React.FC<Props> = ({
   };
 
   return (
-    <ul
-      className={cx('SubNav py2 pl1 pr2 inline-block franklin-gothic', {
+    <div
+      className={cx('SubNav franklin-gothic col-12 md:col-6', {
         'SubNav__full-header-is-shown': fullHeaderIsShown
       })}
     >
-      {sections &&
-        sections.map((section: Section) => {
-          return (
-            <li
-              className="flex flex-col"
-              key={section.title}
-              onClick={closeMobileMenu}
-            >
-              <a
-                className="SubNav__link uppercase text-sm"
-                href={`#${slugify(section.title)}`}
+      <ul className="SubNav__list relative overflow-y-scroll py2 pl1 pr2 ">
+        {sections &&
+          sections.map((section: Section) => {
+            return (
+              <li
+                className="flex flex-col"
+                key={section.title}
+                onClick={closeMobileMenu}
               >
-                {section.title}
-              </a>
-              <ul>
-                {section.subSections.map((subSection: SubSection) => {
-                  return (
-                    <li
-                      className="list-style-none"
-                      key={subSection.title}
-                      onClick={closeMobileMenu}
-                    >
-                      <a
-                        className="SubNav__link pl2 text-sm"
-                        href={`#${[section.title, subSection.title]
-                          .map(slugify)
-                          .join('-')}`}
+                <a
+                  className="SubNav__link uppercase text-sm"
+                  href={`#${slugify(section.title)}`}
+                >
+                  {section.title}
+                </a>
+                <ul>
+                  {section.subSections.map((subSection: SubSection) => {
+                    return (
+                      <li
+                        className="list-style-none"
+                        key={subSection.title}
+                        onClick={closeMobileMenu}
                       >
-                        {subSection.title}
-                      </a>
-                    </li>
-                  );
-                })}
-              </ul>
+                        <a
+                          className="SubNav__link pl2 text-sm"
+                          href={`#${[section.title, subSection.title]
+                            .map(slugify)
+                            .join('-')}`}
+                        >
+                          {subSection.title}
+                        </a>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+            );
+          })}
+        <li className="flex flex-col" onClick={closeMobileMenu}>
+          <a
+            className="SubNav__link col-12 text-sm"
+            href={shopUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {Language.t('subNav.shop')}
+          </a>
+        </li>
+        <li className="flex flex-col" onClick={closeMobileMenu}>
+          <a
+            className="SubNav__link col-12 text-sm"
+            href={radioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {Language.t('subNav.radio')}
+          </a>
+        </li>
+        <li className="flex flex-col" onClick={closeMobileMenu}>
+          <ul className="flex flex-col">
+            <li className="list-style-none" onClick={closeMobileMenu}>
+              <a
+                className="SubNav__link col-12 text-sm"
+                href={joinUsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {Language.t('subNav.joinUs')}
+              </a>
             </li>
-          );
-        })}
-      <li className="flex flex-col" onClick={closeMobileMenu}>
-        <a
-          className="SubNav__link col-12 text-sm"
-          href={shopUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {Language.t('subNav.shop')}
-        </a>
-      </li>
-      <li className="flex flex-col" onClick={closeMobileMenu}>
-        <a
-          className="SubNav__link col-12 text-sm"
-          href={radioUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {Language.t('subNav.radio')}
-        </a>
-      </li>
-      <li className="flex flex-col" onClick={closeMobileMenu}>
-        <ul className="flex flex-col">
-          <li className="list-style-none" onClick={closeMobileMenu}>
-            <a
-              className="SubNav__link col-12 text-sm"
-              href={joinUsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {Language.t('subNav.joinUs')}
-            </a>
-          </li>
-          <li className="list-style-none" onClick={closeMobileMenu}>
-            <a
-              className="SubNav__link pl2 text-sm"
-              href={volunteerUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {Language.t('subNav.volunteer')}
-            </a>
-          </li>
-          <li className="list-style-none" onClick={closeMobileMenu}>
-            <a
-              className="SubNav__link pl2 text-sm"
-              href={hostHousePartyUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {Language.t('subNav.houseParty')}
-            </a>
-          </li>
-        </ul>
-      </li>
-    </ul>
+            <li className="list-style-none" onClick={closeMobileMenu}>
+              <a
+                className="SubNav__link pl2 text-sm"
+                href={volunteerUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {Language.t('subNav.volunteer')}
+              </a>
+            </li>
+            <li className="list-style-none" onClick={closeMobileMenu}>
+              <a
+                className="SubNav__link pl2 text-sm"
+                href={hostHousePartyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {Language.t('subNav.houseParty')}
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
   );
 };
 

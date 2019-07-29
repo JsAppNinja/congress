@@ -3,8 +3,11 @@ import MailchimpSubscribe from 'react-mailchimp-subscribe';
 import cx from 'classnames';
 import { getLocale, Polyglot } from 'constants/Locales';
 import closeIcon from 'assets/close.svg';
+import AdemForCongressSiteTitleDesktop from 'assets/adem_bunkedekko_for_congress_site_title_desktop.svg';
+import AdemForCongressSiteTitleMobile from 'assets/adem_bunkedekko_for_congress_site_title_mobile.svg';
 import { isValidName, isValidEmail } from 'utils/validations';
 import { unfreezeScroll } from 'utils/manageScrollingElement';
+import isMobile from 'utils/isMobile';
 import { Button, Image } from 'components/base';
 
 interface Props {
@@ -12,6 +15,7 @@ interface Props {
   hideSignup: () => void;
   backgroundColor: 'green' | 'yellow';
   showCloseIcon: boolean;
+  showCampaignSlogan: boolean;
 }
 
 interface FormErrors {
@@ -25,7 +29,8 @@ interface State {
   zipCode: string;
   phoneNumber: string;
   errors: FormErrors;
-  formUUID: number;
+  formID: number;
+  deviceIsMobile: boolean;
 }
 
 const statusSuccess = 'success';
@@ -45,8 +50,23 @@ class Signup extends Component<Props, State> {
       zipCode: '',
       phoneNumber: ''
     },
-    formUUID: Math.floor(Math.random() * 100000)
+    formID: Math.floor(Math.random() * 100000),
+    deviceIsMobile: isMobile()
   };
+
+  checkIfDeviceIsMobile = () => {
+    if (this.state.deviceIsMobile !== isMobile()) {
+      this.setState({ deviceIsMobile: isMobile() });
+    }
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.checkIfDeviceIsMobile);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.checkIfDeviceIsMobile);
+  }
 
   onChangeFirstName = (value: string) => {
     this.setState({ firstName: value });
@@ -168,10 +188,18 @@ class Signup extends Component<Props, State> {
 
     if (status === statusSuccess) {
       return (
-        <div className="mt2 md:mt0">
-          <p className="flex drunkcond-super text-h1 uppercase col-12">
-            {Language.t('global.AdemForCongress')}
-          </p>
+        <div className="mt3 md:mt0">
+          {this.props.showCampaignSlogan && (
+            <Image
+              className="flex col-12 md:col-11"
+              src={
+                this.state.deviceIsMobile
+                  ? AdemForCongressSiteTitleMobile
+                  : AdemForCongressSiteTitleDesktop
+              }
+              alt={Language.t('global.AdemForCongress')}
+            />
+          )}
           <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3 pt1">
             {Language.t('signupForm.thankYou')}
           </p>
@@ -180,11 +208,19 @@ class Signup extends Component<Props, State> {
     }
 
     return (
-      <div className="mt2 md:mt0">
-        <p className="flex drunkcond-super text-h1 uppercase col-12">
-          {Language.t('global.AdemForCongress')}
-        </p>
-        <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr3 pt1">
+      <div className="mt3 md:mt0">
+        {this.props.showCampaignSlogan && (
+          <Image
+            className="flex col-12 md:col-11"
+            src={
+              this.state.deviceIsMobile
+                ? AdemForCongressSiteTitleMobile
+                : AdemForCongressSiteTitleDesktop
+            }
+            alt={Language.t('global.AdemForCongress')}
+          />
+        )}
+        <p className="itc-franklin-gothic-demi-compressed text-xxxl bold pr1 pt1">
           {this.props.header}
         </p>
       </div>
@@ -227,7 +263,7 @@ class Signup extends Component<Props, State> {
               className={`Signup franklin-gothic bg-color-${this.props.backgroundColor} flex flex-col text-md p1 pb3`}
               role="region"
             >
-              <div className="flex flex-row mb3">
+              <div className="flex flex-row mb1 md:mb3">
                 {this.renderHeader(status)}
                 {this.props.showCloseIcon && (
                   <Button
@@ -255,12 +291,12 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="firstName"
-                    id={`${this.state.formUUID}-firstName`}
+                    id={`${this.state.formID}-firstName`}
                     value={this.state.firstName}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
                     <label
-                      htmlFor={`${this.state.formUUID}-firstName`}
+                      htmlFor={`${this.state.formID}-firstName`}
                       className="Signup__input-label"
                     >
                       {Language.t('signupForm.firstName')}
@@ -278,12 +314,12 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="lastName"
-                    id={`${this.state.formUUID}-lastName`}
+                    id={`${this.state.formID}-lastName`}
                     value={this.state.lastName}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
                     <label
-                      htmlFor={`${this.state.formUUID}-lastName`}
+                      htmlFor={`${this.state.formID}-lastName`}
                       className="Signup__input-label"
                     >
                       {Language.t('signupForm.lastName')}
@@ -301,12 +337,12 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="email"
-                    id={`${this.state.formUUID}-email`}
+                    id={`${this.state.formID}-email`}
                     value={this.state.email}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
                     <label
-                      htmlFor={`${this.state.formUUID}-email`}
+                      htmlFor={`${this.state.formID}-email`}
                       className="Signup__input-label"
                     >
                       {Language.t('signupForm.email')}
@@ -324,12 +360,12 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="zipcode"
-                    id={`${this.state.formUUID}-zipcode`}
+                    id={`${this.state.formID}-zipcode`}
                     value={this.state.zipCode}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
                     <label
-                      htmlFor={`${this.state.formUUID}-zipcode`}
+                      htmlFor={`${this.state.formID}-zipcode`}
                       className="Signup__input-label"
                     >
                       {Language.t('signupForm.zipCode')}
@@ -346,12 +382,12 @@ class Signup extends Component<Props, State> {
                     className="mt1 bg-color-transparent text-md w100"
                     type="text"
                     name="phone"
-                    id={`${this.state.formUUID}-phone`}
+                    id={`${this.state.formID}-phone`}
                     value={this.state.phoneNumber}
                   />
                   <div className="md:mr1 mt1 flex flex-row">
                     <label
-                      htmlFor={`${this.state.formUUID}-phone`}
+                      htmlFor={`${this.state.formID}-phone`}
                       className="Signup__input-label"
                     >
                       {Language.t('signupForm.phoneOptional')}
@@ -375,8 +411,11 @@ class Signup extends Component<Props, State> {
                     )}
                     type="submit"
                     ariaLabel="submit sign up information"
-                    label={Language.t('signupForm.submit')}
-                  />
+                  >
+                    <span className="mt_5">
+                      {Language.t('signupForm.submit')}
+                    </span>
+                  </Button>
                 </div>
               </form>
             </div>

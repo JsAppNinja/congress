@@ -7,7 +7,7 @@ import AdemForCongressSiteTitleMobile from 'assets/adem_bunkedekko_for_congress_
 import isMobile from 'utils/isMobile';
 
 interface Props {
-  fullHeaderIsShown: boolean;
+  fullHeaderIsShown?: boolean;
 }
 
 interface State {

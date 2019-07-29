@@ -3,7 +3,8 @@
   border: 2px solid color('black');
 
   :hover {
-    background-color: #eeeeee;
+    background-color: color('black');
+    color: color('white');
     transition: background-color 0.1s ease-in-out;
   }
 }

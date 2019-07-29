@@ -1,8 +1,21 @@
+$subnav-height: calc(
+  #{$desktop-site-title-top-without-full-header} + #{$desktop-donor-cta-height} +
+    #{$desktop-site-title-height}
+);
+
 .SubNav {
   top: calc(
     #{$desktop-site-title-top-without-full-header} + #{$desktop-donor-cta-height} +
       #{$desktop-site-title-height}
   );
+
+  &__list {
+    max-height: 90vh;
+
+    @include media('md') {
+      max-height: calc(100vh - #{$subnav-height});
+    }
+  }
 
   &__link {
     &:hover {

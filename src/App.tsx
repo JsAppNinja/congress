@@ -250,6 +250,7 @@ class App extends Component<Props, State> {
             header={Language.t('signupForm.joinOurTeam')}
             backgroundColor="yellow"
             showCloseIcon={false}
+            showCampaignSlogan={false}
           />
           <Routes location={location} />
         </main>

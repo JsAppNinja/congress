@@ -44,7 +44,8 @@ $topnav-height: 3rem;
     :hover {
       border-top: 2px solid color('black');
       border-bottom: 2px solid color('black');
-      background-color: #eeeeee;
+      background-color: color('black');
+      color: color('white');
       transition: background-color 0.1s ease-in-out;
     }
   }

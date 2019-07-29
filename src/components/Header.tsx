@@ -6,7 +6,6 @@ import DonorCTA from 'components/DonorCTA';
 import TopNav from 'components/TopNav';
 import { Locale } from 'types/Locale';
 import { Section } from 'types/Section';
-import isMobile from 'utils/isMobile';
 import { freezeScroll } from 'utils/manageScrollingElement';
 
 interface Props {
@@ -37,43 +36,18 @@ interface Props {
   mobileSubnavIsShown: boolean;
 }
 
-interface State {
-  deviceIsMobile: boolean;
-}
-
-class Header extends Component<Props, State> {
-  state: State = {
-    deviceIsMobile: isMobile()
-  };
-
-  checkIfDeviceIsMobile = () => {
-    if (this.state.deviceIsMobile !== isMobile()) {
-      this.setState({ deviceIsMobile: isMobile() });
-    }
-  };
-
+class Header extends Component<Props> {
   componentDidUpdate(prevProps: Props) {
-    if (!this.state.deviceIsMobile) return null;
-
     if (!prevProps.fullHeaderIsShown && this.props.fullHeaderIsShown) {
       freezeScroll();
     }
-  }
-
-  componentDidMount() {
-    window.addEventListener('resize', this.checkIfDeviceIsMobile);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('resize', this.checkIfDeviceIsMobile);
   }
 
   render() {
     return (
       <div
         className={cx('Header w100 fixed z3', {
-          'vh100 overflow-auto':
-            this.state.deviceIsMobile && this.props.fullHeaderIsShown,
+          'vh100 overflow-auto': this.props.fullHeaderIsShown,
           'Header__signup-active': this.props.fullHeaderIsShown
         })}
       >
@@ -82,6 +56,7 @@ class Header extends Component<Props, State> {
           header={this.props.signupHeader}
           backgroundColor={this.props.backgroundColor}
           showCloseIcon={this.props.showSignupCloseIcon}
+          showCampaignSlogan={true}
         />
         <DonorCTA
           fullHeaderIsShown={this.props.fullHeaderIsShown}

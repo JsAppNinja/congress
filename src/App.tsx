@@ -167,7 +167,8 @@ class App extends Component<Props, State> {
           {this.props.mobileMenuIsShown && (
             <div
               className={cx('TopNav__mobile-container z3 col-12', {
-                hidden: !this.props.mobileMenuIsShown
+                hidden:
+                  !this.props.mobileMenuIsShown || this.props.fullHeaderIsShown
               })}
             >
               <TopNav
@@ -189,6 +190,21 @@ class App extends Component<Props, State> {
                 sections={this.props.sections}
                 hideMobileSubNav={actions.hideMobileSubNav}
                 showMobileSubNav={actions.showMobileSubNav}
+                mobileSubnavIsShown={this.props.mobileSubnavIsShown}
+              />
+            </div>
+          )}
+          {this.props.mobileSubnavIsShown && (
+            <div className="TopNav__menu-subnav fixed flex justify-start col-10 mt3 bg-color-white overflow-y-scroll">
+              <SubNav
+                shopUrl={this.props.shopUrl}
+                radioUrl={this.props.radioUrl}
+                joinUsUrl={this.props.joinUsUrl}
+                volunteerUrl={this.props.volunteerUrl}
+                hostHousePartyUrl={this.props.hostHousePartyUrl}
+                fullHeaderIsShown={this.props.fullHeaderIsShown}
+                sections={this.props.sections}
+                hideMobileSubNav={actions.hideMobileSubNav}
                 mobileSubnavIsShown={this.props.mobileSubnavIsShown}
               />
             </div>

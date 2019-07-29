@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { Route } from 'react-router-dom';
-import axe from 'react-axe';
 
 import { ConnectedRouter } from 'connected-react-router';
 
@@ -17,5 +16,3 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
-
-if (process.env.NODE_ENV !== 'production') axe(React, ReactDOM, 1000);

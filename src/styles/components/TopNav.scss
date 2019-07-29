@@ -1,8 +1,5 @@
-$topnav-height: 3rem;
-
 .TopNav {
   height: 100vh;
-
   border-top: 2px solid color('black');
   border-bottom: 2px solid color('black');
 
@@ -103,5 +100,6 @@ $topnav-height: 3rem;
 
   &__mobile-container {
     position: fixed;
+    z-index: 4;
   }
 }

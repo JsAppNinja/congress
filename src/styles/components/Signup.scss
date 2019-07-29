@@ -1,4 +1,7 @@
 .Signup {
+  position: relative;
+  z-index: 100;
+
   &__close-icon-container {
     top: 16px;
     right: 9px;

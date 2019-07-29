@@ -167,7 +167,8 @@ class App extends Component<Props, State> {
           {this.props.mobileMenuIsShown && (
             <div
               className={cx('TopNav__mobile-container z3 col-12', {
-                hidden: !this.props.mobileMenuIsShown
+                hidden:
+                  !this.props.mobileMenuIsShown || this.props.fullHeaderIsShown
               })}
             >
               <TopNav

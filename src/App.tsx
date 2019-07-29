@@ -194,6 +194,21 @@ class App extends Component<Props, State> {
               />
             </div>
           )}
+          {this.props.mobileSubnavIsShown && (
+            <div className="TopNav__menu-subnav fixed flex justify-start col-10 mt3 bg-color-white overflow-y-scroll">
+              <SubNav
+                shopUrl={this.props.shopUrl}
+                radioUrl={this.props.radioUrl}
+                joinUsUrl={this.props.joinUsUrl}
+                volunteerUrl={this.props.volunteerUrl}
+                hostHousePartyUrl={this.props.hostHousePartyUrl}
+                fullHeaderIsShown={this.props.fullHeaderIsShown}
+                sections={this.props.sections}
+                hideMobileSubNav={actions.hideMobileSubNav}
+                mobileSubnavIsShown={this.props.mobileSubnavIsShown}
+              />
+            </div>
+          )}
           <div>
             {this.state.deviceIsMobile && (
               <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />

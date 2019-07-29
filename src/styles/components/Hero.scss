@@ -5,5 +5,8 @@ $hero-padding-top: $topnav-height + 1rem;
 
   @include media('md') {
     padding-top: calc(#{$hero-padding-top} + #{$desktop-donor-cta-height});
+    max-height: calc(
+      90vh - #{$desktop-donor-cta-height} + #{$hero-padding-top} + #{$desktop-donor-cta-height}
+    );
   }
 }

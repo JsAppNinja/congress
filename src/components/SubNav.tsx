@@ -38,7 +38,7 @@ const SubNav: React.FC<Props> = ({
 
   return (
     <div
-      className={cx('SubNav franklin-gothic col-12 md:col-6', {
+      className={cx('SubNav franklin-gothic col-12 md:col-5', {
         'SubNav__full-header-is-shown': fullHeaderIsShown
       })}
     >

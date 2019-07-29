@@ -221,12 +221,17 @@ class App extends Component<Props, State> {
               />
             )}
             {this.props.sections && (
-              <div className="flex flex-col items-end justify-end mt2 md:mt0">
-                {this.props.sections.map((section: Section) => {
-                  return (
-                    <ContentfulSection key={section.title} section={section} />
-                  );
-                })}
+              <div className="flex flex-col items-end justify-end col-12 md:col-11">
+                <div className="flex flex-col items-end justify-end col-12 mt2 md:mt0">
+                  {this.props.sections.map((section: Section) => {
+                    return (
+                      <ContentfulSection
+                        key={section.title}
+                        section={section}
+                      />
+                    );
+                  })}
+                </div>
               </div>
             )}
           </div>

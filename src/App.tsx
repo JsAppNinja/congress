@@ -210,9 +210,7 @@ class App extends Component<Props, State> {
             </div>
           )}
           <div>
-            {this.state.deviceIsMobile && (
-              <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />
-            )}
+            <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />
             <Hero
               header={this.props.mainHeader}
               subHeader={this.props.mainSubheader}
@@ -220,9 +218,6 @@ class App extends Component<Props, State> {
               slogan={this.props.mainSlogan}
               photo={this.props.mainPhoto}
             />
-            {!this.state.deviceIsMobile && (
-              <SiteTitle fullHeaderIsShown={this.props.fullHeaderIsShown} />
-            )}
             {!this.state.deviceIsMobile && (
               <SubNav
                 shopUrl={this.props.shopUrl}

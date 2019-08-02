@@ -42,7 +42,7 @@ const SubNav: React.FC<Props> = ({
         'SubNav__full-header-is-shown': fullHeaderIsShown
       })}
     >
-      <ul className="SubNav__list relative overflow-y-scroll py2 pl1 pr2 ">
+      <ul className="SubNav__list relative overflow-y-scroll my2 pl1 pr2 ">
         {sections &&
           sections.map((section: Section) => {
             return (

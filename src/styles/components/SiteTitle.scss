@@ -6,8 +6,6 @@
   transition: 0.6s ease-in-out;
 
   @include media('md') {
-    z-index: 2;
-    position: sticky;
     top: calc(#{$topnav-height} + #{$desktop-donor-cta-height} + 1rem);
     width: 80vw;
   }

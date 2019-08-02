@@ -1,7 +1,6 @@
 .SubNav {
   top: calc(
-    #{$desktop-site-title-top-without-full-header} + #{$desktop-donor-cta-height} +
-      #{$desktop-site-title-height}
+    #{$desktop-site-title-top-without-full-header} + #{$desktop-donor-cta-height}
   );
 
   &__list {

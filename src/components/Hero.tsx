@@ -16,12 +16,19 @@ const Hero: React.FC<Props> = ({ header, subHeader, body, photo, slogan }) => (
     role="region"
   >
     <div className="col-12">
-      <h1 className="text-xxl bold">{header}</h1>
-      <p className="text-xxl bold">{subHeader}</p>
+      <h1 className="itc-franklin-gothic-demi-compressed text-xxxl">
+        {header}
+      </h1>
+      <p className="itc-franklin-gothic-demi-compressed text-xxxl">
+        {subHeader}
+      </p>
       <p className="col-11 text-sm mt2 md:mt3 mb2 md:mb3 ml1">{body}</p>
       {slogan &&
         slogan.map(slogan => (
-          <p key={slogan} className="text-xxl bold">
+          <p
+            key={slogan}
+            className="itc-franklin-gothic-demi-compressed text-xxxl"
+          >
             {slogan}
           </p>
         ))}

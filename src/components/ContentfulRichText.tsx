@@ -12,7 +12,7 @@ interface Props {
 const options = {
   renderMark: {
     [MARKS.BOLD]: (text: string) => {
-      return `<strong class="franklin-gothic text-sm md:text-md bold pt1 md:mr3 md:pr3">${text}</strong>`;
+      return `<span class="itc-franklin-gothic-demi-compressed text-sm md:text-md">${text}</span>`;
     }
   },
   renderNode: {
